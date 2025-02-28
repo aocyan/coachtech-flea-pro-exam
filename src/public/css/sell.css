@@ -1,0 +1,174 @@
+.nav__search {
+    width: 40%;
+    height: 40px;
+    position: absolute;
+    left: 30%;
+    top: 9px;
+}
+
+.nav__search--text {
+    width: 100%;
+    height: 40px;
+    padding-left: 15px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    border: none;
+}
+
+.nav__container {
+    width: 55%;
+    display: flex;
+    position: absolute;
+    left: 80%;
+    top: 15px;
+}
+
+.logout-link,
+.mypage-link {
+    margin-left: 15px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.sell-link {
+    margin-top: 3px;
+    margin-left: 15px;
+    padding: 6px 12px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
+    background-color: #fff;
+}
+
+.sell-header {
+    width: 200px;
+    margin: 80px auto 0px;
+}
+
+.sell-header__logo {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.form__group {
+    margin-top: 40px;
+    margin-left: 35%;
+}
+
+.image__logo {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.image__frame {
+    width: 50%;
+    padding: 50px 0;
+    border: 2px dotted #5F5F5F;
+}
+
+.form__image--button {
+    padding: 10px 10%;
+    margin-left: 28%;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 3px solid #FF9595;
+    border-radius: 10px;
+    color: #FF9595;
+    cursor: pointer;
+}
+
+.form__image--item {
+    display: none;
+}
+
+.form__group-title {
+    width: 50%;
+    margin-top: 50px;
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #5F5F5F;
+    border-bottom: 1px solid #5F5F5F;
+}
+
+.group__logo {
+    margin-top: 30px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.category__container-up {
+    margin-top: 15px;
+}
+
+.category__container-center {
+    margin-top: 20px;
+}
+.category__container-down {
+    margin-top: 20px;
+}
+
+.category__button{
+    padding: 3px 1.7%; 
+    margin-left: 1%;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 2px solid #FF9595;
+    border-radius: 10px;
+    color: #FF9595;
+    cursor: pointer;
+}
+
+.category__check{
+    display: none;
+}
+
+.category__check:checked + .category__button {
+    background-color: #FF5655;
+    color: #fff;
+    border-color: #FF5655;
+}
+
+.condition__select {
+    width: 50%;
+    padding: 15px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.form__input {
+    width: 50%;
+    padding: 15px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.form__textarea--text {
+    width: 50%;
+    height: 120px;
+    padding: 15px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.form__button {
+    margin-top: 50px;
+}
+
+.form__button-submit {
+    width: 50%;
+    margin-bottom: 80px;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    background-color: #FF5555;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}

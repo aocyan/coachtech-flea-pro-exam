@@ -1,0 +1,25 @@
+html {
+    max-width: 1540px;
+    font-size: 10px;
+}
+
+.header {
+    width: 140%;
+    margin: 0;
+    padding: 10px 0;
+    background-color: #000;
+}
+
+.header__inner {
+    width: 100%;
+    padding: 0 15px;
+    text-align: left;
+}
+
+.header__logo {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: "Times New Roman", "MS Mincho", "serif";
+}

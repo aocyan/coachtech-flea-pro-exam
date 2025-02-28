@@ -1,2 +1,6 @@
-*
+!products/
+!users/
+!*.jpg
+!*.png
+!*.jpeg
 !.gitignore

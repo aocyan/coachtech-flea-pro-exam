@@ -1,0 +1,183 @@
+.nav__search {
+    width: 40%;
+    height: 40px;
+    position: absolute;
+    left: 30%;
+    top: 9px;
+}
+
+.nav__search--text {
+    width: 100%;
+    height: 40px;
+    padding-left: 15px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    border: none;
+}
+
+.nav__container {
+    width: 55%;
+    display: flex;
+    position: absolute;
+    left: 80%;
+    top: 15px;
+}
+
+.logout-link,
+.mypage-link {
+    margin-left: 15px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.sell-link {
+    margin-top: 3px;
+    margin-left: 15px;
+    padding: 6px 12px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
+    background-color: #fff;
+}
+
+.user__container {
+    width: 125%;
+    margin-top: 50px;
+    margin-left: 10%;
+    display: flex;
+}
+
+.user__image {
+    width: 150px;
+    background-color: blue;
+}
+
+.user__logo {
+    margin-left: 10%;
+    width: 200px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.profile-edit {
+    margin-top: 20px;
+    margin-left: 15%;
+    width: 200px;
+}
+
+.profile-edit--button {
+    padding: 2px 20px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FF9494;
+    border: 2px solid #FF9494;
+    border-radius: 5px;
+}
+
+.user-product__container {
+    width: 140%;
+    margin-top: 50px;
+    display: flex;
+    border-bottom: 1px solid #5F5F5F;
+}
+
+.sell__link {
+    margin-left: 7%;
+}
+
+.sell__link--button {
+    font-size: 1.4rem;
+    color: #5F5F5F;
+    text-decoration: none;
+}
+
+.purchase__link {
+    margin-left: 3%;
+}
+
+.purchase__link--button {
+    font-size: 1.4rem;
+    color: #5F5F5F;
+    text-decoration: none;
+}
+
+.nav__suggest {
+    margin-left: 10%;
+    width: 100px;
+}
+
+.suggest-link {
+    font-size: 1.5rem;
+    color: #5F5F5F;
+    text-decoration: none;
+}
+
+.nav__mylist {
+    width: 100px;
+}
+
+.mylist-link {
+    font-size: 1.5rem;
+    color: #5F5F5F;
+    text-decoration: none;
+}
+
+.form__group {
+    margin-top: 80px;
+    margin-left: 35%;
+}
+
+.form__group-title {
+    width: 150px;
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.form__image {
+    margin-left: 20%;
+    margin-bottom: 100px;
+}
+
+.form__image--button {
+    padding: 7px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 3px solid #FF9595;
+    border-radius: 10px;
+    color: #FF9595;
+    cursor: pointer;
+}
+
+.form__image--item {
+    display: none;
+}
+
+.form__input {
+    width: 50%;
+    padding: 15px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.form__button {
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+
+.form__button-submit {
+    width: 50%;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    background-color: #FF5555;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}

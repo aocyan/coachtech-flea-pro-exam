@@ -1,0 +1,109 @@
+.nav__search{
+    width: 40%;
+    height: 40px;
+    position: absolute;
+    left: 30%;
+    top: 9px;
+}
+
+.nav__search--text {
+    width: 100%;
+    height: 40px;
+    padding-left: 15px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    border: none;
+}
+
+.nav__container {
+    width: 55%;
+    display: flex;
+    position: absolute;
+    left: 80%;
+    top: 15px;
+}
+
+.logout-link , .mypage-link {
+    margin-left: 15px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.sell-link {
+    margin-top: 3px;
+    margin-left: 15px;
+    padding: 6px 12px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
+    background-color: #fff;
+}
+
+.profile-header {
+    width: 300px;
+    margin: 80px auto 0px;
+}
+
+.profile-header__logo {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.form__group {
+    margin-top: 80px;
+    margin-left: 35%;
+}
+
+.form__group-title {
+    width: 150px;
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.form__image {
+    margin-left: 20%;
+    margin-bottom: 100px;
+}
+
+.form__image--button {
+    padding: 7px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 3px solid #FF9595;
+    border-radius: 10px;
+    color: #FF9595;
+    cursor: pointer;
+}
+
+.form__image--item {
+    display: none;
+}
+
+.form__input {
+    width: 50%;
+    padding: 15px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.form__button {
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+
+.form__button-submit {
+    width: 50%;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    background-color: #FF5555;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
