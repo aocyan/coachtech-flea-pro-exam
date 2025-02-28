@@ -29,7 +29,7 @@
         <h2>商品の出品</h2>
     </div>
 </div>
-<form class="sell-form" action=" method="">
+<form class="sell-form" action="{{ route('sell.store') }}" method="post" enctype="multipart/form-data">
 @csrf
     <div class="form__group">
         <div class="image__logo">

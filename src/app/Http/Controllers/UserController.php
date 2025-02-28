@@ -36,11 +36,6 @@ class UserController extends Controller
         return view('profile');
     }
 
-    public function sell()
-    {
-        return view('sell');
-    }
-
     public function exhibition()
     {
         return view('exhibition');
