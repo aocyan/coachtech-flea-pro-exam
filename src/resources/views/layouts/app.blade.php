@@ -14,9 +14,7 @@
 <body>
 <header class="header">
 	<div class="header__inner">
-        <div class="header__logo">
-		    Coach Tech
-        </div>
+        <img class="header--item" src="{{ asset('storage/logo/logo.svg') }}" alt="ロゴ" />
 	</div>
 </header>
 

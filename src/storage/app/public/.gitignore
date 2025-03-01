@@ -1,5 +1,6 @@
 !products/
 !users/
+!logo/
 !*.jpg
 !*.svg
 !*.png

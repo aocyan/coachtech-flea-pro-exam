@@ -22,7 +22,12 @@ class ProductController extends Controller
 
         Product::create([
             'name' => $request->name,
+            'brand' => $request->brand,
+            'price' => $request->price,
+            'color' => $request->color,
             'image' => $path,
+            'condition' => $request->condition,
+            'detail' => $request->detail,    
         ]);
 
         return redirect()->route('sell.create');
