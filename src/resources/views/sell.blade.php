@@ -47,37 +47,37 @@
         </div>
         <div class="category__list">
             <div class="cattegory__container-up">
-                <input class="category__check" type="checkbox" name="category" id="fassion" />
+                <input class="category__check" type="checkbox" name="category[]" id="fassion" value="ファッション" />
                 <label class="category__button" for="fassion">ファッション</label>
-                <input class="category__check" type="checkbox" name="category" id="appliance" />
+                <input class="category__check" type="checkbox" name="category[]" id="appliance" value="家電" />
                 <label class="category__button" for="appliance">家電</label>
-                <input class="category__check" type="checkbox" name="category" id="interior" />
+                <input class="category__check" type="checkbox" name="category[]" id="interior" value="インテリア" />
                 <label class="category__button" for="interior">インテリア</label>
-                <input class="category__check" type="checkbox" name="category" id="womens" />
+                <input class="category__check" type="checkbox" name="category[]" id="womens" value="レディース" />
                 <label class="category__button" for="womens">レディース</label>
-                <input class="category__check" type="checkbox" name="category" id="mens" />
+                <input class="category__check" type="checkbox" name="category[]" id="mens" value="メンズ" />
                 <label class="category__button" for="mens">メンズ</label>
-                <input class="category__check" type="checkbox" name="category" id="cosmetic" />
+                <input class="category__check" type="checkbox" name="category[]" id="cosmetic" value="コスメ" />
                 <label class="category__button" for="cosmetic">コスメ</label>
             </div>
             <div class="category__container-center">
-                <input class="category__check" type="checkbox" name="category" id="book" />
+                <input class="category__check" type="checkbox" name="category[]" id="book" value="本" />
                 <label class="category__button" for="book">本</label>
-                <input class="category__check" type="checkbox" name="category" id="game" />
+                <input class="category__check" type="checkbox" name="category[]" id="game" value="ゲーム" />
                 <label class="category__button" for="game">ゲーム</label>
-                <input class="category__check" type="checkbox" name="category" id="sport" />
+                <input class="category__check" type="checkbox" name="category[]" id="sport" value="スポーツ" />
                 <label class="category__button" for="sport">スポーツ</label>
-                <input class="category__check" type="checkbox" name="category" id="kitchen" />
+                <input class="category__check" type="checkbox" name="category[]" id="kitchen" value="キッチン" />
                 <label class="category__button" for="kitchen">キッチン</label>
-                <input class="category__check" type="checkbox" name="category" id="handmade" />
+                <input class="category__check" type="checkbox" name="category[]" id="handmade" value="ハンドメイド" />
                 <label class="category__button" for="handmade">ハンドメイド</label>
-                <input class="category__check" type="checkbox" name="category" id="accessory" />
+                <input class="category__check" type="checkbox" name="category[]" id="accessory" value="アクセサリー" />
                 <label class="category__button" for="accessory">アクセサリー</label>
             </div>
             <div class="category__container-down">
-                <input class="category__check" type="checkbox" name="category" id="toy" />
+                <input class="category__check" type="checkbox" name="category[]" id="toy" value="おもちゃ" />
                 <label class="category__button" for="toy">おもちゃ</label>
-                <input class="category__check" type="checkbox" name="category" id="kids" />
+                <input class="category__check" type="checkbox" name="category[]" id="kids" value="ベビー・キッズ" />
                 <label class="category__button" for="kids">ベビー・キッズ</label>
             </div>
         </div>

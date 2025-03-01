@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class ProductController extends Controller
             $path = $file->storeAs('products', $fileName, 'public');
         }
 
-        Product::create([
+        $product = Product::create([
             'name' => $request->name,
             'brand' => $request->brand,
             'price' => $request->price,
@@ -30,6 +31,14 @@ class ProductController extends Controller
             'detail' => $request->detail,    
         ]);
 
-        return redirect()->route('sell.create');
+        $categoryIds = [];
+        foreach ($request->input('category') as $categoryName) {
+            $category = Category::firstOrCreate(['name' => $categoryName]);
+            $categoryIds[] = $category->id;
+        }
+
+        $product->categories()->attach($categoryIds, ['created_at' => now(), 'updated_at' => now()]);
+
+        return view('index');
     }
 }
