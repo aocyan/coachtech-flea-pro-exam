@@ -28,7 +28,7 @@ class ProductController extends Controller
             'color' => $request->color,
             'image' => $path,
             'condition' => $request->condition,
-            'detail' => $request->detail,    
+            'description' => $request->description,    
         ]);
 
         $categoryIds = [];

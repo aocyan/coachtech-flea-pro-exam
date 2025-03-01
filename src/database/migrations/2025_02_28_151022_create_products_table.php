@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('color',255);
             $table->string('image',255);
             $table->string('condition',255);
-            $table->string('detail',255);
+            $table->string('description',255);
             $table->timestamps();
         });
     }

@@ -125,17 +125,17 @@
             <p>商品の説明</p>
         </div>
         <div class="form__textarea">
-			<textarea class="form__textarea--text" name="detail"></textarea>
+			<textarea class="form__textarea--text" name="description"></textarea>
 		</div>
         <div class="form__error">
-            @error('detail')
+            @error('description')
                 {{ $message }}
             @enderror
         </div>
         <div class="group__logo">
             <p>販売価格</p>
         </div>
-        <input class="form__input" type="text" name="price" value="￥"/>
+        <input class="form__input" type="text" name="price" placeholder="￥"/>
         <div class="form__error">
             @error('price')
                 {{ $message }}
