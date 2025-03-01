@@ -45,6 +45,7 @@
 .main-nav {
     margin-top: 30px;
     display: flex;
+    width: 140%;
     border-bottom: 1px solid #5F5F5F;
 }
 
@@ -69,59 +70,27 @@
     text-decoration: none;
 }
 
-.form__group {
-    margin-top: 80px;
-    margin-left: 35%;
+.product__container {
+    margin: 50px 0 70px 5%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
 }
 
-.form__group-title {
-    width: 150px;
-    margin-top: 30px;
-    font-weight: bold;
+.product-item {
+    width: 20%;
+    margin-top: 20px;
+}
+
+.product__image {
+    width: 100%;
+    height: auto;
+}
+
+.name--text {
+    width: 100%;
     font-size: 1.5rem;
-}
-
-.form__image {
-    margin-left: 20%;
-    margin-bottom: 100px;
-}
-
-.form__image--button {
-    padding: 7px;
-    font-weight: bold;
-    font-size: 1.2rem;
-    border: 3px solid #FF9595;
-    border-radius: 10px;
-    color: #FF9595;
-    cursor: pointer;
-}
-
-.form__image--item {
-    display: none;
-}
-
-.form__input {
-    width: 50%;
-    padding: 15px;
-    border: 1px solid #000;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.form__button {
-    margin-top: 50px;
-    margin-bottom: 80px;
-}
-
-.form__button-submit {
-    width: 50%;
-    padding: 15px;
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: #fff;
-    text-align: center;
-    background-color: #FF5555;
-    border-radius: 10px;
+    font-weight:  bold;
     border: none;
-    cursor: pointer;
 }
+

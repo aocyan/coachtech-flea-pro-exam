@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [UserController::class, 'login']);
 Route::get('/register', [UserController::class, 'register']);
 Route::get('/purchase/address', [UserController::class, 'address']);
-Route::get('/', [UserController::class, 'index']);
 Route::get('/mypage', [UserController::class, 'profile']);
 Route::get('/mypage/profile', [UserController::class, 'edit']);
 Route::get('/item', [UserController::class, 'exhibition']);
@@ -26,3 +26,6 @@ Route::get('/purchase', [UserController::class, 'purchase']);
 
 Route::get('/sell', [ProductController::class, 'create'])->name('sell.create');
 Route::post('/sell/store', [ProductController::class, 'store'])->name('sell.store');
+
+Route::get('/', [ItemController::class, 'index'])->name('product');
+Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('product.show');

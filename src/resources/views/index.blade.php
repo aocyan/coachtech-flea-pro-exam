@@ -32,21 +32,17 @@
         </div>
     </div>
 </nav>
-       
- <form class="product-form" action="" method="post">
-    @csrf
-    <div class="product__container">
-        {{--@foreach ($products as $product)--}}
-        <div class="product-item">
-            <a class="product-item__link" href="">
-            <img class="product__image" src="" alt="" />画像
-                <div class="product__text">
-                    <input class="name--text" type="text" name="name" value="商品名" />
-                </div>
-            </a>
-        </div>
-        {{--@endforeach--}}
+<div class="product__container">
+@foreach ($products as $product)
+    <div class="product-item">
+        <a class="product-item__link" href="{{ route('product.show', $product->id) }}">
+            <img class="product__image" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />
+            <div class="product__text">
+                <input class="name--text" type="text" name="name" value="{{ $product['name'] }}" readonly />
+            </div>
+        </a>
     </div>
-</form>
+@endforeach
+</div>
 
 @endsection

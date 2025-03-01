@@ -26,11 +26,6 @@ class UserController extends Controller
 		return view('address');
 	}
 
-    public function index()
-	{
-		return view('index');
-	}
-
     public function profile()
     {
         return view('profile');
