@@ -26,13 +26,13 @@
 </nav>
 <div class="product__detail">
     <div class="product__name">
-        <input class="product__name--text" type="text" value="商品名がここに入る" readonly />
+        <input class="product__name--text" type="text" value="{{ $product->name }}" readonly />
     </div>
     <div class="product__brand">
-        <input class="product__brand--text" type="text" value="ブランド名" readonly />
+        <input class="product__brand--text" type="text" value="{{ $product->brand }}" readonly />
     </div>
     <div class="product__price">
-        <span class="price--mark">￥</span><input class="product__price--text" type="text" value="47,000（税込）" readonly />
+        <span class="price--mark">￥</span><input class="product__price--text" type="text" value="{{ $product->price }}（税込）" readonly />
     <div class="product__mark">
         <input class="mark__check" type="checkbox" name="mark" id="star" />
         <label class="mark__button" for="star">☆</span></label>
@@ -48,10 +48,10 @@
         </div>
         <div class="explain__color">
             カラー
-            <input class="explain__color--text" type="text" value="グレー"  readonly />
+            <input class="explain__color--text" type="text" value="{{ $product->color }}"  readonly />
         </div>
         <div class="explain__detail">
-            <textarea class="explain__detail--text" name="content" placeholder="お問い合わせ内容をご記載ください"></textarea>
+            <input class="explain__detail--text" value="{{ $product->description }}" />
         </div>
     </div>
     <div class="product__info">
@@ -60,12 +60,17 @@
         </div>
         <div class="category__list">
             <span class="category__list--item">カテゴリー</span>
-            <input class="category__check" type="checkbox" name="category" id="fassion" />
-            <label class="category__button" for="fassion">ファッション</label>
+            @php
+                $selectedCategories = $product->categories->pluck('name')->toArray();
+            @endphp
+            @foreach ($product->categories as $category)
+                <input class="category__check" type="checkbox" name="category[]" id="category_{{ $category->id }}" value="{{ $category->id }}" />
+                <label class="category__button" for="category_{{ $category->id }}">{{ $category->name }}</label>
+            @endforeach
         </div>
         <div class="product__condition">
             <span class="product__condition--item">商品の状態</span>
-            <input class="condition--text" type="text" value="良好" readonly />
+            <input class="condition--text" type="text" value="{{ $product->condition }}" readonly />
         </div>
     </div>
     <div class="product__comment">
