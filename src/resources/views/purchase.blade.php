@@ -24,19 +24,19 @@
         </div>
     </div>
 </nav>
-<form class="comment-form" action=" method="">
+<form class="comment-form" action="{{ url()->current() }}" method="get">
     @csrf
     <div class="product__box-left">
         <div class="product__container">
             <div class="product__image">
-                <img class="product__image" src="" alt="" />商品画像
+                <img class="product__image--item" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />
             </div>
             <div class="product__name-price">
                 <div class="product__name">
-                    <p>商品名</p>
+                    <p>{{ $product->name }}</p>
                 </div>
                 <div class="product__price">
-                    <input class="price--text" type="text" value="￥47000" />
+                    <input class="price--text" type="text" value="￥{{ number_format($product->price) }}" />
                 </div>
             </div>
         </div>
@@ -44,10 +44,10 @@
             <div class="pay__name">
                 <p>支払い方法</p>
             </div>
-            <select class="pay__select" name="pay" >
+            <select class="pay__select" name="pay" onchange="this.form.submit()" >
 			    <option class="select--option" disabled selected>選択してください</option>
-			    <option class="select--option" value="コンビニ払い">コンビニ払い</option>
-			    <option class="select--option" value="カード支払い">カード支払い</option>
+			    <option class="select--option" value="コンビニ払い" {{ old('pay', session('pay_method')) == 'コンビニ払い' ? 'selected' : '' }}>コンビニ払い</option>
+			    <option class="select--option" value="カード支払い" {{ old('pay', session('pay_method')) == 'カード支払い' ? 'selected' : '' }}>カード支払い</option>
             </select>
         </div>
         <div class="product__deliver">
@@ -75,11 +75,11 @@
             <tbody>
                 <tr>
                     <th>商品代金</th>
-                    <td><input type="text" value="￥47,000" /></td>
+                    <td><input class="summary__price--text" type="text" value="￥{{ number_format($product->price) }}"  readonly/></td>
                 </tr>
                 <tr>
                     <th>支払い方法</th>
-                    <td><input type="text" value="コンビニ払い" /></td>
+                    <td><input class="summary__pay--text" type="text" value="{{ old('pay',session('pay_method')) }}" readonly /></td>
                 </tr>
             </tbody>
         </table>

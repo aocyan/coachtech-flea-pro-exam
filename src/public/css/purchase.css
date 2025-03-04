@@ -55,8 +55,18 @@
     display: flex;
 }
 
+.product__image {
+    margin-left: 5%;
+    width: 15%;
+}
+
+.product__image--item {
+    width: 100%;
+    height: auto;
+}
+
 .product__name-price {
-    margin-left: 10%;
+    margin-left: 2%;
 }
 
 .product__name {
@@ -76,6 +86,7 @@
     width: 100%;
     font-size: 2rem;
     border: none;
+    outline: none;
 }
 
 .product__pay {
@@ -165,13 +176,13 @@
 .product__box-right {
     position: relative;
     left: 55%;
-    bottom: 300px;
+    bottom: 400px;
 }
 
 .product__summary {
     border-collapse: collapse;
     border: 1px solid #000;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 
 .product__summary th,
@@ -188,12 +199,13 @@
 .product__summary input {
     padding: 5px;
     width: 100%;
+    border: none;
 }
 
 .purchase__link {
     padding: 5px 10px;
     margin-top: 50px;
-    width: 280px;
+    width: 28rem;
     background-color: #FF5555;
 }
 

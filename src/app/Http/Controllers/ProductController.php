@@ -41,4 +41,21 @@ class ProductController extends Controller
 
         return view('index');
     }
+
+    public function index(Request $request,$item_id)
+    {
+        $payMethod = $request->input('pay', '選択してください');
+
+        $product = Product::find($item_id);
+
+        session(['pay_method' => $payMethod]);
+
+        return view('purchase',
+            [
+                'payMethod' => $payMethod, 
+                'itemId' => $item_id,
+                'product' => $product,
+            ]
+        );
+    }
 }
