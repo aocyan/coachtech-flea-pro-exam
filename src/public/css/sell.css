@@ -1,41 +1,50 @@
+.header-nav {
+    display: flex;
+    width: 90%;
+    position: relative;
+    left: 10%;
+    bottom: 43px;
+}
+
 .nav__search {
-    width: 40%;
-    height: 40px;
-    position: absolute;
-    left: 30%;
-    top: 9px;
+    margin-left: 5%;
+    margin-right: 3%;
+    width: 50%;
+    height: 50px;
 }
 
 .nav__search--text {
+    padding-left: 5%;
     width: 100%;
-    height: 40px;
-    padding-left: 15px;
-    font-size: 1.5rem;
+    font-size: 1.8vw;
     border-radius: 5px;
     border: none;
 }
 
-.nav__container {
-    width: 55%;
-    display: flex;
-    position: absolute;
-    left: 80%;
-    top: 15px;
+.nav__logout,
+.nav__mypage {
+    width: 10%;
+}
+
+.nav__logout {
+    margin-left: 10%;
 }
 
 .logout-link,
 .mypage-link {
-    margin-left: 15px;
-    font-size: 1.5rem;
+    display: block;
+    width: 100%;
+    font-size: 1.3vw;
     color: #fff;
     text-decoration: none;
 }
 
 .sell-link {
-    margin-top: 3px;
-    margin-left: 15px;
-    padding: 6px 12px;
-    font-size: 1.5rem;
+    display: block;
+    margin-left: 50%;
+    padding: 3px 15px;
+    width: 100%;
+    font-size: 1.3vw;
     border-radius: 5px;
     text-decoration: none;
     color: #000;
@@ -54,7 +63,7 @@
 
 .form__group {
     margin-top: 40px;
-    margin-left: 35%;
+    margin-left: 25%;
 }
 
 .image__logo {
@@ -63,7 +72,7 @@
 }
 
 .image__frame {
-    width: 50%;
+    width: 70%;
     padding: 50px 0;
     border: 2px dotted #5F5F5F;
 }
@@ -72,7 +81,7 @@
     padding: 10px 10%;
     margin-left: 28%;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.2vw;
     border: 3px solid #FF9595;
     border-radius: 10px;
     color: #FF9595;
@@ -84,7 +93,7 @@
 }
 
 .form__group-title {
-    width: 50%;
+    width: 70%;
     margin-top: 50px;
     font-size: 1.7rem;
     font-weight: bold;
@@ -112,7 +121,7 @@
 .category__button{
     padding: 3px 1.7%; 
     margin-left: 1%;
-    font-size: 0.8rem;
+    font-size: 1.2vw;
     font-weight: bold;
     border: 2px solid #FF9595;
     border-radius: 10px;
@@ -131,7 +140,7 @@
 }
 
 .condition__select {
-    width: 50%;
+    width: 70%;
     padding: 15px;
     border: 1px solid #000;
     border-radius: 10px;
@@ -139,7 +148,7 @@
 }
 
 .form__input {
-    width: 50%;
+    width: 70%;
     padding: 15px;
     border: 1px solid #000;
     border-radius: 10px;
@@ -147,7 +156,7 @@
 }
 
 .form__textarea--text {
-    width: 50%;
+    width: 70%;
     height: 120px;
     padding: 15px;
     border: 1px solid #000;
@@ -160,11 +169,11 @@
 }
 
 .form__button-submit {
-    width: 50%;
+    width: 70%;
     margin-bottom: 80px;
     padding: 15px;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.5vw;
     color: #fff;
     text-align: center;
     background-color: #FF5555;

@@ -11,37 +11,14 @@
         <div class="nav__search">
             <input class="nav__search--text" type="text" name="search" placeholder="なにをお探しですか？" />
         </div>
-        <div class="nav__container">
-            <div class="nav__logout">
-                <a class="logout-link" href="/login">ログアウト</a>
-            </div>
-            <div class="nav__maypage">
-                <a class="mypage-link" href="/mypage">マイページ</a>
-            </div>
-            <div class="nav__sell">
-                <a class="sell-link" href="/sell">出品</a>
-            </div>
+        <div class="nav__logout">
+            <a class="logout-link" href="/login">ログアウト</a>
         </div>
-    </div>
-    <div class="main-nav">
-        <div class="user__container">
-            <div class="user__image">
-                <img class="user__image--item" src="" alt="" />イメージ
-            </div>
-            <div class="user__logo">
-                <p>ユーザー名</p>
-            </div>
-            <div class="profile-edit">
-                <a class="profile-edit--button" href="/mypage/profile">プロフィール編集</a>
-            </div>
+        <div class="nav__maypage">
+            <a class="mypage-link" href="/mypage">マイページ</a>
         </div>
-        <div class="user-product__container">
-            <div class="sell__link">
-                <a class="sell__link--button" href="">出品した商品</a>
-            </div>
-            <div class="purchase__link">
-                <a class="purchase__link--button" href="/">購入した商品</a>
-            </div>
+        <div class="nav__sell">
+            <a class="sell-link" href="/sell">出品</a>
         </div>
     </div>
 </nav>

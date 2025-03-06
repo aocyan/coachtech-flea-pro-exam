@@ -35,7 +35,7 @@
     width: 50%;
     padding: 15px;  
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.5vw;
     color: #fff;
     text-align: center;
     background-color: #FF5555;
@@ -46,11 +46,11 @@
 
 .register__link {
     margin-top: 30px;
-    margin-left: 47%;
+    margin-left: 45%;
 }
 
 .register__link--button {
-    font-size: 1.5rem;
+    font-size: 1.5vw;
     text-decoration: none;
     cursor: pointer;
 }
