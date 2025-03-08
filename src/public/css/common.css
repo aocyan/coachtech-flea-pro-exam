@@ -14,11 +14,11 @@ html {
 .header__inner {
     margin-top: 5px;
     margin-left: 1%;
-    width: 40%;
+    width: 15%;
 }
 
 .header--item {
-    width: 20%;
+    width: 100%;
 }
 
 body {

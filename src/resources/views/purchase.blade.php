@@ -11,15 +11,12 @@
         <div class="nav__search">
             <input class="nav__search--text" type="text" name="search" placeholder="なにをお探しですか？" />
         </div>
-        <div class="nav__logout">
-            <a class="logout-link" href="/login">ログアウト</a>
-        </div>
-        <div class="nav__maypage">
-            <a class="mypage-link" href="/mypage">マイページ</a>
-        </div>
-        <div class="nav__sell">
-            <a class="sell-link" href="/sell">出品</a>
-        </div>
+        <form class="form-log" action="/logout" method="post">
+        @csrf
+            <button class="logout-link">ログアウト</button>         
+        </form>
+        <a class="mypage-link" href="/mypage">マイページ</a>
+        <a class="sell-link" href="/sell">出品</a>
     </div>
 </nav>
 <form class="comment-form" action="{{ url()->current() }}" method="get">

@@ -7,7 +7,7 @@
 }
 
 .nav__search {
-    margin-left:  5%;
+    margin-left:  8%;
     margin-right: 3%;
     width: 50%;
     height: 50px;
@@ -21,31 +21,39 @@
     border: none;
 }
 
-.nav__logout,
-.nav__mypage {
-    width: 10%;
+.form-log {
+    width: 11%;
 }
 
-.nav__logout {
-    margin-left: 10%;
-}
-
-.logout-link,
-.mypage-link {
-    display: block;
+.logout-link {
+    margin-top: 2px;
     width: 100%;
+    font-size: 1.3vw;
+    border: none;
+    color: #fff;
+    background-color: #000;
+    cursor: pointer;
+}
+
+.mypage-link {
+    margin-top: 4px;
+    margin-left: 3%;
+    display: block;
+    width: 10%;
     font-size: 1.3vw;
     color: #fff;
     text-decoration: none;
 }
 
 .sell-link {
+    margin-left: 3%;
     display: block;
-    margin-left: 50%;
-    padding: 3px 15px;
-    width: 100%;
+    width: 10%;
+    height: 30px;
+    line-height: 30px;
     font-size: 1.3vw;
     border-radius: 5px;
+    text-align: center;
     text-decoration: none;
     color: #000;
     background-color: #fff;

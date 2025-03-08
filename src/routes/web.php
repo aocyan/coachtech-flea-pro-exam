@@ -4,6 +4,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [UserController::class, 'login']);
+
 Route::get('/register', [UserController::class, 'register']);
 Route::get('/purchase/address', [UserController::class, 'address']);
 Route::get('/mypage', [UserController::class, 'profile']);
-Route::get('/mypage/profile', [UserController::class, 'edit']);
 Route::get('/item', [UserController::class, 'exhibition']);
 
 
@@ -31,3 +31,12 @@ Route::get('/purchase/{item_id}', [ProductController::class, 'index'])->name('pu
 
 Route::get('/', [ItemController::class, 'index'])->name('product');
 Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('product.show');
+
+Route::post('/register', [UserController::class, 'store'])->name('user.store');
+Route::get('/profile/mypage', [UserController::class, 'edit']);
+Route::put('/update', [UserController::class, 'update'])->name('user.update');
+Route::middleware('auth')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('user.login');
+});
+Route::get('/login', [UserController::class, 'login']);
+Route::get('/', [UserController::class, 'index'])->name('user.index');

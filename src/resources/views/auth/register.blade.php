@@ -11,7 +11,7 @@
         <h2>会員登録</h2>
     </div>
 </div>
-<form class="register-form" action=" method="">
+<form class="register-form" action="{{ route('user.store') }}" method="post">
 @csrf
     <div class="form__group">
         <div class="form__group-title">
@@ -44,14 +44,14 @@
         <div class="form__group-title">
             <p>確認用パスワード</p>
         </div>
-        <input class="form__input" type="password" name="password-check"/>
+        <input class="form__input" type="password" name="password_confirmation"/>
         <div class="form__error">
             @error('password')
                 {{ $message }}
             @enderror
         </div>
         <div class="form__button">
-            <button class="form__button-submit" type="submit" name="back" value="back">登録する</button>
+            <button class="form__button-submit" type="submit" name="submit">登録する</button>
         </div>
     </div>
 </form>

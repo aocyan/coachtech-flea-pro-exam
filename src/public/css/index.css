@@ -7,7 +7,7 @@
 }
 
 .nav__search {
-    margin-left: 5%;
+    margin-left: 8%;
     margin-right: 3%;
     width: 50%;
     height: 50px;
@@ -21,62 +21,72 @@
     border: none;
 }
 
-.nav__logout,
-.nav__mypage {
-    width: 10%;
+.form-log {
+    width: 11%;
 }
 
-.nav__logout {
-    margin-left: 10%;
-}
-
-.logout-link,
-.mypage-link {
-    display: block;
+.logout-link {
+    margin-top: 2px;
     width: 100%;
+    font-size: 1.3vw;
+    border: none;
+    color: #fff;
+    background-color: #000;
+    cursor: pointer;
+}
+
+.mypage-link {
+    margin-top: 4px;
+    margin-left: 3%;
+    display: block;
+    width: 10%;
     font-size: 1.3vw;
     color: #fff;
     text-decoration: none;
 }
 
 .sell-link {
+    margin-left: 3%;
     display: block;
-    margin-left: 50%;
-    padding: 3px 15px;
-    width: 100%;
+    width: 10%;
+    height: 30px;
+    line-height: 30px;
     font-size: 1.3vw;
     border-radius: 5px;
+    text-align: center;
     text-decoration: none;
     color: #000;
     background-color: #fff;
 }
 
 .main-nav {
-    margin-top: 30px;
+    width: 100%;
     display: flex;
-    width: 140%;
-    border-bottom: 1px solid #5F5F5F;
+    border-bottom: 1px solid #000;
 }
 
-.nav__suggest {
+.nav__recommend {
     margin-left: 10%;
-    width: 100px;
-}
-
-.suggest-link {
-    font-size: 1.5rem;
-    color: #5F5F5F;
-    text-decoration: none;
 }
 
 .nav__mylist {
-    width: 100px;
+    margin-left: 5%;
 }
 
-.mylist-link {
-    font-size: 1.5rem;
-    color: #5F5F5F;
+.recommend-link {
+    font-size: 2rem;
+    font-weight: bold;
     text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+
+.mylist-link{
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FF5555;
+    cursor: pointer;
 }
 
 .product__container {
