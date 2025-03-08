@@ -137,7 +137,7 @@
             @enderror
         </div>
         <div class="form__button">
-            <button class="form__button-submit" type="submit" name="back" value="back">出品する</button>
+            <button class="form__button-submit" type="submit" name="submit">出品する</button>
         </div>
     </div>
 </form>

@@ -11,12 +11,14 @@
         <div class="nav__search">
             <input class="nav__search--text" type="text" name="search" placeholder="なにをお探しですか？" />
         </div>
+        @if (Auth::check())
         <form class="form-log" action="/logout" method="post">
         @csrf
             <button class="logout-link">ログアウト</button>         
         </form>
         <a class="mypage-link" href="/mypage">マイページ</a>
         <a class="sell-link" href="/sell">出品</a>
+        @endif
     </div>
 </nav>
 <div class="image-detail__container">
@@ -33,15 +35,19 @@
         <div class="product__price">
             <span class="price--mark">￥</span><input class="product__price--text" type="text" value="{{ number_format($product->price) }}（税込）" readonly />
         </div>
+        @if (Auth::check())
         <div class="product__mark">
             <input class="mark__check" type="checkbox" name="mark" id="star" />
             <label class="mark__button" for="star">☆</span></label>
             <input class="mark__check" type="checkbox" name="mark" id="comment" />
             <label class="mark__button" for="comment">💬</label>
         </div>
+        @endif
+        @if (Auth::check())
         <div class="purchase__link">
             <a class="purchase__link--button" href="{{ route('purchase.index', $product->id) }}">購入手続きへ</a>
         </div>
+        @endif
         <div class="product__explain">
             <div class="explain__header">
                 <p>商品説明</p>
@@ -81,6 +87,7 @@
                 </div>
             </div>
         </div>
+        @if (Auth::check())
         <form class="comment-form" action=" method="">
         @csrf
             <div class="form__group">
@@ -93,6 +100,7 @@
                 </div>
             </div>
         </form>
+        @endif
     </div>
 </div>
 

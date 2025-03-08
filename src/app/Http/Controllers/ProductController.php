@@ -39,7 +39,9 @@ class ProductController extends Controller
 
         $product->categories()->attach($categoryIds, ['created_at' => now(), 'updated_at' => now()]);
 
-        return view('index');
+        $products = Product::all();
+
+        return view('index',compact('products'));
     }
 
     public function index(Request $request,$item_id)
