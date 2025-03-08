@@ -66,6 +66,13 @@ class UserController extends Controller
         return view('index',compact('products'));
     }
 
+    public function index()
+    {
+        $products = Product::all();
+
+        return view('index',compact('products'));
+    }
+
     public function login()
 	{
 		return view('auth.login');
