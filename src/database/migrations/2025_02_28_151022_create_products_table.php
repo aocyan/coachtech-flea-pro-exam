@@ -15,6 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('product_user_id');         
             $table->string('name',255);
             $table->string('brand',255);
             $table->integer('price');
@@ -23,6 +24,8 @@ class CreateProductsTable extends Migration
             $table->string('condition',255);
             $table->string('description',255);
             $table->timestamps();
+
+            $table->foreign('product_user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

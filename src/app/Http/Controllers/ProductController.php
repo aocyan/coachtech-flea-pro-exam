@@ -21,7 +21,11 @@ class ProductController extends Controller
             $path = $file->storeAs('products', $fileName, 'public');
         }
 
+        $user = auth()->user();
+        $userId = $user->id;
+
         $product = Product::create([
+            'product_user_id' => $userId,
             'name' => $request->name,
             'brand' => $request->brand,
             'price' => $request->price,

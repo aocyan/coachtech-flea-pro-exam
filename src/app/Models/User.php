@@ -22,4 +22,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class, 'profile_user_id');
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class,'product_user_id');
+    }
 }
