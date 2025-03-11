@@ -230,6 +230,7 @@
 
 .product__comment {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .comment--text {
@@ -302,7 +303,7 @@
 
 .form__button {  
     margin-top: 15px;
-    margin-bottom: 80px;  
+    margin-bottom: 80px;
 }
 
 .form__button-submit {

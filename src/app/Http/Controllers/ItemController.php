@@ -27,7 +27,9 @@ class ItemController extends Controller
 
         $comments = Comment::with('user')->where('product_comment_id', $item_id)->get();
 
-        return view('exhibition', compact('product','selectedCategories','comments'));
+        $commentCount = $comments->count();
+
+        return view('exhibition', compact('product','selectedCategories','comments','commentCount'));
     }
 
     public function store(Request $request)
