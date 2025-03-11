@@ -31,6 +31,7 @@ Route::get('/purchase/{item_id}', [ProductController::class, 'index'])->name('pu
 
 Route::get('/', [ItemController::class, 'index'])->name('product');
 Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('product.show');
+Route::post('/comments', [ItemController::class, 'store'])->name('comments.store');
 
 Route::post('/register', [UserController::class, 'store'])->name('user.store');
 Route::get('/profile/mypage', [UserController::class, 'edit']);

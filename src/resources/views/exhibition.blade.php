@@ -56,7 +56,7 @@
                 <input class="explain__color--text" type="text" value="カラー：{{ $product->color }}"  readonly />
             </div>
             <div class="explain__description">
-                <input class="explain__description--text" value="{{ $product->description }}" readonly />
+                <textarea class="explain__description--text" readonly>{{ $product->description }}</textarea>
             </div>
         </div>
         <div class="product__info">
@@ -76,27 +76,32 @@
             </div>
         </div>
         <div class="product__comment">
-            <input class="comment__figure" type="text" value="コメント(1)" readonly />
+            <input class="comment__figure" type="text" value="コメント({{$commentCount}})" readonly />
+            @foreach ($comments as $comment)
             <div class="user__info">
-                <div class="user__info-detai">
-                    <img class="user__image--item" src="" alt="" />イメージ
-                    <input class="user__name" type="text" value="admin" readonly />
-                <div>
-                <div class="user__comment">
-                    <input class="user__comment--text" type="text" value="こちらにコメントが入ります" readonly />
+                @if ($comment->user)
+                <div class="user__info-detail">
+                    <img class="user__image--item" src="{{ asset('storage/users/' . basename($comment->user->profile->image)) }}" alt="{{ $comment->user->image }}" />
+                    <input class="user__name" type="text" value="{{ $comment->user->name }}" readonly />
                 </div>
+                <div class="user__comment">
+                    <textarea class="user__comment--text" type="text" readonly>{{ $comment->comment }}</textarea>
+                </div>
+                @endif
             </div>
+            @endforeach
         </div>
         @if (Auth::check())
-        <form class="comment-form" action=" method="">
+        <form class="comment-form" action="{{ route('comments.store') }}" method="post">
         @csrf
+            <input type="hidden" name="product_id" value="{{ $product->id }}">
             <div class="form__group">
                 <div class="comment__logo">
                     <p>商品へのコメント</p>
                 </div>
                 <textarea class="form__textarea--text" name="comment"></textarea>
                 <div class="form__button">
-                    <button class="form__button-submit" type="submit" name="comment_submit">コメントを送信する</button>
+                    <button class="form__button-submit" type="submit" name="submit">コメントを送信する</button>
                 </div>
             </div>
         </form>

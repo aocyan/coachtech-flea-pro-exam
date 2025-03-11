@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductController extends Controller
             $path = $file->storeAs('products', $fileName, 'public');
         }
 
-        $user = auth()->user();
+        $user = Auth()->user();
         $userId = $user->id;
 
         $product = Product::create([
@@ -54,14 +55,14 @@ class ProductController extends Controller
 
         $product = Product::find($item_id);
 
-        session(['pay_method' => $payMethod]);
+        session(['pay_method' => $payMethod]);      
 
-        return view('purchase',
-            [
-                'payMethod' => $payMethod, 
-                'itemId' => $item_id,
-                'product' => $product,
-            ]
-        );
+        $profile = Auth()->user()->profile;
+
+        $postalCode = $profile->postal;
+        $postalCodeFirst = substr($postalCode, 0, 3);
+        $postalCodeLast = substr($postalCode, 3, 4);
+
+        return view('purchase', compact('payMethod', 'item_id', 'product', 'profile','postalCodeFirst','postalCodeLast'));
     }
 }

@@ -56,11 +56,11 @@
             </div>
             <div class="deliver__address">
                 <div class="deliver__postal">
-                    <input class="postal__number" type="text" value="〒111-2222" />
+                    <input class="postal__number" type="text" value="〒{{ $postalCodeFirst }}-{{ $postalCodeLast }}" />
                 </div>
                 <div class="user__address">
-                    <input class="user__address--text" type="text" value="住所" />
-                    <input class="user__building--text" type="text" value="建物" />
+                    <input class="user__address--text" type="text" value="{{ $profile->address }}" />
+                    <input class="user__building--text" type="text" value="{{ $profile->building }}" />
                 </div>
             </div>
         </div>
