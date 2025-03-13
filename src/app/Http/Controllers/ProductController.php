@@ -59,10 +59,33 @@ class ProductController extends Controller
 
         $profile = Auth()->user()->profile;
 
-        $postalCode = $profile->postal;
+        $postalCode = session('new_postal', $profile->postal);
         $postalCodeFirst = substr($postalCode, 0, 3);
         $postalCodeLast = substr($postalCode, 3, 4);
 
-        return view('purchase', compact('payMethod', 'item_id', 'product', 'profile','postalCodeFirst','postalCodeLast'));
+        $new_address = session('new_address', $profile->address);
+        $new_building = session('new_building', $profile->building);
+
+        return view('purchase', compact('payMethod', 'item_id', 'product', 'profile','postalCodeFirst','postalCodeLast', 'new_address', 'new_building'));
     }
-}
+
+    public function edit($item_id)
+    {
+        $product = Product::find($item_id);
+
+        $profile = Auth()->user()->profile;
+
+        return view('address',compact('product','profile'));
+    }
+
+    public function update(Request $request,$item_id)
+    {
+        session([
+            'new_postal' => $request->postal,
+            'new_address' => $request->address,
+            'new_building' => $request->building,
+        ]);
+
+        return redirect()->route('purchase.index', ['item_id' => $item_id]);
+    }
+}   

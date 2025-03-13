@@ -83,23 +83,8 @@ class UserController extends Controller
 		return view('auth.register');
 	}
 
-     public function address()
-	{
-		return view('address');
-	}
-
     public function profile()
     {
         return view('profile');
-    }
-
-    public function exhibition()
-    {
-        return view('exhibition');
-    }
-
-    public function purchase()
-    {
-        return view('purchase');
     }
 }

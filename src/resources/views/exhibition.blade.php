@@ -45,7 +45,7 @@
         @endif
         @if (Auth::check())
         <div class="purchase__link">
-            <a class="purchase__link--button" href="{{ route('purchase.index', $product->id) }}">購入手続きへ</a>
+            <a class="purchase__link--button" href="{{ route('purchase.index', ['item_id'=> $product->id]) }}">購入手続きへ</a>
         </div>
         @endif
         <div class="product__explain">

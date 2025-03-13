@@ -24,13 +24,14 @@
         <h2>住所の変更</h2>
     </div>
 </div>
-<form class="register-form" action=" method="">
+<form class="register-form" action="{{ route('address.update', ['item_id' => $product->id]) }}" method="post">
 @csrf
+@method('PATCH')
     <div class="form__group">
         <div class="form__group-title">
             <p>郵便番号</p>
         </div>
-        <input class="form__input" type="text" name="postal-number" value="{{ old('email') }}"/>
+        <input class="form__input" type="text" name="postal" value="{{ old('postal',session('new_postal',$profile->postal)) }}"/>
         <div class="form__error">
             @error('postal-number')
                 {{ $message }}
@@ -39,7 +40,7 @@
         <div class="form__group-title">
             <p>住所</p>
         </div>
-        <input class="form__input" type="address" name="address"/>
+        <input class="form__input" type="address" name="address" value="{{ old('address',session('new_address',$profile->address)) }}"/>
         <div class="form__error">
             @error('password')
                 {{ $message }}
@@ -48,14 +49,14 @@
         <div class="form__group-title">
             <p>建物名</p>
         </div>
-        <input class="form__input" type="text" name="building"/>
+        <input class="form__input" type="text" name="building" value="{{ old('building',session('new_building',$profile->building)) }}"/>
         <div class="form__error">
             @error('password')
                 {{ $message }}
             @enderror
         </div>
         <div class="form__button">
-            <button class="form__button-submit" type="submit" name="update" value="update">更新する</button>
+            <button class="form__button-submit" type="submit" name="update">更新する</button>
         </div>
     </div>
 </form>

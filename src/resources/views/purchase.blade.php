@@ -51,7 +51,7 @@
                     <p>配送先</p>
                 </div>
                 <div class="deliver__link">
-                    <a class="address-link" href="/purchase/address">変更する</a>
+                    <a class="address-link" href="{{ route('purchase.address', ['item_id' => $product->id]) }}">変更する</a>
                 </div>
             </div>
             <div class="deliver__address">
@@ -59,8 +59,8 @@
                     <input class="postal__number" type="text" value="〒{{ $postalCodeFirst }}-{{ $postalCodeLast }}" />
                 </div>
                 <div class="user__address">
-                    <input class="user__address--text" type="text" value="{{ $profile->address }}" />
-                    <input class="user__building--text" type="text" value="{{ $profile->building }}" />
+                    <input class="user__address--text" type="text" value="{{ session('new_address', $profile->address) }}" />
+                    <input class="user__building--text" type="text" value="{{ session('new_building',$profile->building) }}" />
                 </div>
             </div>
         </div>
