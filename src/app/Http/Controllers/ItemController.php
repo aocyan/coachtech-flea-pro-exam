@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Like;
 use App\Models\Comment;
 use App\Models\Category;
 use App\Models\Product;
@@ -27,28 +28,50 @@ class ItemController extends Controller
 
         $comments = Comment::with('user')->where('product_comment_id', $item_id)->get();
 
+        $likeCount = Like::where('product_id', $product->id)->count();
         $commentCount = $comments->count();
+        $liked = Auth::check() ? Like::where('user_id', Auth::id())->where('product_id', $product->id)->exists() : false;
 
-        return view('exhibition', compact('product','selectedCategories','comments','commentCount'));
+        return view('exhibition', compact('product','selectedCategories','comments','commentCount','likeCount','liked'));
     }
 
     public function store(Request $request)
     {
-        Comment::create([
-            'product_comment_id' => $request->product_id,
-            'user_comment_id' => Auth::id(),
-            'comment' => $request->comment,
-        ]);
+        $product_id = $request->input('product_id');
+        $product = Product::findOrFail($product_id);
+        $user = Auth::user();
+        
+        if ($request->has('like')) {
+            $likeValue = (int) $request->input('like');
 
-        $comments = Comment::with('user.profile')->where('product_comment_id', $request->product_id)->get();
+            if ($likeValue === 1) {
+                Like::updateOrinsert(
+                    ['user_id' => $user->id, 'product_id' => $product_id],
+                    ['likes' => 1]
+                );
+            } 
+            else {
+                Like::where('user_id', $user->id)->where('product_id', $product_id)->delete();
+            }
+        }
+
+        if ($request->has('comment') && !empty($request->comment)) {
+            Comment::create([
+                'product_comment_id' => $request->product_id,
+                'user_comment_id' => Auth::id(),
+                'comment' => $request->comment,
+            ]);
+        }
+
+        $comments = Comment::with('user.profile')->where('product_comment_id', $product_id)->get();
 
         $commentCount = $comments->count();
+        $likeCount = Like::where('product_id', $product_id)->where('likes', true)->count();
 
-        $product = Product::find($request->product_id);
+        $liked = Auth::check() ? Like::where('user_id', $user->id)->where('product_id', $product_id)->exists() : false;
 
         $selectedCategories = $product->categories->pluck('name')->toArray();
 
-        return view('exhibition', compact('product','selectedCategories','comments','commentCount'));
+        return redirect()->route('product.show', $product_id)->with(compact('product', 'selectedCategories', 'comments', 'commentCount', 'likeCount','liked'));
     }
-
 }

@@ -31,7 +31,7 @@ Route::patch('/address/update/{item_id}', [ProductController::class, 'update'])-
 
 Route::get('/', [ItemController::class, 'index'])->name('product');
 Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('product.show');
-Route::post('/comments', [ItemController::class, 'store'])->name('comments.store');
+Route::post('/comments', [ItemController::class, 'store'])->name('likeComment.store');
 
 Route::post('/register', [UserController::class, 'store'])->name('user.store');
 Route::get('/profile/mypage', [UserController::class, 'edit']);

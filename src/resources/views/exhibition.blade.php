@@ -20,7 +20,14 @@
         <a class="sell-link" href="/sell">出品</a>
         @endif
     </div>
+    @guest
+            <a class="no__login-link" href="/login">ログイン</a>
+            <a class="no__login-mypage-link" href="/login">マイページ</a>
+            <a class="no__login-sell-link" href="/login">出品</a>
+    @endguest
 </nav>
+<form action="{{ route('likeComment.store') }}" method="post">
+@csrf
 <div class="image-detail__container">
     <div class="product__image">
         <img class="product__image--item" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />
@@ -35,19 +42,39 @@
         <div class="product__price">
             <span class="price--mark">￥</span><input class="product__price--text" type="text" value="{{ number_format($product->price) }}（税込）" readonly />
         </div>
-        @if (Auth::check())
-        <div class="product__mark">
-            <input class="mark__check" type="checkbox" name="mark" id="star" />
-            <label class="mark__button" for="star">☆</span></label>
-            <input class="mark__check" type="checkbox" name="mark" id="comment" />
-            <label class="mark__button" for="comment">💬</label>
-        </div>
-        @endif
+        <table class="product__mark">
+            <tr>
+                <th>
+                    @if (Auth::check())
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <input type="hidden" name="like" value="0">
+                    <input class="mark__check" type="checkbox"  name="like" id="favorite" value="1" {{ $liked ? 'checked' : '' }}  />
+                    <label class="mark__button--like" for="favorite" >☆</label>
+                    @endif
+                    @guest
+                    <p class="no-mark__button--like">☆</p>
+                    @endguest
+                </th>
+                <th>
+                    <input class="mark__check" type="checkbox" name="mark" id="comment" />
+                    <label class="mark__button--comment" for="comment">💬</label>
+                </th>
+            </tr>
+            <tr>
+                <td><input class="mark__count" type="text" value="{{ $likeCount }}" readonly /></td>
+                <td><input class="mark__count" type="text" value="{{ $commentCount }}" readonly /></td>
+            </tr>
+        </table>
         @if (Auth::check())
         <div class="purchase__link">
             <a class="purchase__link--button" href="{{ route('purchase.index', ['item_id'=> $product->id]) }}">購入手続きへ</a>
         </div>
         @endif
+        @guest
+        <div class="no-purchase__link">
+            <p class="no-purchase__link--button">購入手続きへ</p>
+        </div>
+        @endguest
         <div class="product__explain">
             <div class="explain__header">
                 <p>商品説明</p>
@@ -91,22 +118,25 @@
             </div>
             @endforeach
         </div>
-        @if (Auth::check())
-        <form class="comment-form" action="{{ route('comments.store') }}" method="post">
-        @csrf
-            <input type="hidden" name="product_id" value="{{ $product->id }}">
-            <div class="form__group">
-                <div class="comment__logo">
-                    <p>商品へのコメント</p>
-                </div>
-                <textarea class="form__textarea--text" name="comment"></textarea>
+        <input type="hidden" name="product_id" value="{{ $product->id }}">
+        <div class="form__group">
+            <div class="comment__logo">
+                <p>商品へのコメント</p>
+            </div>
+            <textarea class="form__textarea--text" name="comment"></textarea>
+            @if (Auth::check())
                 <div class="form__button">
                     <button class="form__button-submit" type="submit" name="submit">コメントを送信する</button>
                 </div>
-            </div>
-        </form>
-        @endif
+            @endif
+            @guest
+                <div class="no-form__button">
+                    <p class="no-form__button-submit">コメントを送信する</p>
+                </div>
+            @endguest
+        </div>
     </div>
 </div>
+</form>
 
 @endsection

@@ -33,4 +33,9 @@ class Product extends Model
     public function comments() {
         return $this->hasMany(Comment::class,'product_comment_id');
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }
