@@ -55,6 +55,11 @@
                     <div class="product__text">
                         <input class="name--text" type="text" name="name" value="{{ $product['name'] }}" readonly />
                     </div>
+                    @if ($product->sold_at)
+                    <div class="product__sold">
+                        <p class="product__sold--text">sold</p>
+                    </div>
+                    @endif
                 </a>
             </div>
         @endif

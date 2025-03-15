@@ -59,7 +59,7 @@
     background-color: #fff;
 }
 
-.comment-form {
+.main__container {
     width: 90%;
     margin-top: 80px;
     display: flex;
@@ -126,6 +126,7 @@
     padding: 3px 10px;
     width: 50%;
     font-size: 1.5vw;
+    cursor: pointer;
 }
 
 .product__deliver {
@@ -174,6 +175,7 @@
     width: 100%;
     font-size: 1.2vw;
     border: none;
+    outline: none;
 }
 
 .user__address {
@@ -185,12 +187,14 @@
     width: 100%;
     font-size: 1.2vw;
     border: none;
+    outline: none;
 }
 
 .user__building--text {
     width: 100%;
     font-size: 1.2vw;
     border: none;
+    outline: none;
 }
 
 .product__box-right {
@@ -212,6 +216,11 @@
     border-bottom: 1px solid #000;
 }
 
+.summary__price--text,
+.summary__pay--text {
+    outline: none;
+}
+
 .product__summary tr:last-child td {
     border-bottom: none;
 }
@@ -225,7 +234,7 @@
     border: none;
 }
 
-.purchase__link--button {
+.purchase__submit--button {
     display: block;
     padding: 10px 0;
     margin-top: 30px;
@@ -237,4 +246,5 @@
     border: none;
     background-color: #FF5555;
     color: #fff;
+    cursor: pointer;
 }

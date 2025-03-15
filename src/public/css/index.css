@@ -162,6 +162,10 @@
     margin-top: 20px;
 }
 
+.product-item__link {
+    text-decoration: none;
+}
+
 .product__image {
     width: 100%;
     height: auto;
@@ -172,4 +176,22 @@
     font-size: 1.5vw;
     font-weight: bold;
     border: none;
+    outline: none;
+}
+
+.product__sold {
+    position: relative;
+    left: 22%;
+    bottom: 50%;
+    width: 50%;
+}
+
+.product__sold--text {
+    padding: 10px;
+    font-size: 1.5vw;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #FF5555;
 }

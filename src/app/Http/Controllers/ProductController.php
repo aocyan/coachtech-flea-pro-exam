@@ -88,4 +88,17 @@ class ProductController extends Controller
 
         return redirect()->route('purchase.index', ['item_id' => $item_id]);
     }
+
+    public function purchase(Request $request,$item_id)
+    {
+        $product = Product::find($item_id);
+        $product->update([
+            'purchaser_user_id' => Auth::id(),
+            'sold_at' => now(),
+        ]);
+
+        $products = Product::select('id', 'name', 'image','sold_at')->get();
+        
+        return view('index',compact('products'));
+    }
 }   

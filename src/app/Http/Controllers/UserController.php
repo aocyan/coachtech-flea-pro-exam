@@ -83,8 +83,8 @@ class UserController extends Controller
 		return view('auth.register');
 	}
 
-    public function profile()
+    public function mypage()
     {
-        return view('profile');
+        return view('mypage');
     }
 }

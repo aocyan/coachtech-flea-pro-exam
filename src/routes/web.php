@@ -27,6 +27,7 @@ Route::post('/sell/store', [ProductController::class, 'store'])->name('sell.stor
 Route::get('/purchase/{item_id}', [ProductController::class, 'index'])->name('purchase.index');
 Route::get('/purchase/address/{item_id}', [ProductController::class, 'edit'])->name('purchase.address');
 Route::patch('/address/update/{item_id}', [ProductController::class, 'update'])->name('address.update');
+Route::post('/purchase/{product}', [ProductController::class, 'purchase'])->name('purchase.store');
 
 
 Route::get('/', [ItemController::class, 'index'])->name('product');
