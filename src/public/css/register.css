@@ -1,42 +1,44 @@
 .register-header {
-    width: 200px;
-    margin: 80px auto 0px;
+    width: 80%;
+    margin: 60px auto 0px;
 }
 
 .register-header__logo {
-    font-size: 2rem;
+    width: 100%;
+    font-size: 2.5vw;
     text-align: center;
 }
 
 .form__group {
     margin-top: 40px;
-    margin-left: 35%;
+    margin-left: 25%;
 }
 
 .form__group-title {
-    width: 150px;
+    width: 80%;
     margin-top: 30px;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 2vw;
 }
 
 .form__input {
-    width: 50%;
+    width: 70%;
     padding: 15px;
+    font-size: 2vw;
     border: 1px solid #000;
     border-radius: 10px;
     cursor: pointer;
 }
 
 .form__button {
-    margin-top: 50px;
+    margin-top: 80px;
 }
 
 .form__button-submit {
-    width: 50%;
+    width: 70%;
     padding: 15px;
     font-weight: bold;
-    font-size: 1.5vw;
+    font-size: 2vw;
     color: #fff;
     text-align: center;
     background-color: #FF5555;
@@ -46,7 +48,7 @@
 }
 
 .login__link {
-    margin: 30px 0 80px 45%;
+    margin: 30px 0 60px 45%;
 }
 
 .login__link--button {

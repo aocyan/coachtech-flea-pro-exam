@@ -45,7 +45,7 @@
             <table class="product__mark">
                 <tr>
                     <th>
-                        @if (Auth::check() && !$product->sold_at)
+                        @if (Auth::check() && !$product->sold_at && $product->user_id === auth()->user()->id)
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <input type="hidden" name="like" value="0">
                             <input class="mark__check" type="checkbox"  name="like" id="favorite" value="1" {{ $liked ? 'checked' : '' }}   />
@@ -64,7 +64,7 @@
                     <td><input class="mark__count" type="text" value="{{ $commentCount }}" readonly /></td>
                 </tr>
             </table>
-            @if (Auth::check() && !$product->sold_at)
+            @if (Auth::check() && !$product->sold_at && $product->user_id === auth()->user()->id)
                 <div class="purchase__link">
                     <a class="purchase__link--button" href="{{ route('purchase.index', ['item_id'=> $product->id]) }}">購入手続きへ</a>
                 </div>

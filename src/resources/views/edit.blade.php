@@ -16,13 +16,14 @@
 @method('PUT')
     <div class="form__group">
         <div class="form__image">
+            <img class="user__image" src="{{ asset('storage/users/' . basename($profile->image)) }}" alt="{{ $user->name }}" />
             <label class="form__image--button" for="image-upload">画像を選択する</label>
             <input class="form__image--item" type="file" id="image-upload" name="image" accept="image/*" />
         </div>
         <div class="form__group-title">
             <p>ユーザ名</p>
         </div>
-        <input class="form__input" type="text" name="name" value="{{ old('name', session('user_name')) }}" />
+        <input class="form__input" type="text" name="name" value="{{ old('name') ?? session('user_name') ?? $user->name }}" />
         <div class="form__error">
             @error('name')
                 {{ $message }}
@@ -31,7 +32,7 @@
         <div class="form__group-title">
             <p>郵便番号</p>
         </div>
-        <input class="form__input" type="text" name="postal" value="{{ old('postal') }}"/>
+        <input class="form__input" type="text" name="postal" value="{{ $profile->postal }}" />
         <div class="form__error">
             @error('postal')
                 {{ $message }}
@@ -40,7 +41,7 @@
         <div class="form__group-title">
             <p>住所</p>
         </div>
-        <input class="form__input" type="address" name="address"/>
+        <input class="form__input" type="address" name="address" value="{{ $profile->address }}" />
         <div class="form__error">
             @error('password')
                 {{ $message }}
@@ -49,7 +50,7 @@
         <div class="form__group-title">
             <p>建物名</p>
         </div>
-        <input class="form__input" type="text" name="building"/>
+        <input class="form__input" type="text" name="building" value="{{ $profile->building }}" />
         <div class="form__error">
             @error('password')
                 {{ $message }}

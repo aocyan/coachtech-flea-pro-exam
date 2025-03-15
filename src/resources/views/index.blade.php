@@ -16,7 +16,7 @@
         @if (Auth::check())
             <button class="logout-link">ログアウト</button>  
         </form>
-        <a class="mypage-link" href="/mypage">マイページ</a>
+        <a class="mypage-link" href="{{ route('mypage.check') }}">マイページ</a>
         <a class="sell-link" href="/sell">出品</a>
         @endif
     </div>

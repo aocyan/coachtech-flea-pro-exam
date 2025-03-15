@@ -35,10 +35,14 @@ class UserController extends Controller
 
     public function edit()
     {
-        $user_name = session('user_name', '');
+        $user = auth()->user();
 
-        return view('edit', compact('user_name'));
+        $profile = $user->profile;
+
+        return view('edit', compact('user','profile'));
     }
+
+
 
     public function update(Request $request)
     {
@@ -83,8 +87,25 @@ class UserController extends Controller
 		return view('auth.register');
 	}
 
-    public function mypage()
+    public function mypage(Request $request)
     {
-        return view('mypage');
+        $tab = $request->query('tab', 'default');
+
+        $user = auth()->user();
+
+        $products = Product::select('id', 'name', 'image')->get();
+        $profile = $user->profile;
+
+        if ($tab === 'sell') {
+            $products = Product::where('product_user_id', $user->id)->get();
+        }
+        elseif ($tab === 'buy') {
+            $products = Product::where('purchaser_user_id', $user->id)->get();
+        }
+        else {
+            $products = collect(); 
+        }
+
+		return view('profile', compact('products','user','profile','tab'));
     }
 }

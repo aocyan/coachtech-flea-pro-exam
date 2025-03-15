@@ -26,8 +26,9 @@
 }
 
 .logout-link {
-    margin-top: 2px;
+    margin-bottom: 4px;
     width: 100%;
+    height: 20px;
     font-size: 1.3vw;
     border: none;
     color: #fff;
@@ -36,10 +37,11 @@
 }
 
 .mypage-link {
-    margin-top: 4px;
+    margin-top: 2px;
     margin-left: 3%;
     display: block;
     width: 10%;
+    height: 30px;
     font-size: 1.3vw;
     color: #fff;
     text-decoration: none;
@@ -59,142 +61,110 @@
     background-color: #fff;
 }
 
-.user__container {
-    width: 125%;
-    margin-top: 50px;
-    margin-left: 10%;
-    display: flex;
+.profile__container {
+    margin-left: 15%;
+    width: 90%;
 }
 
 .user__image {
-    width: 150px;
-    background-color: blue;
+    width: 15%;
+    border-radius: 50%;
 }
 
-.user__logo {
-    margin-left: 10%;
-    width: 200px;
-    font-size: 2rem;
+.user__name {
+    margin-left: 5%;
+    width: 30%;
+    font-size: 3vw;
     font-weight: bold;
+    border: none;
+    outline: none;
 }
 
-.profile-edit {
-    margin-top: 20px;
-    margin-left: 15%;
-    width: 200px;
-}
-
-.profile-edit--button {
-    padding: 2px 20px;
-    font-size: 1.4rem;
+.user__profile {
+    margin-left: 10%;
+    padding: 5px 10px;
+    width: 100%;
+    font-size: 2vw;
     font-weight: bold;
     text-decoration: none;
-    color: #FF9494;
-    border: 2px solid #FF9494;
-    border-radius: 5px;
+    border: 2px solid #FF5555;
+    border-radius: 10px;
+    color: #FF5555;
 }
 
-.user-product__container {
-    width: 140%;
-    margin-top: 50px;
+.main-nav {
+    width: 100%;
     display: flex;
-    border-bottom: 1px solid #5F5F5F;
+    border-bottom: 1px solid #000;
+    transform: translateY(40px);
 }
 
-.sell__link {
-    margin-left: 7%;
-}
-
-.sell__link--button {
-    font-size: 1.4rem;
-    color: #5F5F5F;
-    text-decoration: none;
-}
-
-.purchase__link {
-    margin-left: 3%;
-}
-
-.purchase__link--button {
-    font-size: 1.4rem;
-    color: #5F5F5F;
-    text-decoration: none;
-}
-
-.nav__suggest {
+.nav__recommend {
     margin-left: 10%;
-    width: 100px;
-}
-
-.suggest-link {
-    font-size: 1.5rem;
-    color: #5F5F5F;
-    text-decoration: none;
 }
 
 .nav__mylist {
-    width: 100px;
+    margin-left: 5%;
+}
+
+.recommend-link {
+    font-size: 2vw;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
 }
 
 .mylist-link {
-    font-size: 1.5rem;
-    color: #5F5F5F;
+    font-size: 2vw;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FF5555;
+    cursor: pointer;
+}
+
+.product__container {
+    margin: 50px 0 70px 5%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+}
+
+.product-item {
+    width: 20%;
+    margin-top: 20px;
+}
+
+.product-item__link {
     text-decoration: none;
 }
 
-.form__group {
-    margin-top: 80px;
-    margin-left: 35%;
+.product__image {
+    width: 100%;
+    height: auto;
 }
 
-.form__group-title {
-    width: 150px;
-    margin-top: 30px;
+.name--text {
+    width: 100%;
+    font-size: 1.5vw;
     font-weight: bold;
-    font-size: 1.5rem;
-}
-
-.form__image {
-    margin-left: 20%;
-    margin-bottom: 100px;
-}
-
-.form__image--button {
-    padding: 7px;
-    font-weight: bold;
-    font-size: 1.2rem;
-    border: 3px solid #FF9595;
-    border-radius: 10px;
-    color: #FF9595;
-    cursor: pointer;
-}
-
-.form__image--item {
-    display: none;
-}
-
-.form__input {
-    width: 50%;
-    padding: 15px;
-    border: 1px solid #000;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.form__button {
-    margin-top: 50px;
-    margin-bottom: 80px;
-}
-
-.form__button-submit {
-    width: 50%;
-    padding: 15px;
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: #fff;
-    text-align: center;
-    background-color: #FF5555;
-    border-radius: 10px;
     border: none;
-    cursor: pointer;
+    outline: none;
+}
+
+.product__sold {
+    position: relative;
+    left: 22%;
+    bottom: 50%;
+    width: 50%;
+}
+
+.product__sold--text {
+    padding: 10px;
+    font-size: 1.5vw;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #FF5555;
 }
