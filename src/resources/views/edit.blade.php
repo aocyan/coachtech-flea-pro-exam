@@ -16,7 +16,9 @@
 @method('PUT')
     <div class="form__group">
         <div class="form__image">
-            <img class="user__image" src="{{ asset('storage/users/' . basename($profile->image)) }}" alt="{{ $user->name }}" />
+            @if ($profile->image)
+                <img class="user__image" src="{{ asset('storage/users/' . basename($profile->image)) }}" alt="{{ $user->name }}" />
+            @endif
             <label class="form__image--button" for="image-upload">画像を選択する</label>
             <input class="form__image--item" type="file" id="image-upload" name="image" accept="image/*" />
         </div>
@@ -57,7 +59,7 @@
             @enderror
         </div>
         <div class="form__button">
-            <button class="form__button-submit" type="submit" name="update" value="update">更新する</button>
+            <button class="form__button-submit" type="submit" name="update">更新する</button>
         </div>
     </div>
 </form>

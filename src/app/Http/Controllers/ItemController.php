@@ -11,11 +11,23 @@ use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
-    public function index()
+    public function index(Request $request)
 	{
-        $products = Product::select('id', 'name', 'image')->get();
+        $tab = $request->query('tab', 'default');
+        $user = Auth::user();
 
-		return view('index', compact('products'));
+        $products = Product::select('id', 'name', 'image','sold_at')->get();
+
+        if ($tab === 'mylist') {
+            if($user) {
+                $products = Product::whereHas('likes', function ($query) use ($user) {$query->where('user_id', $user->id);})->get();
+            }
+            else {
+                $products = collect();
+            }
+        }
+
+		return view('index', compact('products','tab'));
 	}
 
     public function show($item_id)

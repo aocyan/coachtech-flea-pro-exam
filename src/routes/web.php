@@ -25,7 +25,7 @@ Route::patch('/address/update/{item_id}', [ProductController::class, 'update'])-
 Route::post('/purchase/{product}', [ProductController::class, 'purchase'])->name('purchase.store');
 
 
-Route::get('/', [ItemController::class, 'index'])->name('product');
+Route::get('/', [ItemController::class, 'index'])->name('product.index');
 Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('product.show');
 Route::post('/comments', [ItemController::class, 'store'])->name('likeComment.store');
 
@@ -35,8 +35,7 @@ Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage.check');
 Route::get('/mypage/profile', [UserController::class, 'edit'])->name('user.edit');
 Route::put('/update', [UserController::class, 'update'])->name('user.update');
 Route::middleware('auth')->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name('user.login');
+    Route::get('/dash', [UserController::class, 'index'])->name('user.login');
 });
-Route::get('/login', [UserController::class, 'login']);
-Route::get('/', [UserController::class, 'index'])->name('user.index');
-Route::get('/register', [UserController::class, 'register']);
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::get('/register', [UserController::class, 'register'])->name('register');

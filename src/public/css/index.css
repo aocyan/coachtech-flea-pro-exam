@@ -64,9 +64,9 @@
 .no__login-link {
     display: block;
     position: relative;
-    left: 66%;
+    left: 65%;
     bottom: 90px;
-    width: 7%;
+    width: 10%;
     height: 20px;
     font-size: 1.3vw;
     text-align: center;
@@ -79,9 +79,9 @@
 .no__login-mypage-link {
     display: block;
     position: relative;
-    left: 77%;
+    left: 76%;
     bottom: 110px;
-    width: 8%;
+    width: 10%;
     height: 20px;
     font-size: 1.3vw;
     text-align: center;

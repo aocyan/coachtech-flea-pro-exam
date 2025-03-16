@@ -16,14 +16,14 @@
         @csrf
             <button class="logout-link">ログアウト</button>         
         </form>
-        <a class="mypage-link" href="/mypage">マイページ</a>
-        <a class="sell-link" href="/sell">出品</a>
+        <a class="mypage-link" href="{{ route('mypage.check') }}">マイページ</a>
+        <a class="sell-link" href="{{ route('sell.create') }}">出品</a>
         @endif
     </div>
     @guest
-            <a class="no__login-link" href="/login">ログイン</a>
-            <a class="no__login-mypage-link" href="/login">マイページ</a>
-            <a class="no__login-sell-link" href="/login">出品</a>
+            <a class="no__login-link" href="{{ route('login') }}">ログイン</a>
+            <a class="no__login-mypage-link" href="{{ route('login') }}">マイページ</a>
+            <a class="no__login-sell-link" href="{{ route('login') }}">出品</a>
     @endguest
 </nav>
 <form action="{{ route('likeComment.store') }}" method="post">
@@ -39,13 +39,16 @@
             <div class="product__brand">
                 <input class="product__brand--text" type="text" value="{{ $product->brand }}" readonly />
             </div>
+            @if ($product->sold_at)
+                <p class="product__sold--text">sold</p>
+            @endif
             <div class="product__price">
                 <span class="price--mark">￥</span><input class="product__price--text" type="text" value="{{ number_format($product->price) }}（税込）" readonly />
             </div>
             <table class="product__mark">
                 <tr>
                     <th>
-                        @if (Auth::check() && !$product->sold_at && $product->user_id === auth()->user()->id)
+                        @if (Auth::check() && !$product->sold_at && $product->product_user_id !== Auth()->user()->id)
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <input type="hidden" name="like" value="0">
                             <input class="mark__check" type="checkbox"  name="like" id="favorite" value="1" {{ $liked ? 'checked' : '' }}   />
@@ -64,7 +67,7 @@
                     <td><input class="mark__count" type="text" value="{{ $commentCount }}" readonly /></td>
                 </tr>
             </table>
-            @if (Auth::check() && !$product->sold_at && $product->user_id === auth()->user()->id)
+            @if (Auth::check() && !$product->sold_at && $product->product_user_id !== Auth()->user()->id)
                 <div class="purchase__link">
                     <a class="purchase__link--button" href="{{ route('purchase.index', ['item_id'=> $product->id]) }}">購入手続きへ</a>
                 </div>

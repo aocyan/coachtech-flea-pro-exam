@@ -15,8 +15,8 @@
         @csrf
             <button class="logout-link">ログアウト</button>         
         </form>
-        <a class="mypage-link" href="/mypage">マイページ</a>
-        <a class="sell-link" href="/sell">出品</a>
+        <a class="mypage-link" href="{{ route('mypage.check') }}">マイページ</a>
+        <a class="sell-link" href="{{ route('sell.create') }}">出品</a>
     </div>
 </nav>
 <div class="sell-header">

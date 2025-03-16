@@ -59,31 +59,33 @@
     background-color: #fff;
 }
 
-.profile-header {
-    width: 300px;
-    margin: 80px auto 0px;
+.address-header {
+    width: 80%;
+    margin: 60px auto 0px;
 }
 
-.profile-header__logo {
-    font-size: 2rem;
+.address-header__logo {
+    width: 100%;
+    font-size: 2.5vw;
     text-align: center;
 }
 
 .form__group {
-    margin-top: 80px;
-    margin-left: 35%;
+    margin-top: 40px;
+    margin-left: 25%;
 }
 
 .form__group-title {
-    width: 150px;
+    width: 80%;
     margin-top: 30px;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 2vw;
 }
 
 .form__input {
-    width: 50%;
+    width: 70%;
     padding: 15px;
+    font-size: 2vw;
     border: 1px solid #000;
     border-radius: 10px;
     cursor: pointer;
@@ -95,10 +97,10 @@
 }
 
 .form__button-submit {
-    width: 50%;
+    width: 70%;
     padding: 15px;
     font-weight: bold;
-    font-size: 1.5vw;
+    font-size: 2vw;
     color: #fff;
     text-align: center;
     background-color: #FF5555;

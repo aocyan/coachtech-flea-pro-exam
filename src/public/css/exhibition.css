@@ -106,7 +106,7 @@
 
 .image-detail__container {
     display: flex;
-    transform: translateY(-35px);
+    transform: translateY(-70px);
 }
 
 .product__detail {
@@ -128,7 +128,7 @@
 }
 
 .product__name--text {
-    width: 250px;
+    width: 50%;
     font-size: 3vw;
     font-weight: bold;
     border: none;
@@ -144,6 +144,17 @@
     font-size: 1.5vw;
     border: none;
     outline: none;
+}
+
+.product__sold--text {
+    width: 30%;
+    padding: 10px;
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #FF5555;
 }
 
 .product__price {

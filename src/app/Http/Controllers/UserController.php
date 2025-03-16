@@ -35,14 +35,12 @@ class UserController extends Controller
 
     public function edit()
     {
-        $user = auth()->user();
+        $user = Auth()->user();
 
         $profile = $user->profile;
 
         return view('edit', compact('user','profile'));
     }
-
-
 
     public function update(Request $request)
     {
@@ -70,13 +68,6 @@ class UserController extends Controller
         return view('index',compact('products'));
     }
 
-    public function index()
-    {
-        $products = Product::all();
-
-        return view('index',compact('products'));
-    }
-
     public function login()
 	{
 		return view('auth.login');
@@ -91,9 +82,9 @@ class UserController extends Controller
     {
         $tab = $request->query('tab', 'default');
 
-        $user = auth()->user();
+        $user = Auth()->user();
 
-        $products = Product::select('id', 'name', 'image')->get();
+        $products = Product::select('id', 'name', 'image','sold_at')->get();
         $profile = $user->profile;
 
         if ($tab === 'sell') {

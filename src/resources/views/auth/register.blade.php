@@ -56,7 +56,7 @@
     </div>
 </form>
 <div class="login__link">
-    <a class="login__link--button" href="/login">ログインはこちら</a>
+    <a class="login__link--button" href="{{ route('login') }}">ログインはこちら</a>
 </div>
 
 @endsection
