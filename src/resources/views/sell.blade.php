@@ -8,12 +8,13 @@
 
 <nav>
     <div class="header-nav">
-        <div class="nav__search">
-            <input class="nav__search--text" type="text" name="search" placeholder="なにをお探しですか？" />
-        </div>
+        <form class="form__search" action="{{ route('product.search') }}" method="get">
+            <input class="nav__search--text" type="text" name="query" placeholder="なにをお探しですか？" />
+            <button class="search--button" name="submit">検索</button>
+        </form>
         <form class="form-log" action="/logout" method="post">
         @csrf
-            <button class="logout-link">ログアウト</button>         
+            <button class="logout-link">ログアウト</button>  
         </form>
         <a class="mypage-link" href="{{ route('mypage.check') }}">マイページ</a>
         <a class="sell-link" href="{{ route('sell.create') }}">出品</a>

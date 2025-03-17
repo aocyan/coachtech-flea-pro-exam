@@ -86,4 +86,13 @@ class ItemController extends Controller
 
         return redirect()->route('product.show', $product_id)->with(compact('product', 'selectedCategories', 'comments', 'commentCount', 'likeCount','liked'));
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $products = Product::where('name', 'like', '%' . $query . '%')->get();
+
+        return view('product.search', compact('products'));
+    }
 }

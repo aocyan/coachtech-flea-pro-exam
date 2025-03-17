@@ -28,6 +28,7 @@ Route::post('/purchase/{product}', [ProductController::class, 'purchase'])->name
 Route::get('/', [ItemController::class, 'index'])->name('product.index');
 Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('product.show');
 Route::post('/comments', [ItemController::class, 'store'])->name('likeComment.store');
+Route::get('/search', [ItemController::class, 'search'])->name('product.search');
 
 
 Route::post('/register', [UserController::class, 'store'])->name('user.store');
