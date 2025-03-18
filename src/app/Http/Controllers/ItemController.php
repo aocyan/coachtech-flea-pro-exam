@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
@@ -93,6 +94,24 @@ class ItemController extends Controller
 
         $products = Product::where('name', 'like', '%' . $query . '%')->get();
 
-        return view('product.search', compact('products'));
+        session(['search_results' => $products]);
+        
+        $mylistLikeProducts = [0];
+
+        if (Auth::check()) {
+            $user = Auth()->user();
+
+            $mylistLikeIds = DB::table('likes')->where('user_id', $user->id)->pluck('product_id');
+        
+            $mylistLikeProducts = [];Product::whereIn('id', $mylistLikeIds)->get();
+
+            if ($request->tab === 'mylist') {
+                    $products = $products->filter(function ($product) use ($mylistLikeIds) {
+                    return $mylistLikeIds->contains($product->id);
+                });
+            }
+        }
+        
+        return view('index', compact('products','mylistLikeProducts'));
     }
 }

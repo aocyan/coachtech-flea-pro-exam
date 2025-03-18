@@ -10,7 +10,7 @@
     @if (Auth::check())
     <div class="header-nav">       
         <form class="form__search" action="{{ route('product.search') }}" method="get">
-            <input class="nav__search--text" type="text" name="query" placeholder="なにをお探しですか？" />
+            <input class="nav__search--text" type="text" name="query" value="{{ request('query', '') }}" placeholder="なにをお探しですか？" />
             <button class="search--button" name="submit">検索</button>
         </form>
         <form class="form-log" action="/logout" method="post">
@@ -24,7 +24,7 @@
     @if (!Auth::check())
     <div class="header-nav">       
         <form class="form__search" action="{{ route('product.search') }}" method="get">
-            <input class="nav__search--text" type="text" name="query" placeholder="なにをお探しですか？" />
+            <input class="nav__search--text" type="text" name="query" value="{{ request('query', '') }}" placeholder="なにをお探しですか？" />
             <button class="search--button" name="submit">検索</button>
         </form>
         <a class="login-link" href="{{ route('login') }}">ログイン</a>
@@ -38,7 +38,7 @@
         <a class="recommend-link" href="{{ route('product.index') }}"> おすすめ </a>
     </div>
     <div class="nav__mylist">
-        <a class="mylist-link" href="{{ route('product.index', ['tab' => 'mylist']) }}">マイリスト</a>
+        <a class="mylist-link" href="{{ route('product.index', ['tab' => 'mylist', 'query' => request('query')]) }}">マイリスト</a>
     </div>
 </div>
 <div class="product__container">
@@ -59,8 +59,25 @@
             </div>
         @endif
     @endforeach
-    @if (($tab ?? '') === 'mylist')
+    @if (($tab ?? '') === 'mylist' && count($mylistLikeProducts ?? []) === 0)
         @foreach ($products as $product)
+            <div class="product-item">
+                <a class="product-item__link" href="{{ route('product.show', $product->id) }}">
+                    <img class="product__image" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />
+                    <div class="product__text">
+                        <input class="name--text" type="text" name="name" value="{{ $product['name'] }}" readonly />
+                    </div>
+                    @if ($product->sold_at)
+                        <div class="product__sold">
+                            <p class="product__sold--text">sold</p>
+                        </div>
+                    @endif
+                </a>
+            </div>
+        @endforeach
+    @endif
+    @if (($tab ?? '') === 'mylist' && count($mylistLikeProducts ?? []) > 0)
+        @foreach ($mylistLikeProducts as $product)
             <div class="product-item">
                 <a class="product-item__link" href="{{ route('product.show', $product->id) }}">
                     <img class="product__image" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />

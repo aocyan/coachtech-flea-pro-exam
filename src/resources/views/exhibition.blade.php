@@ -55,10 +55,10 @@
             <table class="product__mark">
                 <tr>
                     <th>
-                        @if (Auth::check() && !$product->sold_at && $product->product_user_id !== Auth()->user()->id)
+                        @if (Auth::check() && !$product->sold_at && $product->product_user_id !== Auth()->user()->id)                     
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <input type="hidden" name="like" value="0">
-                            <input class="mark__check" type="checkbox"  name="like" id="favorite" value="1" {{ $liked ? 'checked' : '' }}   />
+                            <input class="mark__check" type="checkbox"  name="like" id="favorite" value="1" {{ $liked ? 'checked' : '' }} />
                             <label class="mark__button--like" for="favorite" >☆</label>
                         @else
                             <p class="no-mark__button--like">☆</p>
