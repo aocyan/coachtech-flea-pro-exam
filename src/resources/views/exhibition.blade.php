@@ -80,7 +80,7 @@
                 </div>
             @else
                 <div class="no-purchase__link">
-                    <p class="no-purchase__link--button">購入手続きへ</p>
+                     <a class="no-purchase__link--button" href="{{ route('login') }}">購入手続きへ</a>
                 </div>
             @endif
             <div class="product__explain">
@@ -138,7 +138,7 @@
                     </div>
                 @else
                     <div class="no-form__button">
-                        <p class="no-form__button-submit">コメントを送信する</p>
+                        <a class="no-form__button-submit" href="{{ route('login') }}">コメントを送信する</a>
                     </div>
                 @endif
             </div>

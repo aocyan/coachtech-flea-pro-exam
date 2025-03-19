@@ -43,7 +43,7 @@
 </div>
 <div class="product__container">
     @foreach ($products as $product)
-        @if (!Auth()->check() || (Auth()->check() && $product->product_user_id !== Auth()->user()->id) && ($tab ?? '') !== 'mylist')
+        @if (!Auth()->check() || (Auth()->check() && ($product->product_user_id !== Auth()->user()->id)) && ($tab ?? '') !== 'mylist')
             <div class="product-item">
                 <a class="product-item__link" href="{{ route('product.show', $product->id) }}">
                     <img class="product__image" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />

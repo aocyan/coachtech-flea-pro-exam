@@ -17,7 +17,7 @@ class ItemController extends Controller
         $tab = $request->query('tab', 'default');
         $user = Auth::user();
 
-        $products = Product::select('id', 'name', 'image','sold_at')->get();
+        $products = Product::select('id', 'name', 'product_user_id','image','sold_at')->get();
 
         if ($tab === 'mylist') {
             if($user) {

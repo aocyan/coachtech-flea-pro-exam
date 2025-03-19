@@ -200,9 +200,9 @@
 }
 
 .purchase__link--button {
+    display: block;
     margin-top: 15px;
     margin-bottom: 15px;
-    display: block;
     padding: 5px 10px;
     width: 60%;
     font-size: 1.5vw;
@@ -215,14 +215,14 @@
 }
 
 .no-purchase__link--button {
+    display: block;
     margin-top: 15px;
     margin-bottom: 15px;
-    display: block;
     padding: 5px 10px;
     width: 60%;
     font-size: 1.5vw;
     font-weight: bold;
-    background-color: #a79292;
+    background-color: #FF5555;
     text-align: center;
     text-decoration: none;
     color: #fff;
@@ -416,12 +416,14 @@
 }
 
 .no-form__button-submit {
+    display: block;
     padding: 5px 10px;
     width: 100%;
     font-size: 1.5vw;
     font-weight: bold;
     text-align: center;
-    background-color: #a79292;
+    background-color: #FF5555;
+    text-decoration: none;
     border: none;
     color: #fff;
     cursor: pointer;
