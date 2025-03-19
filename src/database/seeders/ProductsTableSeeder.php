@@ -6,11 +6,14 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\User;
 
 class ProductsTableSeeder extends Seeder
 {
     public function run()
     {
+        $users = User::all();
+
         $categories = [
             'ファッション',
             '家電', 
@@ -42,6 +45,7 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/Armani+Mens+Clock.jpg',
             'condition' => '良好',
             'description' => 'スタイリッシュなデザインのメンズ腕時計',
+            'product_user_id' => 1, 
         ]);
 
         $categories = ['ファッション','メンズ', 'アクセサリー'];
@@ -63,6 +67,7 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/HDD+Hard+Disk.jpg',
             'condition' => '目立った傷や汚れなし',
             'description' => '高速で信頼性の高いハードディスク',
+            'product_user_id' => 2,
         ]);
 
         $categories = ['家電'];
@@ -84,6 +89,7 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/iLoveIMG+d.jpg',
             'condition' => 'やや傷や汚れあり',
             'description' => '新鮮な玉ねぎ3束のセット',
+            'product_user_id' => 3,
         ]);
 
         $categories = ['キッチン'];
@@ -105,6 +111,7 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/Leather+Shoes+Product+Photo.jpg',
             'condition' => '状態が悪い',
             'description' => 'クラシックなデザインの革靴',
+            'product_user_id' => 4,
         ]);
 
         $categories = ['ファッション','メンズ'];
@@ -126,6 +133,7 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/Living+Room+Laptop.jpg',
             'condition' => '良好',
             'description' => '高性能なノートパソコン',
+            'product_user_id' => 5,
         ]);
 
         $categories = ['家電','ゲーム'];
@@ -147,6 +155,7 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/Music+Mic+4632231.jpg',
             'condition' => '目立った傷や汚れなし',
             'description' => '高音質のレコーディング用マイク',
+            'product_user_id' => 6,
         ]);
 
         $categories = ['家電','おもちゃ'];
@@ -168,6 +177,7 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/Purse+fashion+pocket.jpg',
             'condition' => 'やや傷や汚れあり',
             'description' => 'おしゃれなショルダーバッグ',
+            'product_user_id' => 7,
         ]);
 
         $categories = ['ファッション','レディース'];
@@ -189,6 +199,7 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/Tumbler+souvenir.jpg',
             'condition' => '状態が悪い',
             'description' => '使いやすいタンブラー',
+            'product_user_id' => 8,
         ]);
 
         $categories = ['メンズ','スポーツ'];
@@ -210,6 +221,7 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/Waitress+with+Coffee+Grinder.jpg',
             'condition' => '良好',
             'description' => '手動のコーヒーミル',
+            'product_user_id' => 9,
         ]);
 
         $categories = ['インテリア'];
@@ -231,6 +243,7 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/makeup.jpg',
             'condition' => '目立った傷や汚れなし',
             'description' => '便利なメイクアップセット',
+            'product_user_id' => 10,
         ]);
 
         $categories = ['レディース','コスメ'];
