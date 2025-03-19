@@ -10,7 +10,7 @@
         <h2>ログイン</h2>
     </div>
 </div>
-<form class="login-form" action="/login" method="post">
+<form class="login-form" action="{{ route('login.certification') }}" method="post">
     @csrf
     <div class="form__group">
         <div class="form__group-title">

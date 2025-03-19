@@ -38,5 +38,6 @@ Route::put('/update', [UserController::class, 'update'])->name('user.update');
 Route::middleware('auth')->group(function () {
     Route::get('/dash', [UserController::class, 'index'])->name('user.login');
 });
-Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::get('/register', [UserController::class, 'register'])->name('register');
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::post('/login/certification', [UserController::class, 'loginCertification'])->name('login.certification');

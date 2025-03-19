@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\Product;
 use App\Models\Profile;
 use App\Models\User;
@@ -11,7 +13,12 @@ use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
-    public function store(Request $request)
+    public function register()
+	{
+		return view('auth.register');
+	}
+
+    public function store(RegisterRequest $request)
     {
         $user = User::create([            
             'name' => $request->name,
@@ -70,13 +77,24 @@ class UserController extends Controller
 
     public function login()
 	{
-		return view('auth.login');
+        return view('auth.login');
 	}
 
-    public function register()
-	{
-		return view('auth.register');
-	}
+    public function loginCertification(LoginRequest $request)
+    {
+        $validatedData = $request->validated();
+
+        if (Auth::attempt([
+            'email' => $validatedData['email'],
+            'password' => $validatedData['password']
+        ])) {
+            return redirect()->route('product.index');
+        }
+
+        return back()->withErrors([
+            'email' => 'メールアドレスまたはパスワードが間違っています',
+        ]);
+    }
 
     public function mypage(Request $request)
     {
