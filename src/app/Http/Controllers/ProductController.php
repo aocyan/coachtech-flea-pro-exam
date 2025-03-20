@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PurchaseRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -66,6 +67,7 @@ class ProductController extends Controller
         $new_address = session('new_address', $profile->address);
         $new_building = session('new_building', $profile->building);
 
+
         return view('purchase', compact('payMethod', 'item_id', 'product', 'profile','postalCodeFirst','postalCodeLast', 'new_address', 'new_building'));
     }
 
@@ -89,7 +91,7 @@ class ProductController extends Controller
         return redirect()->route('purchase.index', ['item_id' => $item_id]);
     }
 
-    public function purchase(Request $request,$item_id)
+    public function purchase(PurchaseRequest $request,$item_id)
     {
         $product = Product::find($item_id);
         $product->update([
@@ -98,6 +100,8 @@ class ProductController extends Controller
         ]);
 
         $products = Product::select('id', 'name', 'image','sold_at')->get();
+
+        $validated = $request->validated();
         
         return view('index',compact('products'));
     }

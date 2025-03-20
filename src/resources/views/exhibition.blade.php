@@ -80,7 +80,7 @@
                 </div>
             @else
                 <div class="no-purchase__link">
-                     <a class="no-purchase__link--button" href="{{ route('login') }}">購入手続きへ</a>
+                     <p class="no-purchase__link--button">購入手続きへ</p>
                 </div>
             @endif
             <div class="product__explain">
@@ -131,6 +131,11 @@
                 <div class="comment__logo">
                     <p>商品へのコメント</p>
                 </div>
+                <div class="form__error">
+                    @error('comment')
+                        {{ $message }}
+                    @enderror
+                </div>
                 <textarea class="form__textarea--text" name="comment"></textarea>
                 @if (Auth::check() && !$product->sold_at)
                     <div class="form__button">
@@ -138,7 +143,7 @@
                     </div>
                 @else
                     <div class="no-form__button">
-                        <a class="no-form__button-submit" href="{{ route('login') }}">コメントを送信する</a>
+                        <p class="no-form__button-submit">コメントを送信する</p>
                     </div>
                 @endif
             </div>

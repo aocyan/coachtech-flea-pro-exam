@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentRequest;
 use App\Models\Like;
 use App\Models\Comment;
 use App\Models\Category;
@@ -48,7 +49,7 @@ class ItemController extends Controller
         return view('exhibition', compact('product','selectedCategories','comments','commentCount','likeCount','liked'));
     }
 
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
         $product_id = $request->input('product_id');
         $product = Product::findOrFail($product_id);

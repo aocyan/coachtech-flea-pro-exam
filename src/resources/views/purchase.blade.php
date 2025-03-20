@@ -21,8 +21,8 @@
     </div>
 </nav>
 <div class="main__container">
-<div class="product__box-left">   
-    <div class="product__container">
+    <div class="product__box-left">   
+        <div class="product__container">
             <div class="product__image">
                 <img class="product__image--item" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />
             </div>
@@ -41,55 +41,60 @@
             </div>
             <form class="comment-form" action="{{ url()->current() }}" method="get">
                 <select class="pay__select" name="pay" onchange="this.form.submit()" >
-			        <option class="select--option" disabled selected>選択してください</option>
+			        <option class="select--option" value="" selected disabled>選択してください</option>
 			        <option class="select--option" value="コンビニ払い" {{ old('pay', session('pay_method')) == 'コンビニ払い' ? 'selected' : '' }}>コンビニ払い</option>
 			        <option class="select--option" value="カード支払い" {{ old('pay', session('pay_method')) == 'カード支払い' ? 'selected' : '' }}>カード支払い</option>
                 </select>
+                <div class="form__error">
+                    @error('pay')
+                        {{ $message }}
+                    @enderror
+                </div>
             </form>
         </div>
-    <form class="comment-form" action="{{ route('purchase.store', ['product' => $product->id]) }}" method="post">
-    @csrf
-        <div class="product__deliver">
-            <div class="deliver__container">
-                <div class="deliver__name">
-                    <p>配送先</p>
+        <form class="comment-form" action="{{ route('purchase.store', ['product' => $product->id]) }}" method="post">
+        @csrf
+            <div class="product__deliver">
+                <div class="deliver__container">
+                    <div class="deliver__name">
+                        <p>配送先</p>
+                    </div>
+                    <div class="deliver__link">
+                        <a class="address-link" href="{{ route('purchase.address', ['item_id' => $product->id]) }}">変更する</a>
+                    </div>
                 </div>
-                <div class="deliver__link">
-                    <a class="address-link" href="{{ route('purchase.address', ['item_id' => $product->id]) }}">変更する</a>
-                </div>
-            </div>
-            <div class="deliver__address">
-                <div class="deliver__postal">
-                    <input class="postal__number" type="text" name="postal" value="〒{{ $postalCodeFirst }}-{{ $postalCodeLast }}" readonly />
+                <div class="deliver__address">
+                    <div class="deliver__postal">
+                        <input class="postal__number" type="text" name="postal" value="〒{{ $postalCodeFirst }}-{{ $postalCodeLast }}" readonly />
+                    </div>
                 </div>
                 <div class="user__address">
                     <input class="user__address--text" type="text" name="address" value="{{ session('new_address', $profile->address) }}" readonly />
                     <input class="user__building--text" type="text" name="building" value="{{ session('new_building',$profile->building) }}" readonly />
                 </div>
             </div>
-        </div>
-    </form>
-</div>
-<div class="product__box-right">
-    <form class="comment-form" action="{{ route('purchase.store', ['product' => $product->id]) }}" method="post">
-    @csrf
-        <table class="product__summary">
-            <tbody>
-                <tr>
-                    <th>商品代金</th>
-                    <td><input class="summary__price--text" type="text" name=price value="￥{{ number_format($product->price) }}"  readonly/></td>
-                </tr>
-                <tr>
-                    <th>支払い方法</th>
-                    <td><input class="summary__pay--text" type="text" name=pay value="{{ old('pay',session('pay_method')) }}" readonly /></td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="purchase__link">
-            <button class="purchase__submit--button" type="submit" name="submit">購入する</button>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
+    <div class="product__box-right">
+        <form class="comment-form" action="{{ route('purchase.store', ['product' => $product->id]) }}" method="post">
+        @csrf
+            <table class="product__summary">
+                <tbody>
+                    <tr>
+                        <th>商品代金</th>
+                        <td><input class="summary__price--text" type="text" name=price value="￥{{ number_format($product->price) }}"  readonly/></td>
+                    </tr>
+                    <tr>
+                        <th>支払い方法</th>
+                        <td><input class="summary__pay--text" type="text" name=pay value="{{ old('pay',session('pay_method')) }}" readonly /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="purchase__link">
+                <button class="purchase__submit--button" type="submit" name="submit">購入する</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 @endsection

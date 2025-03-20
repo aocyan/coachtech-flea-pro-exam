@@ -215,14 +215,14 @@
 }
 
 .no-purchase__link--button {
-    display: block;
     margin-top: 15px;
     margin-bottom: 15px;
+    display: block;
     padding: 5px 10px;
     width: 60%;
     font-size: 1.5vw;
     font-weight: bold;
-    background-color: #FF5555;
+    background-color: #a79292;
     text-align: center;
     text-decoration: none;
     color: #fff;
@@ -349,6 +349,7 @@
 .user__image--item {
     width: 10%;
     height: auto;
+    border-radius: 50%;
 }
 
 .user__name {
@@ -416,15 +417,23 @@
 }
 
 .no-form__button-submit {
-    display: block;
     padding: 5px 10px;
     width: 100%;
     font-size: 1.5vw;
     font-weight: bold;
     text-align: center;
-    background-color: #FF5555;
-    text-decoration: none;
+    background-color: #a79292;
     border: none;
     color: #fff;
     cursor: pointer;
+}
+
+.form__error {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1.2vw;
+    font-weight: bold;
+    text-align: center;
+    color: #FF5555;
 }
