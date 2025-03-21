@@ -17,7 +17,7 @@ class ProfilesTableSeeder extends Seeder
     {
         Profile::create([
             'image' => 'banana.png',
-            'postal' => '1234567',
+            'postal' => '123-4567',
             'address' => '三重県伊勢市123番地',
             'building' => '石川アパート101号室',
             'profile_user_id' => 1,
@@ -25,7 +25,7 @@ class ProfilesTableSeeder extends Seeder
 
         Profile::create([
             'image' => 'grapes.png',
-            'postal' => '1235678',
+            'postal' => '123-5678',
             'address' => '三重県熊野市123番地',
             'building' => '富山アパート101号室',
             'profile_user_id' => 2,
@@ -33,7 +33,7 @@ class ProfilesTableSeeder extends Seeder
 
         Profile::create([
             'image' => 'kiwi.png',
-            'postal' => '1236789',
+            'postal' => '123-6789',
             'address' => '三重県松阪市123番地',
             'building' => '岐阜アパート101号室',
             'profile_user_id' => 3,
@@ -41,7 +41,7 @@ class ProfilesTableSeeder extends Seeder
 
         Profile::create([
             'image' => 'melon.png',
-            'postal' => '1231234',
+            'postal' => '123-1234',
             'address' => '三重県熊野市123番地',
             'building' => '新潟アパート101号室',
             'profile_user_id' => 4,
@@ -49,7 +49,7 @@ class ProfilesTableSeeder extends Seeder
 
         Profile::create([
             'image' => 'muscat.png',
-            'postal' => '1232345',
+            'postal' => '123-2345',
             'address' => '三重県鈴鹿市123番地',
             'building' => '愛知アパート101号室',
             'profile_user_id' => 5,
@@ -57,7 +57,7 @@ class ProfilesTableSeeder extends Seeder
 
         Profile::create([
             'image' => 'orange.png',
-            'postal' => '1233456',
+            'postal' => '123-3456',
             'address' => '三重県伊賀市123番地',
             'building' => '滋賀アパート101号室',
             'profile_user_id' => 6,
@@ -65,7 +65,7 @@ class ProfilesTableSeeder extends Seeder
 
         Profile::create([
             'image' => 'peach.png',
-            'postal' => '1239012',
+            'postal' => '123-9012',
             'address' => '三重県四日市市123番地',
             'building' => '京都アパート101号室',
             'profile_user_id' => 7,
@@ -73,7 +73,7 @@ class ProfilesTableSeeder extends Seeder
 
         Profile::create([
             'image' => 'pineapple.png',
-            'postal' => '1238765',
+            'postal' => '123-8765',
             'address' => '三重県いなべ市123番地',
             'building' => '長野アパート101号室',
             'profile_user_id' => 8,
@@ -81,7 +81,7 @@ class ProfilesTableSeeder extends Seeder
 
         Profile::create([
             'image' => 'strawberry.png',
-            'postal' => '1237654',
+            'postal' => '123-7654',
             'address' => '三重県名張市123番地',
             'building' => '静岡アパート101号室',
             'profile_user_id' => 9,
@@ -89,7 +89,7 @@ class ProfilesTableSeeder extends Seeder
 
         Profile::create([
             'image' => 'watermelon.png',
-            'postal' => '1238653',
+            'postal' => '123-8653',
             'address' => '三重県尾鷲市123番地',
             'building' => '和歌山アパート101号室',
             'profile_user_id' => 10,

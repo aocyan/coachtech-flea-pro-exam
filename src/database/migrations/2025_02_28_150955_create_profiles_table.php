@@ -17,7 +17,7 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('profile_user_id');
             $table->string('image')->default('');
-            $table->string('postal')->default('');
+            $table->string('postal',8)->default('');
             $table->string('address')->default('');
             $table->string('building')->default('');
             $table->timestamps();

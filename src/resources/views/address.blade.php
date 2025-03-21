@@ -34,7 +34,7 @@
         </div>
         <input class="form__input" type="text" name="postal" value="{{ old('postal',session('new_postal',$profile->postal)) }}"/>
         <div class="form__error">
-            @error('postal-number')
+            @error('postal')
                 {{ $message }}
             @enderror
         </div>
@@ -43,7 +43,7 @@
         </div>
         <input class="form__input" type="address" name="address" value="{{ old('address',session('new_address',$profile->address)) }}"/>
         <div class="form__error">
-            @error('password')
+            @error('address')
                 {{ $message }}
             @enderror
         </div>
@@ -52,7 +52,7 @@
         </div>
         <input class="form__input" type="text" name="building" value="{{ old('building',session('new_building',$profile->building)) }}"/>
         <div class="form__error">
-            @error('password')
+            @error('building')
                 {{ $message }}
             @enderror
         </div>

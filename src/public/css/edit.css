@@ -72,3 +72,13 @@
     border: none;
     cursor: pointer;
 }
+
+.form__error {
+    width: 70%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: center;
+    color: #FF5555;
+}

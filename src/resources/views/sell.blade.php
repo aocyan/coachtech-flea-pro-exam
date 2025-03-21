@@ -35,6 +35,11 @@
             <label class="form__image--button" for="image-upload">画像を選択する</label>
             <input class="form__image--item" type="file" id="image-upload" name="image" accept="image/*" />
         </div>
+        <div class="form__error">
+            @error('image')
+                {{ $message }}
+            @enderror
+        </div>
         <div class="form__group-title">
             <p>商品の詳細</p>
         </div>
@@ -76,6 +81,11 @@
                 <input class="category__check" type="checkbox" name="category[]" id="kids" value="ベビー・キッズ" />
                 <label class="category__button" for="kids">ベビー・キッズ</label>
             </div>
+            <div class="form__error">
+                @error('category')
+                    {{ $message }}
+                @enderror
+            </div>
         </div>
         <div class="group__logo">
             <p>商品の状態</p>
@@ -87,6 +97,11 @@
 			<option class="select--option" value="やや傷や汚れあり">やや傷や汚れあり</option>
 			<option class="select--option" value="状態が悪い">状態が悪い</option>
         </select>
+        <div class="form__error">
+            @error('condition')
+                {{ $message }}
+            @enderror
+        </div>
         <div class="form__group-title">
             <p>商品名と説明</p>
         </div>

@@ -21,6 +21,11 @@
             @endif
             <label class="form__image--button" for="image-upload">画像を選択する</label>
             <input class="form__image--item" type="file" id="image-upload" name="image" accept="image/*" />
+            <div class="form__error">
+            @error('image')
+                {{ $message }}
+            @enderror
+        </div>
         </div>
         <div class="form__group-title">
             <p>ユーザ名</p>
@@ -45,7 +50,7 @@
         </div>
         <input class="form__input" type="address" name="address" value="{{ $profile->address }}" />
         <div class="form__error">
-            @error('password')
+            @error('address')
                 {{ $message }}
             @enderror
         </div>
@@ -54,7 +59,7 @@
         </div>
         <input class="form__input" type="text" name="building" value="{{ $profile->building }}" />
         <div class="form__error">
-            @error('password')
+            @error('building')
                 {{ $message }}
             @enderror
         </div>

@@ -65,7 +65,7 @@
                 </div>
                 <div class="deliver__address">
                     <div class="deliver__postal">
-                        <input class="postal__number" type="text" name="postal" value="〒{{ $postalCodeFirst }}-{{ $postalCodeLast }}" readonly />
+                        <input class="postal__number" type="text" name="postal" value="〒{{ $postalCode }}" readonly />
                     </div>
                 </div>
                 <div class="user__address">

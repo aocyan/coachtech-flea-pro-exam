@@ -75,12 +75,12 @@
 }
 
 .sell-header {
-    width: 200px;
+    width: 100%;
     margin: 80px auto 0px;
 }
 
 .sell-header__logo {
-    font-size: 2rem;
+    font-size: 2.5vw;
     text-align: center;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .image__logo {
-    font-size: 1.3rem;
+    font-size: 2.5vw;
     font-weight: bold;
 }
 
@@ -118,7 +118,7 @@
 .form__group-title {
     width: 70%;
     margin-top: 50px;
-    font-size: 1.7rem;
+    font-size: 2.5vw;
     font-weight: bold;
     color: #5F5F5F;
     border-bottom: 1px solid #5F5F5F;
@@ -126,7 +126,7 @@
 
 .group__logo {
     margin-top: 30px;
-    font-size: 1.3rem;
+    font-size: 2vw;
     font-weight: bold;
 }
 
@@ -203,4 +203,14 @@
     border-radius: 10px;
     border: none;
     cursor: pointer;
+}
+
+.form__error {
+    width: 70%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: center;
+    color: #FF5555;
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ExhibitionRequest;
+use App\Http\Requests\AddressRequest;
 use App\Http\Requests\PurchaseRequest;
 use App\Models\Category;
 use App\Models\Product;
@@ -15,7 +17,7 @@ class ProductController extends Controller
         return view('sell');
     }
 
-    public function store(Request $request)
+    public function store(ExhibitionRequest $request)
     {
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -61,14 +63,12 @@ class ProductController extends Controller
         $profile = Auth()->user()->profile;
 
         $postalCode = session('new_postal', $profile->postal);
-        $postalCodeFirst = substr($postalCode, 0, 3);
-        $postalCodeLast = substr($postalCode, 3, 4);
 
         $new_address = session('new_address', $profile->address);
         $new_building = session('new_building', $profile->building);
 
 
-        return view('purchase', compact('payMethod', 'item_id', 'product', 'profile','postalCodeFirst','postalCodeLast', 'new_address', 'new_building'));
+        return view('purchase', compact('payMethod', 'item_id', 'product', 'profile','postalCode', 'new_address', 'new_building'));
     }
 
     public function edit($item_id)
@@ -80,7 +80,7 @@ class ProductController extends Controller
         return view('address',compact('product','profile'));
     }
 
-    public function update(Request $request,$item_id)
+    public function update(AddressRequest $request,$item_id)
     {
         session([
             'new_postal' => $request->postal,

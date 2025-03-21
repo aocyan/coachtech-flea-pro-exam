@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\Product;
@@ -49,7 +50,7 @@ class UserController extends Controller
         return view('edit', compact('user','profile'));
     }
 
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
         $user = User::orderBy('created_at', 'desc')->orderBy('id', 'desc')->first();
 
