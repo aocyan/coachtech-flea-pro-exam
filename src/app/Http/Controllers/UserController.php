@@ -36,44 +36,59 @@ class UserController extends Controller
             'building' => '',
         ]);
 
-        session(['user_name' => $user->name]);
+        session(['user_id' => $userId, 'user_name' => $user->name, 'profile' => $profile]);
 
-        return view('edit', compact('user','profile'));
+        return redirect()->route('user.edit');
     }
 
     public function edit()
     {
-        $user = Auth()->user();
-
-        $profile = $user->profile;
-
+        if (session('user_id') && !Auth::check()) {
+            $userId = session('user_id');
+            $user = User::findOrFail($userId);
+            $profile = session('profile');
+        }
+        else {
+            $user = Auth()->user();
+            $profile = $user->profile; 
+        }
         return view('edit', compact('user','profile'));
     }
 
     public function update(ProfileRequest $request)
     {
-        $user = User::orderBy('created_at', 'desc')->orderBy('id', 'desc')->first();
+        $validatedData = $request->validated();
 
-        $user->name = $request->input('name');
-        $user->save();
+            $user = User::orderBy('created_at', 'desc')->orderBy('id', 'desc')->first();
 
-        $profile = $user->profile;
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $fileName = $file->getClientOriginalName();
-            $path = $file->storeAs('users', $fileName, 'public');
-            $profile->image = $path;
-        }
-        $profile->postal = $request->input('postal');
-        $profile->address = $request->input('address');
-        $profile->building = $request->input('building');
-        $profile->save();
+            $user->name = $request->input('name');
+            $user->save();
 
-        Auth::login($user);
+            $profile = $user->profile;
 
-        $products = Product::all();
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $fileName = $file->getClientOriginalName();
+                $path = $file->storeAs('users', $fileName, 'public');
+                $profile->image = $path;
+            }
+            if ($request->has('postal')) {
+                $profile->postal = $request->input('postal');
+            }
+            if ($request->has('address')) {
+                $profile->address = $request->input('address');
+            }
+            if ($request->has('building')) {
+                $profile->building = $request->input('building');
+            }
+            $profile->save();
 
-        return view('index',compact('products'));
+            Auth::login($user);
+
+            $products = Product::all();
+
+            
+            return view('index',compact('products'));
     }
 
     public function login()

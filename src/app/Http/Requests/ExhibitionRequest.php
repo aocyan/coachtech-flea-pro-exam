@@ -29,8 +29,6 @@ class ExhibitionRequest extends FormRequest
             'category.*' => 'integer',
             'condition' => 'required|in:良好,目立った傷や汚れなし,やや傷や汚れあり,状態が悪い',
             'name' => 'required',
-            'brand' => 'required',
-            'color' => 'required',
             'description' => 'required|max:255',
             'price' => 'required|numeric|min:0',
         ];
@@ -46,8 +44,6 @@ class ExhibitionRequest extends FormRequest
             'condition.required' => '商品の状態を選択してください',
             'condition.in' => '商品の状態を選択してください',
             'name.required' => '商品名を入力してください',
-            'brand.required' => 'ブランド名を入力してください',
-            'color.required' => 'カラーを入力してください',
             'description.required' => '商品の説明を入力してください',
             'description.max' => '商品の説明は255文字以内で入力してください',
             'price.required' => '販売価格を入力してください',

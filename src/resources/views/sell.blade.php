@@ -118,20 +118,10 @@
             <p>ブランド名</p>
         </div>
         <input class="form__input" type="text" name="brand" value=""/>
-        <div class="form__error">
-            @error('brand')
-                {{ $message }}
-            @enderror
-        </div>
         <div class="group__logo">
             <p>カラー</p>
         </div>
         <input class="form__input" type="text" name="color" value=""/>
-        <div class="form__error">
-            @error('color')
-                {{ $message }}
-            @enderror
-        </div>
         <div class="group__logo">
             <p>商品の説明</p>
         </div>

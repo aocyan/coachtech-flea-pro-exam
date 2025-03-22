@@ -12,8 +12,8 @@
     </div>
 </div>
 <form class="register-form" action="{{ route('user.update') }}" method="post" enctype="multipart/form-data">
-@csrf
 @method('PUT')
+@csrf
     <div class="form__group">
         <div class="form__image">
             @if ($profile->image)

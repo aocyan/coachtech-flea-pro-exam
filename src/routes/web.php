@@ -31,12 +31,12 @@ Route::post('/comments', [ItemController::class, 'store'])->name('likeComment.st
 Route::get('/search', [ItemController::class, 'search'])->name('product.search');
 
 
-Route::post('/register', [UserController::class, 'store'])->name('user.store');
+Route::post('/register/store', [UserController::class, 'store'])->name('user.store');
 Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage.check');
 Route::get('/mypage/profile', [UserController::class, 'edit'])->name('user.edit');
-Route::put('/update', [UserController::class, 'update'])->name('user.update');
+Route::put('/user/update', [UserController::class, 'update'])->name('user.update');
 Route::middleware('auth')->group(function () {
-    Route::get('/dash', [UserController::class, 'index'])->name('user.login');
+    Route::post('/dash', [UserController::class, 'index'])->name('user.login');
 });
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::get('/login', [UserController::class, 'login'])->name('login');

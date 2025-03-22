@@ -39,7 +39,7 @@
             <div class="pay__name">
                 <p>支払い方法</p>
             </div>
-            <form class="comment-form" action="{{ url()->current() }}" method="get">
+            <form action="{{ url()->current() }}" method="get">
                 <select class="pay__select" name="pay" onchange="this.form.submit()" >
 			        <option class="select--option" value="" selected disabled>選択してください</option>
 			        <option class="select--option" value="コンビニ払い" {{ old('pay', session('pay_method')) == 'コンビニ払い' ? 'selected' : '' }}>コンビニ払い</option>
@@ -71,6 +71,11 @@
                 <div class="user__address">
                     <input class="user__address--text" type="text" name="address" value="{{ session('new_address', $profile->address) }}" readonly />
                     <input class="user__building--text" type="text" name="building" value="{{ session('new_building',$profile->building) }}" readonly />
+                </div>
+                <div class="form__error">
+                    @error('address')
+                        {{ $message }}
+                    @enderror
                 </div>
             </div>
         </form>

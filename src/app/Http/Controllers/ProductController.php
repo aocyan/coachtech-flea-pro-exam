@@ -101,8 +101,19 @@ class ProductController extends Controller
 
         $products = Product::select('id', 'name', 'image','sold_at')->get();
 
-        $validated = $request->validated();
+        $profile = Auth::user()->profile;
         
+        $new_postal = session('new_postal');
+        $new_address = session('new_address');
+        $new_building = session('new_building');
+
+        if ((empty($new_postal) && empty($profile->postal)) ||
+        (empty($new_address) && empty($profile->address)) ||
+        (empty($new_building) && empty($profile->building))) 
+        {
+            return back()->withErrors(['address' => '配送先が入力されていません']);
+        }
+
         return view('index',compact('products'));
     }
 }   

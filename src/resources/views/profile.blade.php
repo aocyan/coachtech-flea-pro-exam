@@ -21,7 +21,7 @@
     </div>
 </nav>
 <div class="profile__container">
-    <img class="user__image" src="{{ asset('storage/users/' . basename($profile->image)) }}" alt="{{ $user->name }}" />
+    <img class="user__image" src="{{ asset('storage/users/' . basename($profile->image)) }}" alt="画像が選択されていません" />
     <input class="user__name" type="text" value="{{ $user->name }}" readonly />
     <a class="user__profile" href="{{ route('user.edit') }}">プロフィールを編集</a>
 </div>
