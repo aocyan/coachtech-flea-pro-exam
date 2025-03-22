@@ -26,7 +26,6 @@ class ExhibitionRequest extends FormRequest
         return [
             'image' => 'required|mimes:jpeg,png',
             'category' => 'required|array|min:1',
-            'category.*' => 'integer',
             'condition' => 'required|in:良好,目立った傷や汚れなし,やや傷や汚れあり,状態が悪い',
             'name' => 'required',
             'description' => 'required|max:255',
