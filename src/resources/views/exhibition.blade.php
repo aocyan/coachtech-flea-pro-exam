@@ -74,15 +74,15 @@
                     <td><input class="mark__count" type="text" value="{{ $commentCount }}" readonly /></td>
                 </tr>
             </table>
-            @if (Auth::check() && !$product->sold_at && $product->product_user_id !== Auth()->user()->id)
+            @if (Auth::check() && !$product->sold_at && ($product->product_user_id !== Auth()->user()->id))
                 <div class="purchase__link">
                     <a class="purchase__link--button" href="{{ route('purchase.index', ['item_id'=> $product->id]) }}">購入手続きへ</a>
-                </div>
-            @elseif ($product->sold_at)
+                </div> 
+            @elseif ($product->sold_at || (Auth::check() && $product->product_user_id === Auth()->user()->id))
                 <div class="no-purchase__link">
                      <p class="no-purchase__link--button">購入手続きへ</p>
                 </div>
-            @else
+            @elseif(!Auth::check())
                 <div class="no-purchase__link">
                      <a class="purchase__link--button" href="{{ route('login') }}">購入手続きへ</a>
                 </div>
@@ -141,15 +141,15 @@
                     @enderror
                 </div>
                 <textarea class="form__textarea--text" name="comment"></textarea>
-                @if (Auth::check() && !$product->sold_at)
+                @if (Auth::check() && !$product->sold_at && ($product->product_user_id !== Auth()->user()->id))
                     <div class="form__button">
                         <button class="form__button-submit" type="submit" name="submit">コメントを送信する</button>
                     </div>
-                @elseif ($product->sold_at)
+                @elseif ($product->sold_at || (Auth::check() && $product->product_user_id === Auth()->user()->id))
                     <div class="no-form__button">
                         <p class="no-form__button-submit">コメントを送信する</p>
                     </div>
-                @else
+                @elseif(!Auth::check())
                     <div class="no-form__button">
                         <a class="form__button-submit" href="{{ route('login') }}">コメントを送信する</a>
                     </div>

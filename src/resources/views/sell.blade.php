@@ -92,10 +92,10 @@
         </div>
         <select class="condition__select" name="condition" >
 			<option class="select--option" disabled selected>選択してください</option>
-			<option class="select--option" value="良好">良好</option>
-			<option class="select--option" value="目立った傷や汚れなし">目立った傷や汚れなし</option>
-			<option class="select--option" value="やや傷や汚れあり">やや傷や汚れあり</option>
-			<option class="select--option" value="状態が悪い">状態が悪い</option>
+			<option class="select--option" value="良好" {{ old('condition') == "良好" ? 'selected' : '' }} >良好</option>
+			<option class="select--option" value="目立った傷や汚れなし" {{ old('condition') == "目立った傷や汚れなし" ? 'selected' : '' }}>目立った傷や汚れなし</option>
+			<option class="select--option" value="やや傷や汚れあり" {{ old('condition') == "やや傷や汚れあり" ? 'selected' : '' }} >やや傷や汚れあり</option>
+			<option class="select--option" value="状態が悪い" {{ old('condition') == "状態が悪い" ? 'selected' : '' }} >状態が悪い</option>
         </select>
         <div class="form__error">
             @error('condition')
@@ -108,7 +108,7 @@
         <div class="group__logo">
             <p>商品名</p>
         </div>
-        <input class="form__input" type="text" name="name" value=""/>
+        <input class="form__input" type="text" name="name" value="{{ old('name') }}"/>
         <div class="form__error">
             @error('name')
                 {{ $message }}
@@ -117,16 +117,16 @@
         <div class="group__logo">
             <p>ブランド名</p>
         </div>
-        <input class="form__input" type="text" name="brand" value=""/>
+        <input class="form__input" type="text" name="brand" value="{{ old('brand') }}"/>
         <div class="group__logo">
             <p>カラー</p>
         </div>
-        <input class="form__input" type="text" name="color" value=""/>
+        <input class="form__input" type="text" name="color" value="{{ old('color') }}"/>
         <div class="group__logo">
             <p>商品の説明</p>
         </div>
         <div class="form__textarea">
-			<textarea class="form__textarea--text" name="description"></textarea>
+			<textarea class="form__textarea--text" name="description">{{ old('description') }}</textarea>
 		</div>
         <div class="form__error">
             @error('description')
@@ -138,7 +138,7 @@
         </div>
         <div class="price__container">
             <span class="price--mark">￥</span>
-            <input class="form__input-price" type="text" name="price"/>
+            <input class="form__input-price" type="text" name="price" value="{{ old('price') }}" />
         </div>
         <div class="form__error">
             @error('price')
