@@ -246,6 +246,7 @@
 .explain__color--text {
     width: 60%;
     font-size: 1.5vw;
+    font-weight: bold;
     border: none;
     outline: none;
 }
@@ -406,11 +407,14 @@
 }
 
 .form__button-submit {
+    display: block;
     padding: 5px 10px;
     width: 100%;
     font-size: 1.5vw;
     font-weight: bold;
     background-color: #FF5555;
+    text-align: center;
+    text-decoration: none;
     border: none;
     color: #fff;
     cursor: pointer;
