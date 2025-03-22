@@ -136,7 +136,10 @@
         <div class="group__logo">
             <p>販売価格</p>
         </div>
-        <input class="form__input" type="text" name="price" placeholder="￥"/>
+        <div class="price__container">
+            <span class="price--mark">￥</span>
+            <input class="form__input-price" type="text" name="price"/>
+        </div>
         <div class="form__error">
             @error('price')
                 {{ $message }}
