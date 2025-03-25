@@ -99,8 +99,6 @@ class ProductController extends Controller
             'sold_at' => now(),
         ]);
 
-        $products = Product::select('id', 'name', 'image','sold_at')->get();
-
         $profile = Auth::user()->profile;
         
         $new_postal = session('new_postal');
@@ -114,6 +112,15 @@ class ProductController extends Controller
             return back()->withErrors(['address' => '配送先が入力されていません']);
         }
 
-        return view('index',compact('products'));
+        $paymentMethod = $request->input('pay');
+
+        session(['product' => $product]);
+
+        if($paymentMethod === 'カード支払い'){
+            return redirect()->route('checkout');
+        }
+        elseif($paymentMethod === 'コンビニ払い'){
+             return redirect()->route('payment');
+        }
     }
 }   

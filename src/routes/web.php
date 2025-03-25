@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -41,3 +42,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login/certification', [UserController::class, 'loginCertification'])->name('login.certification');
+
+Route::get('/checkout', [StripeController::class, 'checkout'])->name('checkout');
+Route::get('/payment', [StripeController::class, 'payment'])->name('payment');
+Route::post('/charge', [StripeController::class, 'charge'])->name('charge');
+Route::get('/thanks', [StripeController::class, 'thanks'])->name('thanks');
