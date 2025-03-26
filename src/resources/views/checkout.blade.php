@@ -1,22 +1,30 @@
 @extends('layouts.app')
-
+    <link rel="stylesheet" href="{{ asset('css/checkout.css') }}">
 @section('content')
 
-<form action="{{ route('charge') }}" method="post" id="payment-form" style="max-width: 500px; margin: 0 auto;">
+<div class="main__header-logo">
+    <h2>カード決済</h2>
+</div>
+<span class="caution--text">まだ、購入手続きは終わっていません</span>
+<div class="howto__pay">
+    <p class="howto__pay--text">　カードでお支払いをするには、下のカード情報欄に必要事項を入力し「決済を進める」ボタンを押してください。</p>
+<div>
+<form action="{{ route('charge') }}" id="payment-form" method="post">
 @csrf
     <div class="form-group">
         <input type="hidden" name="pay" value="カード支払い" />
-        <label for="card-element">カード情報</label>
-            <div id="card-element">
-            </div>
+        <input type="hidden" name="price" value="{{ $product->price }}" />
+        <div class="form__card">
+            <p class="card--text">カード情報</p>
+            <div id="card-element"></div>
+        </div>
     </div>
+    <button class="form-button" id="submit" >決済を進める</button>
+    <div id="error-message"></div>
+</form>
 
-            <button id="submit" class="btn btn-primary">決済を進める</button>
-        <div id="error-message"></div>
-    </form>
-
-    <script src="https://js.stripe.com/v3/"></script>
-    <script>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
         var stripe = Stripe("{{ env('STRIPE_KEY') }}");
         var elements = stripe.elements();
         var successUrl = "{{ route('thanks') }}";
@@ -62,48 +70,4 @@
 });
     </script>
 
-    <style>
-        /* フォーム全体のスタイル */
-        #payment-form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        /* Stripe Elementsのカード入力フィールド */
-        #card-element {
-            height: 40px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 8px;
-        }
-
-        /* エラーメッセージの表示 */
-        #error-message {
-            color: red;
-            margin-top: 10px;
-        }
-
-        /* 送信ボタンのスタイル */
-        #submit {
-            padding: 10px 20px;
-            width: 100%;
-            background-color: #28a745;
-            border: none;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        #submit:hover {
-            background-color: #218838;
-        }
-    </style>
 @endsection

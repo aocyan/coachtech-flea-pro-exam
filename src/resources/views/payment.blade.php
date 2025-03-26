@@ -1,14 +1,20 @@
 @extends('layouts.app')
 
 @section('css')
-	<link rel="stylesheet" href="{{ asset('css/purchase.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/payment.css') }}">
 @endsection
 
 @section('content')
 
-<h1>コンビニ決済</h1>
-
-<button id="payButton">コンビニ決済を行う</button>
+<div class="main__header-logo">
+    <h2>コンビニ決済</h2>
+</div>
+<span class="caution--text">まだ、購入手続きは終わっていません</span>
+<div class="howto__pay">
+    <p class="howto__pay--text">　コンビニでお支払いをするには、下のボタンを押してお支払いするコンビニを選択し、支払い手順をご確認の上お支払いください。
+    </p>
+    <button class="howto__pay--button" id="payButton">コンビニ決済を行う</button>
+</div>
 
 <script src="https://js.stripe.com/v3/"></script>
 <script type="text/javascript">
@@ -20,6 +26,7 @@
         var pay = "コンビニ払い";
         var userName = "{{ $user->name }}";
         var userEmail = "{{ $user->email }}";
+        var productPrice = @json($product->price);
 
         fetch(paymentIntentUrl, {
             method: 'POST',
@@ -28,6 +35,7 @@
                 'X-CSRF-TOKEN': '{{ csrf_token() }}',
             },
             body: JSON.stringify({
+                price: productPrice,
                 pay: pay
             }),
         })

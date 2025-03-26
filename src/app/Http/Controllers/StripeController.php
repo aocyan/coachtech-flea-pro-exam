@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Stripe\Stripe;
 use Stripe\Charge;
 use Stripe\Customer;
@@ -9,6 +10,7 @@ use Stripe\PaymentIntent;
 use Stripe\PaymentMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class StripeController extends Controller
 {
@@ -34,36 +36,31 @@ class StripeController extends Controller
 
         if($paymentMethod === 'カード支払い')
         {
-            try {
-                Stripe::setApiKey(env('STRIPE_SECRET'));
+            Stripe::setApiKey(env('STRIPE_SECRET'));
 
-                $customer = Customer::create([
-                    'email' => $request->stripeEmail,
-                    'source' => $request->stripeToken,
-                ]);
+            $customer = Customer::create([
+                'email' => $request ->stripeEmail,
+                'source' => $request->stripeToken,
+            ]);
 
-                $charge = Charge::create([
-                    'customer' => $customer->id,
-                    'amount' => 1000,
-                    'currency' => 'jpy',
-                ]);
+            $charge = Charge::create([
+                'customer' => $customer->id,
+                'amount' => $request->input('price'),
+                'currency' => 'jpy',
+            ]);
 
                 return response()->json(['success' => true]);
-            } 
-            catch (\Exception $ex) 
-            {
-                return response()->json(['error' => $ex->getMessage()]);
-            }
         }
 
         if($paymentMethod === 'コンビニ払い')
         {
            Stripe::setApiKey(env('STRIPE_SECRET'));
            $user = Auth()->user();
+           
 
            $billingDetails = [
-                'name' => $user-> name,  
-                'email' => $user-> email,
+                'name' => $user->name,  
+                'email' => $user->email,
            ]; 
 
            $paymentMethod = PaymentMethod::create([
@@ -72,7 +69,7 @@ class StripeController extends Controller
             ]);
 
             $paymentIntent = PaymentIntent::create([
-                'amount' => 1000,
+                'amount' => $request->input('price'),
                 'currency' => 'jpy',
                 'payment_method_types' => ['konbini'],
                 'confirm' => 'false',
@@ -92,6 +89,13 @@ class StripeController extends Controller
     public function thanks()
     {
         $user = Auth()->user();
+
+        $product = session('product');
+        
+        $product->update([
+            'purchaser_user_id' => Auth::id(),
+            'sold_at' => now(),
+        ]);
 
         return view('thanks',compact('user'));
     }

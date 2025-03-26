@@ -94,10 +94,6 @@ class ProductController extends Controller
     public function purchase(PurchaseRequest $request,$item_id)
     {
         $product = Product::find($item_id);
-        $product->update([
-            'purchaser_user_id' => Auth::id(),
-            'sold_at' => now(),
-        ]);
 
         $profile = Auth::user()->profile;
         

@@ -1,0 +1,64 @@
+.main__header-logo {
+    width: 25%;
+    font-size: 2.5vw;
+    font-weight: bold;
+    margin: 6% auto;
+    margin-top: 50px;
+}
+
+.caution--text {
+    display: block;
+    width: 50%;
+    font-size: 2.5vw;
+    font-weight: bold;
+    margin: 0 auto;
+    color: #FF5555;
+}
+
+.howto__pay {
+    width: 80%;
+    font-size: 2vw;
+    margin: 12% auto;
+}
+
+.form-group {
+    margin: 40px 0;
+}
+
+.form__card {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.card--text {
+    font-size: 2vw;
+    font-weight: bold;
+    transform: translateY(7px);
+}
+
+#card-element {
+    height: 5%;
+    border: .5px solid #000;
+    margin: 0 auto;
+    padding: 8px;
+}
+
+.form-button {
+    display: block;
+    margin: 0 auto;
+    font-size: 2.2vw;
+    font-weight: bold;
+    border: .5px solid #000;
+    background-color: #f7efef;
+    cursor: pointer;
+}
+
+#error-message {
+    display: block;
+    margin: 10px auto;
+    width: 70%;
+    font-size: 2.2vw;
+    text-align: center;
+    color: red;
+}
+

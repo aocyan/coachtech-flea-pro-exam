@@ -1,42 +1,15 @@
 @extends('layouts.app')
 
 @section('css')
-	<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/thanks.css') }}">
 @endsection
 
 @section('content')
-<div class="login-header">
-    <div class="login-header__logo">
-        <h2>ログイン</h2>
-    </div>
+
+
+<div class="thanks__block">
+    <p class="thanks__sentence">購入手続きが完了しました。<br>ご利用ありがとうございました。<br>またのご利用をお待ちしております。</p>
+    <a class="index__link" href="{{ route('product.index') }}">商品一覧にもどる</a>
 </div>
-<form class="login-form" action="{{ route('login.certification') }}" method="post">
-    @csrf
-    <div class="form__group">
-        <div class="form__group-title">
-                <p>メールアドレス</p>
-        </div>
-        <input class="form__input" type="email" name="email" value="{{ old('email') }}"/>
-        <div class="form__error">
-            @error('email')
-                {{ $message }}
-            @enderror
-        </div>
-        <div class="form__group-title">
-                <p>パスワード</p>
-        </div>
-        <input class="form__input" type="password" name="password"/>
-        <div class="form__error">
-            @error('password')
-                {{ $message }}
-            @enderror
-        </div>
-        <div class="form__button">
-            <button class="form__button-submit" type="submit">ログインする</button>
-        </div>
-    </div>
-</form>
-<div class="register__link">
-    <a class="register__link--button" href="{{ route('register') }}">会員登録はこちら</a>
-</div>
+
 @endsection

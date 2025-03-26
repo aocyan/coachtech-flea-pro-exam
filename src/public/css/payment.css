@@ -1,0 +1,32 @@
+.main__header-logo {
+    width: 25%;
+    font-size: 2.5vw;
+    font-weight: bold;
+    margin: 10% auto;
+    margin-top: 50px;
+}
+
+.caution--text {
+    display: block;
+    width: 50%;
+    font-size: 2.5vw;
+    font-weight: bold;
+    margin: 0 auto;
+    color: #FF5555;
+}
+
+.howto__pay {
+    width: 80%;
+    font-size: 2.2vw;
+    margin: 15% auto;
+}
+
+.howto__pay--button {
+    display: block;
+    margin: 15% auto;
+    font-size: 2.2vw;
+    font-weight: bold;
+    border: .5px solid #000;
+    background-color: #f7efef;
+    cursor: pointer;
+}
