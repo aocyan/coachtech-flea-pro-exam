@@ -62,7 +62,13 @@ class UserController extends Controller
     {
         $validatedData = $request->validated();
 
-            $user = User::orderBy('created_at', 'desc')->orderBy('id', 'desc')->first();
+            if (!Auth::check()) 
+            {
+                $user = User::orderBy('created_at', 'desc')->orderBy('id', 'desc')->first();
+            } 
+            else {
+                $user = Auth::user();
+            }
 
             $user->name = $request->input('name');
             $user->save();
@@ -90,7 +96,10 @@ class UserController extends Controller
             }
             $profile->save();
 
-            Auth::login($user);
+            if (!Auth::check()) 
+            {
+                Auth::login($user);
+            }
 
             $products = Product::all();
             

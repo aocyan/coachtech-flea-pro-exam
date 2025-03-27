@@ -43,6 +43,7 @@ Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login/certification', [UserController::class, 'loginCertification'])->name('login.certification');
 
+
 Route::get('/checkout', [StripeController::class, 'checkout'])->name('checkout');
 Route::get('/payment', [StripeController::class, 'payment'])->name('payment');
 Route::post('/charge', [StripeController::class, 'charge'])->name('charge');
