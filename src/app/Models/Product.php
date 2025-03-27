@@ -32,8 +32,14 @@ class Product extends Model
         return $this->belongsTo(User::class,'product_user_id','purchaser_user_id');
     }
 
-    public function comments() {
+    public function comments() 
+    {
         return $this->hasMany(Comment::class,'product_comment_id');
+    }
+
+    public function deliver()
+    {
+        return $this->hasOne(Deliver::class, 'product_delivery_id');
     }
 
     public function likes()

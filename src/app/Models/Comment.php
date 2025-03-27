@@ -15,11 +15,13 @@ class Comment extends Model
         'comment',
     ];
 
-    public function product() {
+    public function product() 
+    {
         return $this->belongsTo(Product::class,'product_comment_id');
     }
 
-    public function user() {
+    public function user() 
+    {
         return $this->belongsTo(User::class,'user_comment_id');
     }
 }

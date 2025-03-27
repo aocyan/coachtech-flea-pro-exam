@@ -55,16 +55,19 @@ class ItemController extends Controller
         $product = Product::findOrFail($product_id);
         $user = Auth::user();
         
-        if ($request->has('like')) {
+        if ($request->has('like')) 
+        {
             $likeValue = (int) $request->input('like');
 
-            if ($likeValue === 1) {
+            if ($likeValue === 1) 
+            {
                 Like::updateOrinsert(
                     ['user_id' => $user->id, 'product_id' => $product_id],
                     ['likes' => 1]
                 );
             } 
-            else {
+            else 
+            {
                 Like::where('user_id', $user->id)->where('product_id', $product_id)->delete();
             }
         }
@@ -99,14 +102,16 @@ class ItemController extends Controller
         
         $mylistLikeProducts = [0];
 
-        if (Auth::check()) {
+        if (Auth::check()) 
+        {
             $user = Auth()->user();
 
             $mylistLikeIds = DB::table('likes')->where('user_id', $user->id)->pluck('product_id');
         
             $mylistLikeProducts = [];Product::whereIn('id', $mylistLikeIds)->get();
 
-            if ($request->tab === 'mylist') {
+            if ($request->tab === 'mylist') 
+            {
                     $products = $products->filter(function ($product) use ($mylistLikeIds) {
                     return $mylistLikeIds->contains($product->id);
                 });

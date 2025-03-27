@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Delivery;
 use App\Models\Product;
 use Stripe\Stripe;
 use Stripe\Charge;
@@ -89,14 +90,45 @@ class StripeController extends Controller
     public function thanks()
     {
         $user = Auth()->user();
-
+        $profile = Auth::user()->profile;
         $product = session('product');
-        
+        $new_postal = session('new_postal');
+        $new_address = session('new_address');
+        $new_building = session('new_building');
+             
         $product->update([
             'purchaser_user_id' => Auth::id(),
             'sold_at' => now(),
         ]);
 
-        return view('thanks',compact('user'));
+        $deliver = Delivery::create([
+            'product_delivery_id'=>$product->id,
+            'product_name'=>$product -> name,
+            'user_name'=>$user->name,
+            'postal'=>$profile->postal,
+            'address'=>$profile->address,
+            'building'=>$profile->building,
+        ]);
+
+        if($new_postal)
+        {
+            $deliver->update([
+                'postal'=>$new_postal,
+            ]);
+        };
+        if($new_address)
+        {
+            $deliver->update([
+                'address'=>$new_address,
+            ]);
+        };
+        if($new_building)
+        {
+            $deliver->update([
+                'building'=>$new_building,
+            ]);
+        };
+
+        return view('thanks');
     }
 }

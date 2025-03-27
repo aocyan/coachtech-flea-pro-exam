@@ -43,15 +43,18 @@ class UserController extends Controller
 
     public function edit()
     {
-        if (session('user_id') && !Auth::check()) {
+        if (session('user_id') && !Auth::check()) 
+        {
             $userId = session('user_id');
             $user = User::findOrFail($userId);
             $profile = session('profile');
         }
-        else {
+        else 
+        {
             $user = Auth()->user();
             $profile = $user->profile; 
         }
+
         return view('edit', compact('user','profile'));
     }
 
@@ -66,19 +69,23 @@ class UserController extends Controller
 
             $profile = $user->profile;
 
-            if ($request->hasFile('image')) {
+            if ($request->hasFile('image')) 
+            {
                 $file = $request->file('image');
                 $fileName = $file->getClientOriginalName();
                 $path = $file->storeAs('users', $fileName, 'public');
                 $profile->image = $path;
             }
-            if ($request->has('postal')) {
+            if ($request->has('postal')) 
+            {
                 $profile->postal = $request->input('postal');
             }
-            if ($request->has('address')) {
+            if ($request->has('address')) 
+            {
                 $profile->address = $request->input('address');
             }
-            if ($request->has('building')) {
+            if ($request->has('building')) 
+            {
                 $profile->building = $request->input('building');
             }
             $profile->save();
@@ -86,7 +93,6 @@ class UserController extends Controller
             Auth::login($user);
 
             $products = Product::all();
-
             
             return view('index',compact('products'));
     }
@@ -103,7 +109,8 @@ class UserController extends Controller
         if (Auth::attempt([
             'email' => $validatedData['email'],
             'password' => $validatedData['password']
-        ])) {
+        ])) 
+        {
             return redirect()->route('product.index');
         }
 
@@ -121,13 +128,16 @@ class UserController extends Controller
         $products = Product::select('id', 'name', 'image','sold_at')->get();
         $profile = $user->profile;
 
-        if ($tab === 'sell') {
+        if ($tab === 'sell') 
+        {
             $products = Product::where('product_user_id', $user->id)->get();
         }
-        elseif ($tab === 'buy') {
+        elseif ($tab === 'buy') 
+        {
             $products = Product::where('purchaser_user_id', $user->id)->get();
         }
-        else {
+        else 
+        {
             $products = collect(); 
         }
 

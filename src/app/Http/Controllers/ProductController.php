@@ -19,7 +19,8 @@ class ProductController extends Controller
 
     public function store(ExhibitionRequest $request)
     {
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) 
+        {
             $file = $request->file('image');
             $fileName = $file->getClientOriginalName();
             $path = $file->storeAs('products', $fileName, 'public');
@@ -40,7 +41,8 @@ class ProductController extends Controller
         ]);
 
         $categoryIds = [];
-        foreach ($request->input('category') as $categoryName) {
+        foreach ($request->input('category') as $categoryName) 
+        {
             $category = Category::firstOrCreate(['name' => $categoryName]);
             $categoryIds[] = $category->id;
         }
@@ -66,7 +68,6 @@ class ProductController extends Controller
 
         $new_address = session('new_address', $profile->address);
         $new_building = session('new_building', $profile->building);
-
 
         return view('purchase', compact('payMethod', 'item_id', 'product', 'profile','postalCode', 'new_address', 'new_building'));
     }
@@ -94,7 +95,7 @@ class ProductController extends Controller
     public function purchase(PurchaseRequest $request,$item_id)
     {
         $product = Product::find($item_id);
-
+        $user = Auth()->user();
         $profile = Auth::user()->profile;
         
         $new_postal = session('new_postal');
