@@ -1,5 +1,5 @@
-# CoachTech-flea(コーチテックフリマ)
-## 〇　環境構築手順  
+# CoachTech-flea(コーチテックフリマ)<br>
+## 〇　環境構築手順<br>  
 ※(osはwindows11を使用しております。osがmacを使用の際は適宜環境構築お願いします。)
 1. ubuntu内で　git clone git@github.com:aocyan/CoachTech-flea.git　を実行しクローンする。
 
@@ -83,18 +83,19 @@
 　　例：php artisan test tests/Feature/UserTest.php<br>
 　で実行してください。
 
+##〇　その他
 
    
-# 〇　使用技術(実行環境)
+## 〇　使用技術(実行環境)
 * PHP：7.4.9
 * Laravel：8.83.8
 * MySQL：15.1
 * ubuntu：24.04.1
 
-# 〇　ER図
+## 〇　ER図
 ![CoachTechFlea](https://github.com/user-attachments/assets/7ac2e99f-c135-4bd4-949a-9c8e83701162)
 
 
-# 〇　URL
+## 〇　URL
 * 開発環境：　http://localhost/
 * phpMyAdmin：　http://localhost:8080/
