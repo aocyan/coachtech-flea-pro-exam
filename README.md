@@ -1,5 +1,5 @@
-# CoachTech-flea(コーチテックフリマ)<br>
-## 〇　環境構築手順<br>  
+# CoachTech-flea(コーチテックフリマ)
+## 〇　環境構築手順  
 ※(osはwindows11を使用しております。osがmacを使用の際は適宜環境構築お願いします。)
 1. ubuntu内で　git clone git@github.com:aocyan/CoachTech-flea.git　を実行しクローンする。
 
@@ -41,21 +41,21 @@
   php artisan key:generate　を実行し、アプリケーションキーを生成する。
   
 10. ubuntu内PHPコンテナ上で<br>  
-  php artisan storage:link　を実行し、シンボリックリンクを作成する。
+  php artisan storage:link　を実行し、シンボリックリンクを作成する。（作成済みであるというメッセージが出るかもしれませんが、一応実行してください）
  
-11. ubuntu内PHPコンテナ上で<br>  
+12. ubuntu内PHPコンテナ上で<br>  
   php artisan migrate　を実行し、マイグレーションする。
   
-12. ubuntu内PHPコンテナ上で<br>  
+13. ubuntu内PHPコンテナ上で<br>  
   php artisan db:seed　を実行し、シーダファイルを挿入する。
   
-13. http://localhost/ にアクセスする<br>  
+14. http://localhost/ にアクセスする<br>  
   ※1.permissionエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで、<br>  
  　　sudo chmod -R 777 src/*　を実行してください。<br>  
   ※2.出品するときなどにchmod(): Operation not permittedエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで<br>  
 　　 sudo chown -R www-data:www-data src/storage　を実行してください。
   
-14. Stripe導入手順<br>  
+15. Stripe導入手順<br>  
 　①　Stripe公式サイトにアクセスしてアカウントを作成する<br>  
 　②　公式サイトの左上にある「≡」アイコンをクリックして、メニュー下にある「開発者」をクリックする。<br>  
 　　 （このとき、左上に「テスト環境」と書かれていることを確認する。）<br>  
@@ -76,15 +76,15 @@
   ⑦　「製品の設定」にある「決済」をクリックし、ナビゲーションにある「決済手段」をクリックする<br>
   ⑧　「店舗支払い」の項目にある「コンビニ決済」を「有効」に設定する。
 
-15. テストケースの実行<br>
+16. テストケースの実行<br>
   PHPコンテナ上で　php artisan test　を実行すると、すべてのテストケースを実行することができます。<br>
   もし、個別にテストケースを実行するときは<br>
 　　　　php artisan test tests/Feature/テストファイル名<br>
 　　例：php artisan test tests/Feature/UserTest.php<br>
 　で実行してください。
 
-##〇　その他
-
+17. その他<br>
+  Stripeの導入により、配送先住所のデータベースに挿入するタイミングは、Stripeの支払い（コンビニ払いの場合は支払方法確認）の後に表示される、購入完了画面です。
    
 ## 〇　使用技術(実行環境)
 * PHP：7.4.9
@@ -93,8 +93,7 @@
 * ubuntu：24.04.1
 
 ## 〇　ER図
-![CoachTechFlea](https://github.com/user-attachments/assets/7ac2e99f-c135-4bd4-949a-9c8e83701162)
-
+![CoachTechFlea](https://github.com/user-attachments/assets/2e2835f2-3649-4eb9-84bf-21c071158ee7)
 
 ## 〇　URL
 * 開発環境：　http://localhost/
