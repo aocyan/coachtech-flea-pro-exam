@@ -11,11 +11,11 @@
 　"docker-compose.yml"ファイル内の<br>  
     mysql:<br>  
         image: mysql:8.0.26<br>  
-        environment:<br>  
-            MYSQL_ROOT_PASSWORD: root<br>  
-            MYSQL_DATABASE: laravel_db<br>  
-            MYSQL_USER: laravel_user<br>  
-            MYSQL_PASSWORD: laravel_pass<br>  
+        environment:<br>
+            MYSQL_ROOT_PASSWORD: root<br>
+            MYSQL_DATABASE: laravel_db<br>
+            MYSQL_USER: laravel_user<br>
+            MYSQL_PASSWORD: laravel_pass<br>
 であることを確認してください。
 
 5. ubntu上で docker-compose exec php bash を実行し、PHPコンテナ上で<br>  
@@ -66,12 +66,12 @@
 　　　STRIPE_SECRET=「Stripeのシークレットキーのトークン」<br>  
 　　をそれぞれ挿入する。（それぞれのキーはコピー＆ペーストする）<br>  
 　⑤　VSCode内LaravelのCoachTech-fleaで、config/service.phpに<br>  
-　　　return [<br>  
-　　　　'stripe' => [<br>
-    　　　　　　'secret' => env('STRIPE_SECRET'),<br>
-    　　　　　　'public' => env('STRIPE_KEY'),<br>
-    　　　　　　],<br>  
-    　　　　];<br>
+　　　return [    
+　　　　'stripe' => [  
+    　　　　　　'secret' => env('STRIPE_SECRET'),  
+    　　　　　　'public' => env('STRIPE_KEY'),  
+    　　　　　　],    
+    　　　　];  
     となっていることを確認してください。<br>
   ⑥　Strage公式サイト内右上にある設定アイコン（ギアのマーク）をクリックし、「設定」をクリックする。<br>
   ⑦　「製品の設定」にある「決済」をクリックし、ナビゲーションにある「決済手段」をクリックする<br>
