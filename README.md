@@ -38,9 +38,9 @@
 13. ubuntu内PHPコンテナ上で  
 　php artisan db:seed　を実行し、シーダファイルを挿入する。
 14. http://localhost/ にアクセスする  
-　※permissionエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで、  
+　注１）permissionエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで、  
  　　sudo chmod -R 777 src/*　を実行してください。  
-　※出品するときなどにchmod(): Operation not permittedエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで  
+　注２）出品するときなどにchmod(): Operation not permittedエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで  
 　　 sudo chown -R www-data:www-data src/storage　を実行してください。  
 15.Stripe導入手順  
 　①　Stripe公式サイトにアクセスしてアカウントを作成する  
