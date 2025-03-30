@@ -34,7 +34,7 @@
 11. ubuntu内PHPコンテナ上で
   php artisan storage:link　を実行し、シンボリックリンクを作成する。   
 12. ubuntu内PHPコンテナ上で  
-  php artisan migrate　を実行し、マイグレーションする。
+  php artisan migrate　を実行し、マイグレーションする。  
 13. ubuntu内PHPコンテナ上で  
 　php artisan db:seed　を実行し、シーダファイルを挿入する。  
 # 〇　使用技術(実行環境)
