@@ -36,7 +36,7 @@
 13. ubuntu内PHPコンテナ上で  
   php artisan migrate　を実行し、マイグレーションする。  
 14. ubuntu内PHPコンテナ上で  
-　php artisan db:seed　を実行し、シーダファイルを挿入する。
+  php artisan db:seed　を実行し、シーダファイルを挿入する。
 15. http://localhost/ にアクセスする  
 　注１）permissionエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで、  
  　　sudo chmod -R 777 src/*　を実行してください。  
