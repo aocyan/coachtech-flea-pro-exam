@@ -20,7 +20,7 @@ class ProfilesTableSeeder extends Seeder
             'postal' => '123-4567',
             'address' => '三重県伊勢市123番地',
             'building' => '石川アパート101号室',
-            'profile_user_id' => 1,
+            'profile_user_id' => User::find(1)->id,
         ]);
 
         Profile::create([
@@ -28,7 +28,7 @@ class ProfilesTableSeeder extends Seeder
             'postal' => '123-5678',
             'address' => '三重県熊野市123番地',
             'building' => '富山アパート101号室',
-            'profile_user_id' => 2,
+            'profile_user_id' => User::find(2)->id,
         ]);
 
         Profile::create([
@@ -36,7 +36,7 @@ class ProfilesTableSeeder extends Seeder
             'postal' => '123-6789',
             'address' => '三重県松阪市123番地',
             'building' => '岐阜アパート101号室',
-            'profile_user_id' => 3,
+            'profile_user_id' => User::find(3)->id,
         ]);
 
         Profile::create([
@@ -44,7 +44,7 @@ class ProfilesTableSeeder extends Seeder
             'postal' => '123-1234',
             'address' => '三重県熊野市123番地',
             'building' => '新潟アパート101号室',
-            'profile_user_id' => 4,
+            'profile_user_id' => User::find(4)->id,
         ]);
 
         Profile::create([
@@ -52,7 +52,7 @@ class ProfilesTableSeeder extends Seeder
             'postal' => '123-2345',
             'address' => '三重県鈴鹿市123番地',
             'building' => '愛知アパート101号室',
-            'profile_user_id' => 5,
+            'profile_user_id' => User::find(5)->id,
         ]);
 
         Profile::create([
@@ -60,7 +60,7 @@ class ProfilesTableSeeder extends Seeder
             'postal' => '123-3456',
             'address' => '三重県伊賀市123番地',
             'building' => '滋賀アパート101号室',
-            'profile_user_id' => 6,
+            'profile_user_id' => User::find(6)->id,
         ]);
 
         Profile::create([
@@ -68,7 +68,7 @@ class ProfilesTableSeeder extends Seeder
             'postal' => '123-9012',
             'address' => '三重県四日市市123番地',
             'building' => '京都アパート101号室',
-            'profile_user_id' => 7,
+            'profile_user_id' => User::find(7)->id,
         ]);
 
         Profile::create([
@@ -76,7 +76,7 @@ class ProfilesTableSeeder extends Seeder
             'postal' => '123-8765',
             'address' => '三重県いなべ市123番地',
             'building' => '長野アパート101号室',
-            'profile_user_id' => 8,
+            'profile_user_id' => User::find(8)->id,
         ]);
 
         Profile::create([
@@ -84,7 +84,7 @@ class ProfilesTableSeeder extends Seeder
             'postal' => '123-7654',
             'address' => '三重県名張市123番地',
             'building' => '静岡アパート101号室',
-            'profile_user_id' => 9,
+            'profile_user_id' => User::find(9)->id,
         ]);
 
         Profile::create([
@@ -92,7 +92,7 @@ class ProfilesTableSeeder extends Seeder
             'postal' => '123-8653',
             'address' => '三重県尾鷲市123番地',
             'building' => '和歌山アパート101号室',
-            'profile_user_id' => 10,
+            'profile_user_id' => User::find(10)->id,
         ]);
     }
 }

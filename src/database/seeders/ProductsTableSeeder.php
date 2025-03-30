@@ -7,13 +7,12 @@ use Illuminate\Database\Seeder;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\User;
+use Carbon\Carbon;
 
 class ProductsTableSeeder extends Seeder
 {
     public function run()
     {
-        $users = User::all();
-
         $categories = [
             'ファッション',
             '家電', 
@@ -38,6 +37,7 @@ class ProductsTableSeeder extends Seeder
         }
 
         $watchId = DB::table('products')->insertGetId([
+            'id' => 1,
             'name' => '腕時計',
             'brand' => 'Armani',
             'price' => '15000',
@@ -45,7 +45,9 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/Armani+Mens+Clock.jpg',
             'condition' => '良好',
             'description' => 'スタイリッシュなデザインのメンズ腕時計',
-            'product_user_id' => 1, 
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'product_user_id' => User::find(1)->id, 
         ]);
 
         $categories = ['ファッション','メンズ', 'アクセサリー'];
@@ -60,6 +62,7 @@ class ProductsTableSeeder extends Seeder
         }
 
         $hddId = DB::table('products')->insertGetId([
+            'id' => 2,
             'name' => 'HDD',
             'brand' => 'Sony',
             'price' => '5000',
@@ -67,7 +70,9 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/HDD+Hard+Disk.jpg',
             'condition' => '目立った傷や汚れなし',
             'description' => '高速で信頼性の高いハードディスク',
-            'product_user_id' => 2,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'product_user_id' => User::find(2)->id,
         ]);
 
         $categories = ['家電'];
@@ -82,6 +87,7 @@ class ProductsTableSeeder extends Seeder
         }
 
         $onionId = DB::table('products')->insertGetId([
+            'id' => 3,
             'name' => '玉ねぎ3束',
             'brand' => 'メガドンキ',
             'price' => '300',
@@ -89,7 +95,9 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/iLoveIMG+d.jpg',
             'condition' => 'やや傷や汚れあり',
             'description' => '新鮮な玉ねぎ3束のセット',
-            'product_user_id' => 3,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'product_user_id' => User::find(3)->id,
         ]);
 
         $categories = ['キッチン'];
@@ -104,6 +112,7 @@ class ProductsTableSeeder extends Seeder
         }
 
         $shoesId = DB::table('products')->insertGetId([
+            'id' => 4,
             'name' => '革靴',
             'brand' => 'Aoyama',
             'price' => '4000',
@@ -111,7 +120,9 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/Leather+Shoes+Product+Photo.jpg',
             'condition' => '状態が悪い',
             'description' => 'クラシックなデザインの革靴',
-            'product_user_id' => 4,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'product_user_id' => User::find(4)->id,
         ]);
 
         $categories = ['ファッション','メンズ'];
@@ -126,6 +137,7 @@ class ProductsTableSeeder extends Seeder
         }
 
         $laptopId = DB::table('products')->insertGetId([
+            'id' => 5,
             'name' => 'ノートPC',
             'brand' => 'dell',
             'price' => '45000',
@@ -133,7 +145,9 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/Living+Room+Laptop.jpg',
             'condition' => '良好',
             'description' => '高性能なノートパソコン',
-            'product_user_id' => 5,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'product_user_id' => User::find(5)->id,
         ]);
 
         $categories = ['家電','ゲーム'];
@@ -148,6 +162,7 @@ class ProductsTableSeeder extends Seeder
         }
 
         $microphoneId = DB::table('products')->insertGetId([
+            'id' => 6,
             'name' => 'マイク',
             'brand' => 'Logitec',
             'price' => '8000',
@@ -155,7 +170,9 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/Music+Mic+4632231.jpg',
             'condition' => '目立った傷や汚れなし',
             'description' => '高音質のレコーディング用マイク',
-            'product_user_id' => 6,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'product_user_id' => User::find(6)->id,
         ]);
 
         $categories = ['家電','おもちゃ'];
@@ -170,6 +187,7 @@ class ProductsTableSeeder extends Seeder
         }
 
         $bagId = DB::table('products')->insertGetId([
+            'id' => 7,
             'name' => 'ショルダーバッグ',
             'brand' => 'Hermes',
             'price' => '3500',
@@ -177,7 +195,9 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/Purse+fashion+pocket.jpg',
             'condition' => 'やや傷や汚れあり',
             'description' => 'おしゃれなショルダーバッグ',
-            'product_user_id' => 7,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'product_user_id' => User::find(7)->id,
         ]);
 
         $categories = ['ファッション','レディース'];
@@ -192,6 +212,7 @@ class ProductsTableSeeder extends Seeder
         }
 
         $tumblerId = DB::table('products')->insertGetId([
+            'id' => 8,
             'name' => 'タンブラー',
             'brand' => 'Souvenir',
             'price' => '500',
@@ -199,7 +220,9 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/Tumbler+souvenir.jpg',
             'condition' => '状態が悪い',
             'description' => '使いやすいタンブラー',
-            'product_user_id' => 8,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'product_user_id' => User::find(8)->id,
         ]);
 
         $categories = ['メンズ','スポーツ'];
@@ -214,6 +237,7 @@ class ProductsTableSeeder extends Seeder
         }
 
         $grinderId = DB::table('products')->insertGetId([
+            'id' => 9,
             'name' => 'コーヒーミル',
             'brand' => 'ニトリ',
             'price' => '4000',
@@ -221,7 +245,9 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/Waitress+with+Coffee+Grinder.jpg',
             'condition' => '良好',
             'description' => '手動のコーヒーミル',
-            'product_user_id' => 9,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'product_user_id' => User::find(9)->id,
         ]);
 
         $categories = ['インテリア'];
@@ -236,6 +262,7 @@ class ProductsTableSeeder extends Seeder
         }
 
         $makeupId = DB::table('products')->insertGetId([
+            'id' => 10,
             'name' => 'メイクセット',
             'brand' => 'HABA',
             'price' => '2500',
@@ -243,7 +270,9 @@ class ProductsTableSeeder extends Seeder
             'image' => 'products/makeup.jpg',
             'condition' => '目立った傷や汚れなし',
             'description' => '便利なメイクアップセット',
-            'product_user_id' => 10,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'product_user_id' => User::find(10)->id,
         ]);
 
         $categories = ['レディース','コスメ'];

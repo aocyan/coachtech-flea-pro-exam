@@ -95,11 +95,6 @@ class StripeController extends Controller
         $new_postal = session('new_postal');
         $new_address = session('new_address');
         $new_building = session('new_building');
-             
-        $product->update([
-            'purchaser_user_id' => Auth::id(),
-            'sold_at' => now(),
-        ]);
 
         $deliver = Delivery::create([
             'product_delivery_id'=>$product->id,

@@ -109,6 +109,11 @@ class ProductController extends Controller
             return back()->withErrors(['address' => '配送先が入力されていません']);
         }
 
+        $product->update([
+            'purchaser_user_id' => Auth::id(),
+            'sold_at' => now(),
+        ]);
+
         $paymentMethod = $request->input('pay');
 
         session(['product' => $product]);

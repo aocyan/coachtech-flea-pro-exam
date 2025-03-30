@@ -37,7 +37,7 @@
 @csrf
     <div class="image-detail__container">
         <div class="product__image">
-            <img class="product__image--item" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />
+            <img class="product__image--item" src="{{ asset('storage/products/' . urlencode(basename($product->image))) }}" alt="{{ $product->name }}" />
         </div>
         <div class="product__detail">
             <div class="product__name">
