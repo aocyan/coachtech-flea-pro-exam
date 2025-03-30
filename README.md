@@ -26,10 +26,10 @@
   
 7. "6"でコピーした".env"ファイルと".yml"ファイルを同期する<br>  
 　.envファイルを<br>  
-     DB_HOST=mysql<br>  
-     DB_DATABASE=laravel_db<br>  
-     DB_USERNAME=laravel_user<br>  
-     DB_PASSWORD=laravel_pass<br>  
+     DB_HOST=mysql<br>
+     DB_DATABASE=laravel_db<br>
+     DB_USERNAME=laravel_user<br>
+     DB_PASSWORD=laravel_pass<br>
  に設定を変更する。<br>  
  ※'.env' を保存できませんでした。とエラーが出た場合は、ubuntu内CoachTech-fleaディレクトリ内で<br>
    sudo chown ユーザ名:ユーザ名 ファイル名<br>
