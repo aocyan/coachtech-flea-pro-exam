@@ -63,7 +63,7 @@
 　④　VSCode内LaravelのCoachTech-fleaで.envファイルを開き、<br>  
 　　　STRIPE_KEY=「Stripeの公開可能キーのトークン」<br>  
 　　　STRIPE_SECRET=「Stripeのシークレットキーのトークン」<br>  
-　　をそれぞれ挿入する。<br>  
+　　をそれぞれ挿入する。（それぞれのキーはコピー＆ペーストする）<br>  
 　⑤　VSCode内LaravelのCoachTech-fleaで、config/service.phpに<br>  
 　　　return [<br>  
 　　　　'stripe' => [<br>
@@ -72,6 +72,18 @@
     　　　　　　],<br>  
     　　　　];<br>
     となっていることを確認してください。<br>
+  ⑥　Strage公式サイト内右上にある設定アイコン（ギアのマーク）をクリックし、「設定」をクリックする。<br>
+  ⑦　「製品の設定」にある「決済」をクリックし、ナビゲーションにある「決済手段」をクリックする<br>
+  ⑧　「店舗支払い」の項目にある「コンビニ決済」を「有効」に設定する。
+
+15. テストケースの実行<br>
+  PHPコンテナ上で　php artisan test　を実行すると、すべてのテストケースを実行することができます。<br>
+  もし、個別にテストケースを実行するときは<br>
+　　　　php artisan test tests/Feature/テストファイル名<br>
+　　例：php artisan test tests/Feature/UserTest.php<br>
+　で実行してください。
+
+
    
 # 〇　使用技術(実行環境)
 * PHP：7.4.9
