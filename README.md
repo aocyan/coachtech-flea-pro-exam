@@ -55,7 +55,7 @@
   ※2.出品するときなどにchmod(): Operation not permittedエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで<br>  
 　　 sudo chown -R www-data:www-data src/storage　を実行してください。
   
-14.Stripe導入手順<br>  
+14. Stripe導入手順<br>  
 　①　Stripe公式サイトにアクセスしてアカウントを作成する<br>  
 　②　公式サイトの左上にある≡をクリックして、メニュー下にある「開発者」をクリックする。<br>  
 　　 （このとき、左上に「テスト環境」と書かれていることを確認する。）<br>  
@@ -70,7 +70,9 @@
     　　　　　　'secret' => env('STRIPE_SECRET'),<br>
     　　　　　　'public' => env('STRIPE_KEY'),<br>
     　　　　　　],<br>  
-    　　　　];<br>  
+    　　　　];<br>
+    となっていることを確認してください。<br>
+   
 # 〇　使用技術(実行環境)
 * PHP：7.4.9
 * Laravel：8.83.8
