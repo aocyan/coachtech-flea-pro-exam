@@ -1,5 +1,5 @@
 # CoachTech-flea(コーチテックフリマ)
-# 〇　環境構築手順  
+## 〇　環境構築手順  
 ※(osはwindows11を使用しております。osがmacを使用の際は適宜環境構築お願いします。)
 1. ubuntu内で　git clone git@github.com:aocyan/CoachTech-flea.git　を実行しクローンする。
 2. DockerDesktopアプリを立ち上げる
@@ -30,14 +30,18 @@
    例：sudo chown aocyan:aocyan /home/aocyan/coachtech/laravel/mogitate-test/src/.env
 9. http://localhost:8080 にデータベースが存在しているか確認する（laravel_dbがあるか確認してください）
 10. ubuntu内PHPコンテナ上で  
-　php artisan key:generate　を実行し、アプリケーションキーを生成する。  
-11. ubuntu内PHPコンテナ上で  
-  php artisan migrate　を実行し、マイグレーションする。
+　php artisan key:generate　を実行し、アプリケーションキーを生成する。
+11. ubuntu内PHPコンテナ上で
+  php artisan storage:link　を実行し、シンボリックリンクを作成する。   
 12. ubuntu内PHPコンテナ上で  
+  php artisan migrate　を実行し、マイグレーションする。
+13. ubuntu内PHPコンテナ上で  
 　php artisan db:seed　を実行し、シーダファイルを挿入する。
-13. http://localhost/products にアクセスする  
-　※permissionエラーが出た際には、ubuntu内mogitate-testディレクトリで、  
+14. http://localhost/ にアクセスする  
+　※permissionエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで、  
  　　sudo chmod -R 777 src/*　を実行してください。
+　※出品するときなどにchmod(): Operation not permittedエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで  
+     sudo chown -R www-data:www-data src/storage　を実行してください。
 
 # 〇　使用技術(実行環境)
 * PHP：7.4.9
