@@ -2,62 +2,75 @@
 ## 〇　環境構築手順  
 ※(osはwindows11を使用しております。osがmacを使用の際は適宜環境構築お願いします。)
 1. ubuntu内で　git clone git@github.com:aocyan/CoachTech-flea.git　を実行しクローンする。
+
 2. DockerDesktopアプリを立ち上げる
+   
 3. ubuntu内で　docker-compose up -d --build　を実行する。(CoachTech-fleaディレクトリ内で実行する）
+   
 4. ubuntu上で　code .　を実行(CoachTech-fleaディレクトリ内で実行する）し、  
-　"docker-compose.yml"ファイル内の  
-    mysql:  
-        image: mysql:8.0.26  
-        environment:  
-            MYSQL_ROOT_PASSWORD: root  
-            MYSQL_DATABASE: laravel_db  
-            MYSQL_USER: laravel_user  
-            MYSQL_PASSWORD: laravel_pass  
+　"docker-compose.yml"ファイル内の<br>  
+    mysql:<br>  
+        image: mysql:8.0.26<br>  
+        environment:<br>  
+            MYSQL_ROOT_PASSWORD: root<br>  
+            MYSQL_DATABASE: laravel_db<br>  
+            MYSQL_USER: laravel_user<br>  
+            MYSQL_PASSWORD: laravel_pass<br>  
 であることを確認してください。
-5. ubntu上で docker-compose exec php bash を実行し、PHPコンテナ上で  
-　composer install　を実行する。  
-6. "5"に続いてPHPコンテナ上で  
-　cp .env.example .env を実行し、.envファイルをコピーする  
-7. "6"でコピーした".env"ファイルと".yml"ファイルを同期する  
-　.envファイルを  
-     DB_HOST=mysql  
-     DB_DATABASE=laravel_db  
-     DB_USERNAME=laravel_user  
-     DB_PASSWORD=laravel_pass  
- に設定を変更する。  
+
+5. ubntu上で docker-compose exec php bash を実行し、PHPコンテナ上で<br>  
+　composer install　を実行する。
+  
+6. "5"に続いてPHPコンテナ上で<br>  
+　cp .env.example .env を実行し、.envファイルをコピーする
+  
+7. "6"でコピーした".env"ファイルと".yml"ファイルを同期する<br>  
+　.envファイルを<br>  
+     DB_HOST=mysql<br>  
+     DB_DATABASE=laravel_db<br>  
+     DB_USERNAME=laravel_user<br>  
+     DB_PASSWORD=laravel_pass<br>  
+ に設定を変更する。<br>  
  ※'.env' を保存できませんでした。とエラーが出た場合は、ubuntu内CoachTech-fleaディレクトリ内で
-   sudo chown ユーザ名:ユーザ名 ファイル名　でファイルを書き換える権限を付与させてください。  
-   例：sudo chown aocyan:aocyan /home/aocyan/coachtech/laravel/mogitate-test/src/.env  
-8. http://localhost:8080 にデータベースが存在しているか確認する（laravel_dbがあるか確認してください）  
-9. ubuntu内PHPコンテナ上で  
-  php artisan key:generate　を実行し、アプリケーションキーを生成する。  
-10. ubuntu内PHPコンテナ上で  
-  php artisan storage:link　を実行し、シンボリックリンクを作成する。 
-11. ubuntu内PHPコンテナ上で  
-  php artisan migrate　を実行し、マイグレーションする。  
-12. ubuntu内PHPコンテナ上で  
-  php artisan db:seed　を実行し、シーダファイルを挿入する。  
-13. http://localhost/ にアクセスする  
-  ※1.permissionエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで、  
- 　　sudo chmod -R 777 src/*　を実行してください。  
-  ※2.出品するときなどにchmod(): Operation not permittedエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで  
-　　 sudo chown -R www-data:www-data src/storage　を実行してください。  
-14.Stripe導入手順  
-　①　Stripe公式サイトにアクセスしてアカウントを作成する  
-　②　公式サイトの左上にある≡をクリックして、メニュー下にある「開発者」をクリックする。  
-　　 （このとき、左上に「テスト環境」と書かれていることを確認する。）  
-　③　「APIキー」をクリックすると、「公開可能キー」と「シークレットキー」があることを確認する。  
-　④　VSCode内LaravelのCoachTech-fleaで.envファイルを開き、  
-　　　STRIPE_KEY=「Stripeの公開可能キーのトークン」  
-　　　STRIPE_SECRET=「Stripeのシークレットキーのトークン」  
-　　をそれぞれ挿入する。  
-　⑤　VSCode内LaravelのCoachTech-fleaで、config/service.phpに  
-　　　return [  
-　　　　'stripe' => [  
-    　　　　　　'secret' => env('STRIPE_SECRET'),  
-    　　　　　　'public' => env('STRIPE_KEY'),  
-    　　　　　　],  
-    　　　　];  
+   sudo chown ユーザ名:ユーザ名 ファイル名　でファイルを書き換える権限を付与させてください。<br>  
+   例：sudo chown aocyan:aocyan /home/aocyan/coachtech/laravel/mogitate-test/src/.env
+     
+8. http://localhost:8080 にデータベースが存在しているか確認する（laravel_dbがあるか確認してください）<br>
+
+9. ubuntu内PHPコンテナ上で<br>  
+  php artisan key:generate　を実行し、アプリケーションキーを生成する。
+  
+10. ubuntu内PHPコンテナ上で<br>  
+  php artisan storage:link　を実行し、シンボリックリンクを作成する。
+ 
+11. ubuntu内PHPコンテナ上で<br>  
+  php artisan migrate　を実行し、マイグレーションする。
+  
+12. ubuntu内PHPコンテナ上で<br>  
+  php artisan db:seed　を実行し、シーダファイルを挿入する。
+  
+13. http://localhost/ にアクセスする<br>  
+  ※1.permissionエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで、<br>  
+ 　　sudo chmod -R 777 src/*　を実行してください。<br>  
+  ※2.出品するときなどにchmod(): Operation not permittedエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで<br>  
+　　 sudo chown -R www-data:www-data src/storage　を実行してください。
+  
+14.Stripe導入手順<br>  
+　①　Stripe公式サイトにアクセスしてアカウントを作成する<br>  
+　②　公式サイトの左上にある≡をクリックして、メニュー下にある「開発者」をクリックする。<br>  
+　　 （このとき、左上に「テスト環境」と書かれていることを確認する。）<br>  
+　③　「APIキー」をクリックすると、「公開可能キー」と「シークレットキー」があることを確認する。<br>  
+　④　VSCode内LaravelのCoachTech-fleaで.envファイルを開き、<br>  
+　　　STRIPE_KEY=「Stripeの公開可能キーのトークン」<br>  
+　　　STRIPE_SECRET=「Stripeのシークレットキーのトークン」<br>  
+　　をそれぞれ挿入する。<br>  
+　⑤　VSCode内LaravelのCoachTech-fleaで、config/service.phpに<br>  
+　　　return [<br>  
+　　　　'stripe' => [<br>
+    　　　　　　'secret' => env('STRIPE_SECRET'),<br>
+    　　　　　　'public' => env('STRIPE_KEY'),<br>
+    　　　　　　],<br>  
+    　　　　];<br>  
 # 〇　使用技術(実行環境)
 * PHP：7.4.9
 * Laravel：8.83.8
