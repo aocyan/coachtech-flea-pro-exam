@@ -41,7 +41,13 @@
 　※permissionエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで、  
  　　sudo chmod -R 777 src/*　を実行してください。  
 　※出品するときなどにchmod(): Operation not permittedエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで  
-　　 sudo chown -R www-data:www-data src/storage　を実行してください。
+　　 sudo chown -R www-data:www-data src/storage　を実行してください。  
+15.Stripe導入手順
+　①　Stripe公式サイトにアクセスしてアカウントを作成する
+　②　公式サイトの左上にある≡をクリックして、メニュー下にある「開発者」をクリックする。
+　　 （このとき、左上に「テスト環境」と書かれていることを確認する。）
+
+    
 
 # 〇　使用技術(実行環境)
 * PHP：7.4.9
