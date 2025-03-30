@@ -31,7 +31,7 @@
 9. http://localhost:8080 にデータベースが存在しているか確認する（laravel_dbがあるか確認してください）
 10. ubuntu内PHPコンテナ上で  
 　php artisan key:generate　を実行し、アプリケーションキーを生成する。
-11. ubuntu内PHPコンテナ上で
+11. ubuntu内PHPコンテナ上で  
   php artisan storage:link　を実行し、シンボリックリンクを作成する。   
 12. ubuntu内PHPコンテナ上で  
   php artisan migrate　を実行し、マイグレーションする。  
