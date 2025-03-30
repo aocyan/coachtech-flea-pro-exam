@@ -46,18 +46,18 @@
 　①　Stripe公式サイトにアクセスしてアカウントを作成する  
 　②　公式サイトの左上にある≡をクリックして、メニュー下にある「開発者」をクリックする。  
 　　 （このとき、左上に「テスト環境」と書かれていることを確認する。）  
-　③　「APIキー」をクリックすると、「公開可能キー」と「シークレットキー」があることを確認する。
-　④　VSCode内LaravelのCoachTech-fleaで.envファイルを開き、
-　　　STRIPE_KEY=「Stripeの公開可能キーのトークン」
-　　　STRIPE_SECRET=「Stripeのシークレットキーのトークン」
-　　をそれぞれ挿入する。
-　⑤　VSCode内LaravelのCoachTech-fleaで、config/service.phpに
-　　　return [
-　　　　'stripe' => [
-    　　　　　　'secret' => env('STRIPE_SECRET'),
-    　　　　　　'public' => env('STRIPE_KEY'),
-    　　　　　　],
-    　　　　];
+　③　「APIキー」をクリックすると、「公開可能キー」と「シークレットキー」があることを確認する。  
+　④　VSCode内LaravelのCoachTech-fleaで.envファイルを開き、  
+　　　STRIPE_KEY=「Stripeの公開可能キーのトークン」  
+　　　STRIPE_SECRET=「Stripeのシークレットキーのトークン」  
+　　をそれぞれ挿入する。  
+　⑤　VSCode内LaravelのCoachTech-fleaで、config/service.phpに  
+　　　return [  
+　　　　'stripe' => [  
+    　　　　　　'secret' => env('STRIPE_SECRET'),  
+    　　　　　　'public' => env('STRIPE_KEY'),  
+    　　　　　　],  
+    　　　　];  
     
     
 
