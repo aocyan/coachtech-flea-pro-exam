@@ -29,15 +29,15 @@
    sudo chown ユーザ名:ユーザ名 ファイル名　でファイルを書き換える権限を付与させてください。  
    例：sudo chown aocyan:aocyan /home/aocyan/coachtech/laravel/mogitate-test/src/.env
 9. http://localhost:8080 にデータベースが存在しているか確認する（laravel_dbがあるか確認してください）
-10. ubuntu内PHPコンテナ上で  
+10. ubuntu内PHPコンテナ上で
 　php artisan key:generate　を実行し、アプリケーションキーを生成する。
-11. ubuntu内PHPコンテナ上で  
-  php artisan storage:link　を実行し、シンボリックリンクを作成する。   
 12. ubuntu内PHPコンテナ上で  
-  php artisan migrate　を実行し、マイグレーションする。  
+  php artisan storage:link　を実行し、シンボリックリンクを作成する。   
 13. ubuntu内PHPコンテナ上で  
+  php artisan migrate　を実行し、マイグレーションする。  
+14. ubuntu内PHPコンテナ上で  
 　php artisan db:seed　を実行し、シーダファイルを挿入する。
-14. http://localhost/ にアクセスする  
+15. http://localhost/ にアクセスする  
 　注１）permissionエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで、  
  　　sudo chmod -R 777 src/*　を実行してください。  
 　注２）出品するときなどにchmod(): Operation not permittedエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで  
