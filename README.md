@@ -36,7 +36,28 @@
 12. ubuntu内PHPコンテナ上で  
   php artisan migrate　を実行し、マイグレーションする。  
 13. ubuntu内PHPコンテナ上で  
-　php artisan db:seed　を実行し、シーダファイルを挿入する。  
+　php artisan db:seed　を実行し、シーダファイルを挿入する。
+14. http://localhost/ にアクセスする  
+　※permissionエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで、  
+ 　　sudo chmod -R 777 src/*　を実行してください。  
+　※出品するときなどにchmod(): Operation not permittedエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで  
+　　 sudo chown -R www-data:www-data src/storage　を実行してください。  
+15.Stripe導入手順  
+　①　Stripe公式サイトにアクセスしてアカウントを作成する  
+　②　公式サイトの左上にある≡をクリックして、メニュー下にある「開発者」をクリックする。  
+　　 （このとき、左上に「テスト環境」と書かれていることを確認する。）  
+　③　「APIキー」をクリックすると、「公開可能キー」と「シークレットキー」があることを確認する。  
+　④　VSCode内LaravelのCoachTech-fleaで.envファイルを開き、  
+　　　STRIPE_KEY=「Stripeの公開可能キーのトークン」  
+　　　STRIPE_SECRET=「Stripeのシークレットキーのトークン」  
+　　をそれぞれ挿入する。  
+　⑤　VSCode内LaravelのCoachTech-fleaで、config/service.phpに  
+　　　return [  
+　　　　'stripe' => [  
+    　　　　　　'secret' => env('STRIPE_SECRET'),  
+    　　　　　　'public' => env('STRIPE_KEY'),  
+    　　　　　　],  
+    　　　　];  
 # 〇　使用技術(実行環境)
 * PHP：7.4.9
 * Laravel：8.83.8
