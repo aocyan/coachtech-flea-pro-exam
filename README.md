@@ -31,7 +31,7 @@
      DB_USERNAME=laravel_user<br>
      DB_PASSWORD=laravel_pass<br>
  に設定を変更する。<br>  
- ※'.env' を保存できませんでした。とエラーが出た場合は、ubuntu内CoachTech-fleaディレクトリ内で<br>
+ ※'.env' を保存できませんでした。とエラーが出た場合は、ubuntu内CoachTech-fleaディレクトリ内で<br>  
    sudo chown ユーザ名:ユーザ名 ファイル名<br>  
    でファイルを書き換える権限を付与させてください。<br>  
    例：sudo chown aocyan:aocyan /home/aocyan/coachtech/laravel/mogitate-test/src/.env
