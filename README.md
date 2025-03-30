@@ -14,11 +14,11 @@
             MYSQL_USER: laravel_user  
             MYSQL_PASSWORD: laravel_pass  
 であることを確認してください。
-6. ubntu上で docker-compose exec php bash を実行し、PHPコンテナ上で  
-　composer install　を実行する。
-7. "6"に続いてPHPコンテナ上で  
-　cp .env.example .env を実行し、.envファイルをコピーする
-8. "6"でコピーした".env"ファイルと".yml"ファイルを同期する  
+5. ubntu上で docker-compose exec php bash を実行し、PHPコンテナ上で  
+　composer install　を実行する。  
+6. "5"に続いてPHPコンテナ上で  
+　cp .env.example .env を実行し、.envファイルをコピーする  
+7. "6"でコピーした".env"ファイルと".yml"ファイルを同期する  
 　.envファイルを  
      DB_HOST=mysql  
      DB_DATABASE=laravel_db  
@@ -27,22 +27,22 @@
  に設定を変更する。  
  ※'.env' を保存できませんでした。とエラーが出た場合は、ubuntu内CoachTech-fleaディレクトリ内で
    sudo chown ユーザ名:ユーザ名 ファイル名　でファイルを書き換える権限を付与させてください。  
-   例：sudo chown aocyan:aocyan /home/aocyan/coachtech/laravel/mogitate-test/src/.env
-9. http://localhost:8080 にデータベースが存在しているか確認する（laravel_dbがあるか確認してください）
+   例：sudo chown aocyan:aocyan /home/aocyan/coachtech/laravel/mogitate-test/src/.env  
+8. http://localhost:8080 にデータベースが存在しているか確認する（laravel_dbがあるか確認してください）  
+9. ubuntu内PHPコンテナ上で  
+  php artisan key:generate　を実行し、アプリケーションキーを生成する。  
 10. ubuntu内PHPコンテナ上で  
-  php artisan key:generate　を実行し、アプリケーションキーを生成する。
+  php artisan storage:link　を実行し、シンボリックリンクを作成する。 
 11. ubuntu内PHPコンテナ上で  
-  php artisan storage:link　を実行し、シンボリックリンクを作成する。   
-12. ubuntu内PHPコンテナ上で  
   php artisan migrate　を実行し、マイグレーションする。  
-13. ubuntu内PHPコンテナ上で  
-  php artisan db:seed　を実行し、シーダファイルを挿入する。
-14. http://localhost/ にアクセスする  
+12. ubuntu内PHPコンテナ上で  
+  php artisan db:seed　を実行し、シーダファイルを挿入する。  
+13. http://localhost/ にアクセスする  
   ※1.permissionエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで、  
  　　sudo chmod -R 777 src/*　を実行してください。  
   ※2.出品するときなどにchmod(): Operation not permittedエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで  
 　　 sudo chown -R www-data:www-data src/storage　を実行してください。  
-15.Stripe導入手順  
+14.Stripe導入手順  
 　①　Stripe公式サイトにアクセスしてアカウントを作成する  
 　②　公式サイトの左上にある≡をクリックして、メニュー下にある「開発者」をクリックする。  
 　　 （このとき、左上に「テスト環境」と書かれていることを確認する。）  
