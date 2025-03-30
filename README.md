@@ -79,9 +79,9 @@
 
 16. テストケースの実行<br>
   PHPコンテナ上で　php artisan test　を実行すると、すべてのテストケースを実行することができます。<br>
-  もし、個別にテストケースを実行するときは<br>
+  もし、個別にテストケースを実行するときは<br>  
 　　　　php artisan test tests/Feature/テストファイル名<br>
-　　例：php artisan test tests/Feature/UserTest.php<br>
+　　例：php artisan test tests/Feature/UserTest.php<br>  
 　で実行してください。
 
 17. その他<br>
