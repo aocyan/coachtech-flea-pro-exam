@@ -42,7 +42,8 @@
   php artisan key:generate　を実行し、アプリケーションキーを生成する。
   
 10. ubuntu内PHPコンテナ上で<br>  
-  php artisan storage:link　を実行し、シンボリックリンクを作成する。（作成済みであるというメッセージが出るかもしれませんが、一応実行してください）
+  php artisan storage:link　を実行し、シンボリックリンクを作成する。<br>
+　　（作成済みであるというメッセージが出るかもしれませんが、一応実行してください）
  
 12. ubuntu内PHPコンテナ上で<br>  
   php artisan migrate　を実行し、マイグレーションする。
