@@ -17,7 +17,7 @@
         <div class="form__group-title">
             <p>ユーザ名</p>
         </div>
-        <input class="form__input" type="text" name="name" value="{{ old('name') }}" />
+        <input class="form__input" type="text" name="name" value="{{ old('name') }}" placeholder="例：鈴木　太郎　※フルネームで入力してください" />
         <div class="form__error">
             @error('name')
                 {{ $message }}
@@ -26,7 +26,7 @@
         <div class="form__group-title">
             <p>メールアドレス</p>
         </div>
-        <input class="form__input" type="email" name="email" value="{{ old('email') }}"/>
+        <input class="form__input" type="email" name="email" value="{{ old('email') }}" placeholder="例：sample@example.com" />
         <div class="form__error">
             @error('email')
                 {{ $message }}

@@ -30,7 +30,7 @@
         <div class="form__group-title">
             <p>ユーザ名</p>
         </div>
-        <input class="form__input" type="text" name="name" value="{{ old('name') ?? session('user_name') ?? $user->name }}" />
+        <input class="form__input" type="text" name="name" value="{{ old('name') ?? session('user_name') ?? $user->name }}" placeholder="※フルネームで入力してください" />
         <div class="form__error">
             @error('name')
                 {{ $message }}
@@ -39,7 +39,7 @@
         <div class="form__group-title">
             <p>郵便番号</p>
         </div>
-        <input class="form__input" type="text" name="postal" value="{{ $profile->postal }}" />
+        <input class="form__input" type="text" name="postal" value="{{ $profile->postal }}" placeholder="例：111-2222" />
         <div class="form__error">
             @error('postal')
                 {{ $message }}
@@ -48,7 +48,7 @@
         <div class="form__group-title">
             <p>住所</p>
         </div>
-        <input class="form__input" type="address" name="address" value="{{ $profile->address }}" />
+        <input class="form__input" type="address" name="address" value="{{ $profile->address }}" placeholder="例：東京都千代田区千代田1-1" />
         <div class="form__error">
             @error('address')
                 {{ $message }}
@@ -57,7 +57,7 @@
         <div class="form__group-title">
             <p>建物名</p>
         </div>
-        <input class="form__input" type="text" name="building" value="{{ $profile->building }}" />
+        <input class="form__input" type="text" name="building" value="{{ $profile->building }}" placeholder="例：皇居マンション101号室" />
         <div class="form__error">
             @error('building')
                 {{ $message }}
