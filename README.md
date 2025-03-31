@@ -57,7 +57,7 @@
 　　 sudo chown -R www-data:www-data src/storage　を実行してください。
   
 15. Stripe導入手順<br>  
-　①　Stripe公式サイト( https://dashboard.stripe.com/login?locale=ja-JP )にアクセスしてアカウントを作成する<br>  
+　①　Stripe公式サイト( https://stripe.com/jp )にアクセスしてアカウントを作成する<br>  
 　②　公式サイトの左上にある「≡」アイコンをクリックして、メニュー下にある「開発者」をクリックする。<br>  
 　　 （このとき、左上に「テスト環境」と書かれていることを確認する。）<br>  
 　③　「APIキー」をクリックすると、「公開可能キー」と「シークレットキー」があることを確認する。<br>  
