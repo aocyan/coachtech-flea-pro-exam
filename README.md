@@ -33,7 +33,7 @@
  ※'.env' を保存できませんでした。とエラーが出た場合は、ubuntu内CoachTech-fleaディレクトリ内で<br>  
    sudo chown ユーザ名:ユーザ名 ファイル名<br>  
    でファイルを書き換える権限を付与させてください。<br>  
-   例：sudo chown aocyan:aocyan /home/aocyan/coachtech/laravel/mogitate-test/src/.env
+   例：sudo chown aocyan:aocyan /home/aocyan/coachtech/laravel/CoachTech-flea/src/.env
      
 8. http://localhost:8080 にデータベースが存在しているか確認する（laravel_dbがあるか確認してください）<br>
 
