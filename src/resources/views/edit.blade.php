@@ -39,7 +39,10 @@
         <div class="form__group-title">
             <p>郵便番号</p>
         </div>
-        <input class="form__input" type="text" name="postal" value="{{ $profile->postal }}" placeholder="例：111-2222" />
+        <div class="postal__container">
+            <span class="postal--mark">〒</span>
+            <input class="form__input-postal" type="text" name="postal" value="{{ $profile->postal }}" placeholder="例：111-2222" />
+        </div>
         <div class="form__error">
             @error('postal')
                 {{ $message }}

@@ -32,7 +32,10 @@
         <div class="form__group-title">
             <p>郵便番号</p>
         </div>
-        <input class="form__input" type="text" name="postal" value="{{ old('postal',session('new_postal',$profile->postal)) }}"/>
+        <div class="postal__container">
+            <span class="postal--mark">〒</span>
+            <input class="form__input-postal" type="text" name="postal" value="{{ old('postal',session('new_postal',$profile->postal)) }}"/>
+        </div>
         <div class="form__error">
             @error('postal')
                 {{ $message }}
@@ -40,7 +43,7 @@
         </div>
         <div class="form__group-title">
             <p>住所</p>
-        </div>
+        </div>             
         <input class="form__input" type="address" name="address" value="{{ old('address',session('new_address',$profile->address)) }}"/>
         <div class="form__error">
             @error('address')
