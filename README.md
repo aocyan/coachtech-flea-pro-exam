@@ -82,7 +82,8 @@
   もし、個別にテストケースを実行するときは<br>  
 　　　　php artisan test tests/Feature/テストファイル名<br>
 　　例：php artisan test tests/Feature/UserTest.php<br>  
-　で実行してください。
+　で実行してください。<br>
+   テストケース実行後にシーダファイルを使用するときはPHPコンテナ上で　php artisan db:seed をし直してください。（各テストケース実行時に use RefreshDatabase; でマイグレーションし直す仕様になっています）
 
 17. その他<br>
   ①　Stripeの導入により、配送先住所のデータベースに挿入するタイミングは、Stripeの支払い（コンビニ払いの場合は支払方法確認）の後に表示される、購入完了画面です。<br>
