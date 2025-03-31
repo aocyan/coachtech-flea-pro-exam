@@ -36,9 +36,6 @@ Route::post('/register/store', [UserController::class, 'store'])->name('user.sto
 Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage.check');
 Route::get('/mypage/profile', [UserController::class, 'edit'])->name('user.edit');
 Route::put('/user/update', [UserController::class, 'update'])->name('user.update');
-/*Route::middleware('auth')->group(function () {
-    Route::post('/dash', [UserController::class, 'index'])->name('user.login');
-});*/
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login/certification', [UserController::class, 'loginCertification'])->name('login.certification');
