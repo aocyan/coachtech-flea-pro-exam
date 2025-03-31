@@ -9,13 +9,13 @@
    
 4. ubuntu上で　code .　を実行(CoachTech-fleaディレクトリ内で実行する）し、  
 　"docker-compose.yml"ファイル内の<br>  
-    mysql:<br>  
-        image: mysql:8.0.26<br>  
+    mysql:<br>
+        image: mysql:8.0.26<br>
         environment:<br>
             MYSQL_ROOT_PASSWORD: root<br>
             MYSQL_DATABASE: laravel_db<br>
             MYSQL_USER: laravel_user<br>
-            MYSQL_PASSWORD: laravel_pass<br>
+            MYSQL_PASSWORD: laravel_pass<br>  
 であることを確認してください。
 
 5. ubntu上で docker-compose exec php bash を実行し、PHPコンテナ上で<br>  
