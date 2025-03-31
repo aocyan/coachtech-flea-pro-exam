@@ -24,50 +24,56 @@
 </form>
 
 <script src="https://js.stripe.com/v3/"></script>
+
 <script>
-        var stripe = Stripe("{{ env('STRIPE_KEY') }}");
-        var elements = stripe.elements();
-        var successUrl = "{{ route('thanks') }}";
+    var stripe = Stripe("{{ env('STRIPE_KEY') }}");
+    var elements = stripe.elements();
+    var successUrl = "{{ route('thanks') }}";
 
-        var card = elements.create('card', {
+    var card = elements.create('card', {
             hidePostalCode: true
-        });
-        card.mount('#card-element');
+    });
+    card.mount('#card-element');
 
-        var form = document.getElementById('payment-form');
-        form.addEventListener('submit', async function(event) {
-    event.preventDefault();
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault();
 
-    const {token, error} = await stripe.createToken(card);
+        const {token, error} = await stripe.createToken(card);
 
-    if (error) {
-        document.getElementById('error-message').textContent = error.message;
-    } 
-    else {
-        var formData = new FormData(form);
-        formData.append('stripeToken', token.id);
+        if (error) 
+        {
+            document.getElementById('error-message').textContent = error.message;
+        } 
+        else 
+        {
+            var formData = new FormData(form);
+            formData.append('stripeToken', token.id);
         
-        fetch("{{ route('charge') }}", {
-            method: 'POST',
-            body: formData,
-        })
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            console.log("Response data:", data);
-            if (data.success) {
-                window.location.href = successUrl; 
-            } else {
-                console.error("Payment failed:", data.error);
-                alert('支払いに失敗しました。');
-            }
-        })
-        .catch(function(error) {
-            console.error("Request failed:", error);
-        });
-    }
-});
-    </script>
+            fetch("{{ route('charge') }}", {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                console.log("Response data:", data);
+                if (data.success) 
+                {
+                    window.location.href = successUrl; 
+                }
+                else 
+                {
+                    console.error("Payment failed:", data.error);
+                    alert('支払いに失敗しました。');
+                }
+            })
+            .catch(function(error) {
+                console.error("Request failed:", error);
+            });
+        }
+    });
+</script>
 
 @endsection

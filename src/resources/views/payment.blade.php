@@ -17,7 +17,9 @@
 </div>
 
 <script src="https://js.stripe.com/v3/"></script>
+
 <script type="text/javascript">
+
     var stripe = Stripe('{{ env("STRIPE_KEY") }}');
 
     document.getElementById('payButton').addEventListener('click', function() {
@@ -50,38 +52,49 @@
                     name: userName,
                     email: userEmail,
                 }
-            }).then(function(result) {
-                if (result.error) {
+            })
+            .then(function(result) 
+            {
+                if (result.error) 
+                {
                     console.log('支払い方法の作成に失敗しました:', result.error.message);
                     alert('支払い方法の作成に失敗しました');
                     return;
-            }
+                }
 
-            var paymentMethodId = result.paymentMethod.id;
+                var paymentMethodId = result.paymentMethod.id;
 
                 stripe.confirmPayment({
                     clientSecret: clientSecret,
                     paymentMethod: paymentMethodId, 
                     confirmParams: { return_url: successUrl }
                 })
-                .then(function(result) {
-                    if (result.error) {
+                .then(function(result) 
+                {
+                    if (result.error) 
+                    {
                         console.error("決済に失敗しました: ", result.error);
                         alert("決済に失敗しました: " + result.error.message);
-                    } else if (result.paymentIntent.status === 'requires_action') {
+                    } 
+                    else if (result.paymentIntent.status === 'requires_action') 
+                    {
                         alert('支払いが完了するまで、追加のアクションが必要です。');
-                        if (result.paymentIntent.next_action) {
+                        if (result.paymentIntent.next_action) 
+                        {
                             var actionUrl = result.paymentIntent.next_action.redirect_to_url.url;
                             console.log("Redirecting to URL:", actionUrl); 
                             window.location.href = actionUrl;
                         }
-                    } else if (result.paymentIntent.status === 'succeeded') {
+                    } 
+                    else if (result.paymentIntent.status === 'succeeded') 
+                    {
                         alert("決済が完了しました!");
                     }
                 });
             });
         })
-        .catch(function(error) {
+        .catch(function(error) 
+        {
             console.error('Error:', error);
             alert('決済情報の取得に失敗しました');
         });
