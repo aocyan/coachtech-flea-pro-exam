@@ -7,8 +7,7 @@
    
 3. ubuntu内で　docker-compose up -d --build　を実行する。(CoachTech-fleaディレクトリ内で実行する）
    
-4. ubuntu上で　code .　を実行(CoachTech-fleaディレクトリ内で実行する）し、  
-　"docker-compose.yml"ファイル内の<br>  
+4. ubuntu上で　code .　を実行(CoachTech-fleaディレクトリ内で実行する）し、"docker-compose.yml"ファイル内の<br>  
     mysql:<br>
         image: mysql:8.0.26<br>
         environment:<br>
