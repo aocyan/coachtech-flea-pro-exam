@@ -141,7 +141,7 @@
                     @enderror
                 </div>
                 <textarea class="form__textarea--text" name="comment"></textarea>
-                @if (Auth::check() && !$product->sold_at && ($product->product_user_id !== Auth()->user()->id))
+                @if (Auth::check() && !$product->sold_at)
                     <div class="form__button">
                         <button class="form__button-submit" type="submit" name="submit">コメントを送信する</button>
                     </div>
