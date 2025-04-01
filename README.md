@@ -100,7 +100,8 @@
 * ubuntu：24.04.1
 
 ## 〇　ER図
-![CoachTechFlea](https://github.com/user-attachments/assets/1bb33302-6d87-4cc8-bb1e-1ae930893a52)
+![CoachTechFlea](https://github.com/user-attachments/assets/944b0a35-574a-4087-a8fc-b13f7ee985c0)
+
 
 
 ## 〇　URL
