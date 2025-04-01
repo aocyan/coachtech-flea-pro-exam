@@ -54,7 +54,7 @@
   ※1.permissionエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで、<br>  
  　　sudo chmod -R 777 src/*　を実行してください。<br>  
   ※2.chmod(): Operation not permittedエラーが出た際には、ubuntu内CoachTech-fleaディレクトリで<br>  
-　　 sudo chown -R www-data:www-data src/storage　を実行してください。<br>
+　　 sudo chown -R www-data:www-data src/storage　を実行してください。<br>  
   （上記2つのエラーについてはテスト時必ず出ていたため、あらかじめ2つのコマンドを実行しておいた方がよいと思われます。）
   
 15. Stripe導入手順<br>  
