@@ -24,7 +24,7 @@ class ExhibitionRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|mimes:jpg,png',
+            'image' => 'required|mimes:jpeg,png',
             'category' => 'required|array|min:1',
             'condition' => 'required|in:良好,目立った傷や汚れなし,やや傷や汚れあり,状態が悪い',
             'name' => 'required',
@@ -37,7 +37,7 @@ class ExhibitionRequest extends FormRequest
     {
         return [
             'image.required' => '商品画像を選択してください',
-            'image.mimes' => '画像の拡張子は.jpgまたは.pngです',
+            'image.mimes' => '画像の拡張子は.jpegまたは.pngです',
             'category.required' => 'カテゴリーを選択してください',
             'category.min' => 'カテゴリーを選択してください',
             'condition.required' => '商品の状態を選択してください',
