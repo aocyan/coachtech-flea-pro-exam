@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="person__comment">
-                    <input class="person__comment--text" type="text" placeholder="相手のコメント">
+                    <input class="person__comment--text" type="text" readonly>
                 </div>
             </div>
             <div class="transaction-my-comment">
@@ -56,10 +56,10 @@
                     </div>
                 </div>
                 <div class="person__comment">
-                    <input class="person__comment--text" type="text" placeholder="自分のコメント">
+                    <input class="person__comment--text" type="text" readonly>
                     <div class="comment__button">
-                        <button>編集</button>
-                        <button>削除</button>
+                        <button class="comment__button--submit" type="submit" name="revise">編集</button>
+                        <button class="comment__button--submit" type="submit" name="del">削除</button>
                     </div>
                 </div>
             </div>
