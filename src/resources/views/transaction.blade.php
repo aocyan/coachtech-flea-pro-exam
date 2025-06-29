@@ -14,10 +14,10 @@
     <div class="right__box">
         <div class="transaction-header">
             <div class="transaction-header__img">
-                <p>ユーザ画像</p>
+                <img class="header__img--item" src="{{ asset('storage/users/' . basename($product_user_profile -> image))  }}" alt="出品者画像" />
             </div>
             <div class="transaction-header__logo">
-                <h2>「ユーザ名」さんとの取引画面</h2>
+                <h2>「{{ $product_user -> name }}」さんとの取引画面</h2>
             </div>
             <div class="transaction-button">
                 <button class="transaction-button--text">取引を完了する</button>
@@ -25,38 +25,38 @@
         </div>
         <div class="product-detail">
             <div class="product-detail__img">
-                <p>商品イメージ画像</p>
+                <img class="product-detail__img--item" src="{{ asset('storage/products/' . basename($product -> image))  }}" alt="出品商品画像" />
             </div>    
             <div class="product-detail__text">
-                <h2>商品名</h2>
-                <p>商品価格</p>
+                <h3>商品名：{{ $product -> name }}</h3>
+                <p>￥ {{ $product -> price }}</p>
             </div>
         </div>
         <div class="transaction-comment">
             <div class="transaction-other-comment">
                 <div class="comment__container">
-                    <div class="other-person__img">
-                        <p>ユーザ画像</p>
+                    <div class="person__img">
+                        <img class="person__img--item" src="{{ asset('storage/users/' . basename($product_user_profile -> image))  }}" alt="出品者画像" />
                     </div>
-                    <div class="other-person__name">
-                        <p>ユーザ名</p>
+                    <div class="person__name">
+                        <p>{{ $product_user -> name }}</p>
                     </div>
                 </div>
-                <div class="other-person__comment">
-                    <input class="other-person__comment--text" type="text" placeholder="相手のコメント">
+                <div class="person__comment">
+                    <input class="person__comment--text" type="text" placeholder="相手のコメント">
                 </div>
             </div>
             <div class="transaction-my-comment">
-                <div class="comment__container">
-                    <div class="my__img">
-                        <p>ユーザ名</p>
+                <div class="my-comment__container">
+                    <div class="person__name">
+                        <p>{{ $user -> name }}</p>
                     </div>
-                    <div class="my__name">
-                        <p>ユーザ画像</p>
+                    <div class="person__img">
+                        <img class="person__img--item" src="{{ asset('storage/users/' . basename($user_profile -> image))  }}" alt="ユーザ画像" />
                     </div>
                 </div>
-                <div class="my__comment">
-                    <input class="other-person__comment--text" type="text" placeholder="自分のコメント">
+                <div class="person__comment">
+                    <input class="person__comment--text" type="text" placeholder="自分のコメント">
                     <div class="comment__button">
                         <button>編集</button>
                         <button>削除</button>

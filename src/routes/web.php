@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProductController;
@@ -46,4 +47,4 @@ Route::get('/payment', [StripeController::class, 'payment'])->name('payment');
 Route::post('/charge', [StripeController::class, 'charge'])->name('charge');
 Route::get('/thanks', [StripeController::class, 'thanks'])->name('thanks');
 
-Route::get('/transaction',[ItemController::class, 'transaction'])->name('transaction');
+Route::get('/transaction/{item_id}',[TransactionController::class, 'index'])->name('transaction.index');

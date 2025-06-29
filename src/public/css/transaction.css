@@ -29,8 +29,14 @@
     margin-left: 3%;
 }
 
+.header__img--item {
+    width: 100%;
+    border-radius: 50%;
+}
+
 .transaction-header__logo {
-    width: 65%;
+    width: 62%;
+    margin-left: 3%;
     font-size: 1.5vw;
 }
 
@@ -56,12 +62,19 @@
 }
 
 .product-detail__img {
-    width: 12%;
-    margin-left: 3%;
+    width: 15%;
+    margin: 2% 0 2% 3%;
+}
+
+.product-detail__img--item{
+    width: 100%;
 }
 
 .product-detail__text {
-    width: 85%;
+    width: 83%;
+    margin-left: 2%;
+    font-size: 2.5vw;
+    font-weight: bold;
 }
 
 .transaction-comment {
@@ -69,16 +82,44 @@
 }
 
 .transaction-other-comment {
-    width: 50%;
+    margin: 5% 2%;
+    width: 48%;
 }
 
 .transaction-my-comment {
     width: 50%;
-    margin-top: 10%;
+    margin-top: 15%;
 }
 
 .comment__container {
     display: flex;
+}
+
+.my-comment__container {
+    display: flex;
+    justify-content: right;
+    margin-right: 20%;
+}
+
+.person__img {
+    width: 12%;
+}
+
+.person__img--item {
+    margin-left: 10%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.person__name {
+    margin-left: 3%;
+    font-size: 1.5vw;
+    transform: translateY(-20%);
+}
+
+.person__comment--text {
+    width: 80%;
+    height: 30px;
 }
 
 .transaction__image--item {
@@ -86,7 +127,7 @@
 }
 
 .transaction-message__space {
-    margin: 310px 0 15px 0;
+    margin: 202px 0 15px 0;
 }
 
 .transaction-message__space--text {
@@ -117,6 +158,9 @@
     cursor: pointer;
 }
 
-
+.comment__button {
+    margin: 5% 20% 0 0;
+    text-align: right;
+}
 
 
