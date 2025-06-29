@@ -45,3 +45,5 @@ Route::get('/checkout', [StripeController::class, 'checkout'])->name('checkout')
 Route::get('/payment', [StripeController::class, 'payment'])->name('payment');
 Route::post('/charge', [StripeController::class, 'charge'])->name('charge');
 Route::get('/thanks', [StripeController::class, 'thanks'])->name('thanks');
+
+Route::get('/transaction',[ItemController::class, 'transaction'])->name('transaction');

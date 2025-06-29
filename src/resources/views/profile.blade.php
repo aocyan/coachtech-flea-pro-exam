@@ -32,6 +32,9 @@
     <div class="nav__mylist">
         <a class="mylist-link" href="{{ route('mypage.check', ['tab' => 'buy']) }}">購入した商品</a>
     </div>
+    <div class="nav__mylist">
+        <a class="mylist-link" href="{{ route('mypage.check', ['tab' => 'buy']) }}">取引中の商品</a>
+    </div>
 </div>
 <div class="product__container">
     @if ($tab === 'sell' || $tab === 'buy')

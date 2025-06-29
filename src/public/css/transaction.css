@@ -1,0 +1,122 @@
+.container {
+    display: flex;
+}
+
+.left__box {
+    width: 15%;
+    background-color: #868686; 
+}
+
+.other_transaction--text {
+    text-align: center;
+    color: #fff;
+    font-size: 1.8vw;
+    font-weight: bold;
+    transform: translateY(-50%);
+}
+
+.right__box {
+    width: 85%;
+}
+
+.transaction-header {
+    display: flex;
+    border-bottom: 1px solid #000;
+}
+
+.transaction-header__img {
+    width: 12%;
+    margin-left: 3%;
+}
+
+.transaction-header__logo {
+    width: 65%;
+    font-size: 1.5vw;
+}
+
+.transaction-button {
+    width: 20%;
+    margin: 2% 0;
+}
+
+.transaction-button--text {
+    padding: 8% 13%;
+    border: none;
+    border-radius: 20px;
+    background-color: #FF8282;
+    color: #fff;
+    font-size: 1.2vw;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.product-detail {
+    display: flex;
+    border-bottom: 1px solid #000;
+}
+
+.product-detail__img {
+    width: 12%;
+    margin-left: 3%;
+}
+
+.product-detail__text {
+    width: 85%;
+}
+
+.transaction-comment {
+    display: flex;
+}
+
+.transaction-other-comment {
+    width: 50%;
+}
+
+.transaction-my-comment {
+    width: 50%;
+    margin-top: 10%;
+}
+
+.comment__container {
+    display: flex;
+}
+
+.transaction__image--item {
+    display: none;
+}
+
+.transaction-message__space {
+    margin: 310px 0 15px 0;
+}
+
+.transaction-message__space--text {
+    width: 70%;
+    padding-left: 5px;
+    height: 35px;
+    margin-left: 2%;
+}
+
+.transaction__image--button {
+    width: 10%;
+    padding: 1% 2%;
+    margin-left: 2%;
+    color: #FF5555;
+    border: 1px solid #FF5555;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.transaction-send__button {
+    width: 6%;
+    border: none;
+    background-color: #fff;
+}
+
+.send__image--item {
+    width: 100%;
+    cursor: pointer;
+}
+
+
+
+

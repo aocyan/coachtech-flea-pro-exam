@@ -120,4 +120,8 @@ class ItemController extends Controller
         
         return view('index', compact('products','mylistLikeProducts'));
     }
+
+    public function transaction() {
+        return view('transaction');
+    }
 }
