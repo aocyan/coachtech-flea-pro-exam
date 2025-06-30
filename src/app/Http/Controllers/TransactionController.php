@@ -61,6 +61,47 @@ class TransactionController extends Controller
             'image' => $path,
         ]);
 
-        return redirect()->route('transaction.index', ['item_id' => $item_id]);
+        return redirect() -> route('transaction.index', ['item_id' => $item_id]);
+    }
+
+    public function edit(Request $request, $item_id)
+    {
+        $comments = $request -> input('comment');
+
+        if($request -> has('revise_comment')) 
+        {
+            foreach($comments as $id => $comment_text)
+            {
+                $comment = Transaction::find($id);
+
+                if($comment)
+                {
+                    $comment -> update(['comment' => $comment_text]);
+                }
+            }
+        } elseif($request -> has('del_comment')) {
+
+            $comment_id = $request -> input('del_comment');
+
+            $comment = Transaction::find($comment_id);
+
+            if($comment)
+            {
+                $comment -> comment = null;
+                $comment -> save();
+            }
+        } elseif($request -> has('del_img')) {
+
+            $img_id = $request -> input('del_img');
+
+            $img = Transaction::find($img_id);
+
+            if($img) {
+                $img -> image = null;
+                $img -> save();
+            }
+        }
+
+        return redirect() -> route('transaction.index', ['item_id' => $item_id]); 
     }
 }

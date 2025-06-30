@@ -55,8 +55,12 @@
                     @endif
                 </div>
             @endforeach
+            <form action="{{ route('transaction.edit', ['item_id' => $item_id]) }}" method="post" enctype="multipart/form-data">
+            @csrf
+
             @foreach($user_comments as $user_comment)
                 <div class="transaction-my-comment">
+                    @if($user_comment -> comment || $user_comment -> image)
                     <div class="my-comment__container">
                         <div class="person__name">
                             <p>{{ $user -> name }}</p>
@@ -65,12 +69,13 @@
                             <img class="person__img--item" src="{{ asset('storage/users/' . basename($user_profile -> image))  }}" alt="ユーザ画像" />
                         </div>
                     </div>
+                    @endif
                     @if($user_comment -> comment)
                         <div class="person__comment">
-                            <textarea class="person__comment--text" type="text" readonly>{{ $user_comment -> comment }}</textarea>
+                            <textarea class="person__comment--text" type="text" name="comment[{{ $user_comment -> id }}]" >{{ $user_comment -> comment }}</textarea>
                             <div class="comment__button">
-                                <button class="comment__button--submit" type="submit" name="revise">編集</button>
-                                <button class="comment__button--submit" type="submit" name="del">削除</button>
+                                <button class="comment__button--submit" type="submit" name="revise_comment">編集</button>
+                                <button class="comment__button--submit" type="submit" name="del_comment" value="{{ $user_comment -> id }}">削除</button>
                             </div>
                         </div>
                     @endif
@@ -78,13 +83,13 @@
                         <div class="person__comment">
                             <img class="comment__img--item" src="{{ asset('storage/transactions/' . basename($user_comment -> image))  }}" alt="コメント画像" />
                             <div class="comment__button">
-                                <button class="comment__button--submit" type="submit" name="revise">編集</button>
-                                <button class="comment__button--submit" type="submit" name="del">削除</button>
+                                <button class="comment__button--submit" type="submit" name="del_img" value="{{ $user_comment -> id }}">削除</button>
                             </div>
                         </div>
                     @endif
                 </div>
             @endforeach
+            </form>
         </div>
         <form action="{{ route('transaction.store', ['item_id' => $item_id]) }}" method="post" enctype="multipart/form-data">
         @csrf
