@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use App\Models\Profile;
 use App\Models\User;
 use App\Models\Product;
@@ -18,13 +19,48 @@ class TransactionController extends Controller
         $product = Product::find($item_id);
         $product_user = User::find($product -> product_user_id);
         $product_user_profile = Profile::find($product_user -> id);
-     
+
+        $user_comments = Transaction::where('user_transaction_id', $user -> id)
+                        -> where('product_transaction_id', $product -> id)
+                        -> get();
+
+        $other_comments = Transaction::where('user_transaction_id', '!=', $user -> id)
+                        -> where('product_transaction_id', $product -> id)
+                        -> with(['user.profile'])
+                        -> get();
+ 
         return view('transaction', compact(
+            'item_id',
             'user',
             'user_profile',
             'product', 
             'product_user',
-            'product_user_profile'
+            'product_user_profile',
+            'user_comments',
+            'other_comments',
         ));
+    }
+
+    public function store(Request $request, $item_id)
+    {
+        $user = Auth::User();
+        $userId = $user -> id;
+
+        $path = null;
+        if($request -> hasFile('image')) 
+        {
+            $file = $request -> file('image');
+            $fileName = $file -> getClientOriginalName();
+            $path = $file -> storeAs('transactions', $fileName, 'public');
+        }
+
+        $comment = Transaction::create([     
+            'user_transaction_id' => $userId,
+            'product_transaction_id' => $item_id,       
+            'comment' => $request -> comment,
+            'image' => $path,
+        ]);
+
+        return redirect()->route('transaction.index', ['item_id' => $item_id]);
     }
 }

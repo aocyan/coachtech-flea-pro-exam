@@ -28,12 +28,18 @@ class User extends Authenticatable
         return $this->hasMany(Product::class,'product_user_id','purchaser_user_id');
     }
 
-    public function comments() {
+    public function comments() 
+    {
         return $this->hasMany(Comment::class,'user_comment_id');
     }
 
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function transactions() 
+    {
+        return $this->hasMany(Transaction::class,'user_transaction_id');
     }
 }

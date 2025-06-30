@@ -48,3 +48,4 @@ Route::post('/charge', [StripeController::class, 'charge'])->name('charge');
 Route::get('/thanks', [StripeController::class, 'thanks'])->name('thanks');
 
 Route::get('/transaction/{item_id}',[TransactionController::class, 'index'])->name('transaction.index');
+Route::post('/transaction/{item_id}/store', [TransactionController::class, 'store'])->name('transaction.store');

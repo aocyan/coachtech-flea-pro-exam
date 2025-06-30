@@ -27,6 +27,7 @@
 .transaction-header__img {
     width: 12%;
     margin-left: 3%;
+    transform: translateY(10%);
 }
 
 .header__img--item {
@@ -42,12 +43,12 @@
 
 .transaction-button {
     width: 20%;
-    margin: 2% 0;
+    margin: 4% 0;
 }
 
-.transaction-button--text {
+.transaction__link--button {
     padding: 8% 13%;
-    border: none;
+    text-decoration: none;
     border-radius: 20px;
     background-color: #FF8282;
     color: #fff;
@@ -77,10 +78,6 @@
     font-weight: bold;
 }
 
-.transaction-comment {
-    display: flex;
-}
-
 .transaction-other-comment {
     margin: 5% 2%;
     width: 48%;
@@ -88,7 +85,8 @@
 
 .transaction-my-comment {
     width: 50%;
-    margin-top: 15%;
+    margin-left: 50%;
+    margin-top: 10%;
 }
 
 .comment__container {
@@ -130,7 +128,7 @@
 }
 
 .transaction-message__space {
-    margin: 202px 0 15px 0;
+    margin: 71% 0 30px 0;
 }
 
 .transaction-message__space--text {
@@ -173,6 +171,12 @@
     border: none;
     background-color: #fff;
     cursor: pointer;
+    transform: translateY(-50%);
 }
 
+.comment__img--item {
+    margin-top: 10px;
+    margin-left: 15%;
+    width: 30%;
+}
 

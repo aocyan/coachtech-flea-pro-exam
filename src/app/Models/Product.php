@@ -46,4 +46,9 @@ class Product extends Model
     {
         return $this->hasMany(Like::class);
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'product_transaction_id');
+    }
 }
