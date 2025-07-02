@@ -12,7 +12,25 @@
     color: #fff;
     font-size: 1.8vw;
     font-weight: bold;
-    transform: translateY(-50%);
+}
+
+.other-transaction__link {
+    width: 100%;
+    margin-top: 10%;
+    margin-left: 13%;
+}
+
+.other-transaction__link--button {
+    display: inline-block;
+    width: 75%;
+    text-align: center;
+    padding: 5% 5%;
+    font-size: 1vw;
+    border: 1px solid #000;
+    border-radius: 10px;
+    color: #000;
+    background-color: #EEEFEB;
+    text-decoration: none;
 }
 
 .right__box {
@@ -27,6 +45,7 @@
 .transaction-header__img {
     width: 12%;
     margin-left: 3%;
+    margin-bottom: 10px;
     transform: translateY(10%);
 }
 
@@ -48,7 +67,8 @@
 
 .transaction__link--button {
     padding: 8% 13%;
-    text-decoration: none;
+    border: none;
+    outline: none;
     border-radius: 20px;
     background-color: #FF8282;
     color: #fff;
@@ -180,3 +200,67 @@
     width: 30%;
 }
 
+.modal-content {
+    display: none;
+    width: 50%;
+    padding: 2%;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #FDFCE6;
+    position: absolute;
+    left: 25%;
+    top: 60%;
+}
+
+.modal-title {
+    padding-bottom: 5%;
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #000;
+}
+
+.modal__text--sentence {
+    font-size: 1.2vw;
+}
+
+.evaluation__container {
+    padding-bottom: 10%;
+    border-bottom: 1px solid #000;
+    text-align: center;
+}
+
+.category__check {
+    display: none;
+}
+
+.category__button {
+    cursor: pointer;
+}
+
+.category__button::before {
+    content: "☆";
+    font-size: 3rem;
+    color: #ccc;
+    transition: color 0.2s;
+}
+
+.category__button.active::before {
+    content: "★";
+    color: gold; 
+}
+
+.modal__link {
+    margin-top: 10%;
+    margin-right: 3%;
+    text-align: right;
+}
+
+.modal__link--button {
+    padding: 2% 5%;
+    text-decoration: none;
+    text-align: right;
+    color: #fff;
+    border-radius: 10px;
+    background-color: #FF5555;
+}

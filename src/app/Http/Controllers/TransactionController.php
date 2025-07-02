@@ -14,11 +14,31 @@ class TransactionController extends Controller
     public function index(Request $request,$item_id) 
     {
         $user = Auth::user();
+        $user_id = $user -> id;
+
         $user_profile = Profile::find($user -> id);
 
         $product = Product::find($item_id);
+
+        if($user -> id !== $product -> product_user_id){
+            $product -> transaction_user_id = $user -> id;
+            $product -> seller_user_id = null;
+            $product -> save();
+        }
+        
         $product_user = User::find($product -> product_user_id);
         $product_user_profile = Profile::find($product_user -> id);
+
+        $products = Product::where('transaction_user_id', $user_id)
+                        -> orWhere('seller_user_id', $user_id)
+                        -> get();
+
+        $transaction_user_id = Product::where('transaction_user_id', $product->transaction_user_id)
+                                    -> first()
+                                    -> transaction_user_id;
+    
+        $transaction_user = User::find($transaction_user_id);
+        $transaction_user_profile = Profile::find($transaction_user_id);
 
         $user_comments = Transaction::where('user_transaction_id', $user -> id)
                         -> where('product_transaction_id', $product -> id)
@@ -28,14 +48,24 @@ class TransactionController extends Controller
                         -> where('product_transaction_id', $product -> id)
                         -> with(['user.profile'])
                         -> get();
+            
+        if($user -> id === $product_user -> id)
+        {
+            $product->update([
+                'seller_user_id' => $user->id,
+            ]);
+        }
  
         return view('transaction', compact(
             'item_id',
             'user',
             'user_profile',
             'product', 
+            'products',
             'product_user',
             'product_user_profile',
+            'transaction_user',
+            'transaction_user_profile',
             'user_comments',
             'other_comments',
         ));
@@ -44,7 +74,9 @@ class TransactionController extends Controller
     public function store(Request $request, $item_id)
     {
         $user = Auth::User();
-        $userId = $user -> id;
+        $user_id = $user -> id;
+
+        $product = Product::find($item_id);
 
         $path = null;
         if($request -> hasFile('image')) 
@@ -55,17 +87,34 @@ class TransactionController extends Controller
         }
 
         $comment = Transaction::create([     
-            'user_transaction_id' => $userId,
+            'user_transaction_id' => $user_id,
             'product_transaction_id' => $item_id,       
-            'comment' => $request -> comment,
+            'comment' => $request->comment,
             'image' => $path,
         ]);
+        
+        // 該当するproduct_transaction_idを持つすべてのコメントをカウント
+        $seller_comment_count = Transaction::where('product_transaction_id', $item_id)
+            ->where('user_transaction_id', $product->product_user_id)
+            ->count();
+        
+        $transaction_comment_count = Transaction::where('product_transaction_id', $item_id)
+            ->where('user_transaction_id', '!=', $product->product_user_id)
+            ->count();
+        
+        // 今作ったコメントにそれぞれのcountをセット
+        $comment->seller_comment_count = $seller_comment_count;
+        $comment->transaction_comment_count = $transaction_comment_count;
+        $comment->save();
 
         return redirect() -> route('transaction.index', ['item_id' => $item_id]);
     }
 
     public function edit(Request $request, $item_id)
     {
+        $user = Auth::User();
+        $product = Product::find($item_id);
+
         $comments = $request -> input('comment');
 
         if($request -> has('revise_comment')) 
@@ -88,7 +137,14 @@ class TransactionController extends Controller
             if($comment)
             {
                 $comment -> comment = null;
-                $comment -> save();
+
+                if($user -> id === $product -> product_user_id){
+                    $comment -> seller_comment_count =  ((int)$comment -> seller_comment_count) -1;
+                    $comment -> save();
+                } else {
+                    $comment -> transaction_comment_count =  ((int)$comment -> transaction_comment_count) -1;
+                    $comment -> save();
+                }
             }
         } elseif($request -> has('del_img')) {
 

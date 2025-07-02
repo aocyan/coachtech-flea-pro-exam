@@ -14,6 +14,8 @@ class Transaction extends Model
         'product_transaction_id',
         'comment',
         'image',
+        'seller_comment_count',
+        'transaction_comment_count',
     ];
 
     public function user()

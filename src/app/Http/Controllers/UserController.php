@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Models\Transaction;
 use App\Models\Product;
 use App\Models\Profile;
 use App\Models\User;
@@ -134,8 +135,22 @@ class UserController extends Controller
 
         $user = Auth()->user();
 
-        $products = Product::select('id', 'name', 'image','sold_at')->get();
+        $products = Product::select('id', 'product_user_id', 'transaction_user_id', 'name', 'image','sold_at')->get();
+
+        foreach($products as $product)
+        {
+            if($user -> id === $product -> product_user_id)
+            {
+                $product_user = User::find($user -> id);
+            }
+        }
+
         $profile = $user->profile;
+
+        $new_transaction = Transaction::orderBy('created_at', 'desc')->first();
+            
+        $transaction_count = $new_transaction -> transaction_comment_count;
+        $seller_count = $new_transaction -> seller_comment_count;
 
         if ($tab === 'sell') 
         {
@@ -145,11 +160,32 @@ class UserController extends Controller
         {
             $products = Product::where('purchaser_user_id', $user->id)->get();
         }
+        elseif ($tab === 'transaction')
+        {           
+            $products = Product::where(function ($query) use ($user) {
+                $query -> where('product_user_id', $user->id)
+                       -> whereNotNull('transaction_user_id');
+            })
+            -> orWhere(function ($query) use ($user) {
+                $query -> where('product_user_id', '!=', $user->id)
+                       -> where('transaction_user_id', $user->id)
+                       -> whereNotNull('transaction_user_id');
+            })
+            -> get(); 
+        }
         else 
         {
             $products = collect(); 
         }
 
-		return view('profile', compact('products','user','profile','tab'));
+		return view('profile', compact(
+            'products', 
+            'user', 
+            'profile', 
+            'tab', 
+            'transaction_count',
+            'seller_count',
+            'product_user',
+        ));
     }
 }

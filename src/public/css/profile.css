@@ -114,10 +114,12 @@
 
 .nav__recommend {
     margin-left: 10%;
+    transform: translateY(-15%);
 }
 
 .nav__mylist {
     margin-left: 5%;
+    transform: translateY(-15%);
 }
 
 .recommend-link {
@@ -132,7 +134,7 @@
     font-size: 2vw;
     font-weight: bold;
     text-decoration: none;
-    color: #FF5555;
+    color: #000;
     cursor: pointer;
 }
 
@@ -180,4 +182,48 @@
     border-radius: 50%;
     color: #fff;
     background-color: #FF5555;
+}
+
+.nav__transaction {
+    margin-left: 5%;
+    width: 20%;
+    transform: translateY(-37%);
+}
+
+.transaction-link {
+    font-size: 2vw;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+
+.selling-products {
+    margin-left: 5%;
+    display: inline-block;
+    width: 15%;
+    height: 100%;
+    line-height: 140%;
+    border-radius: 50%;
+    background-color: #FF5555;
+    color: #fff;
+    text-align: center;    
+}
+
+a.active {
+    color: #FF5555;
+    font-weight: bold;
+}
+
+.selling-products__count {
+    margin-left: 5%;
+    display: inline-block;
+    width: 14%;
+    height: 11%;
+    line-height: 140%;
+    border-radius: 50%;
+    background-color: #FF5555;
+    color: #fff;
+    text-align: center;
+    transform: translateY(140%);
 }

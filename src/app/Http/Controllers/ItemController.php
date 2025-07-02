@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CommentRequest;
+use App\Models\Transaction;
 use App\Models\Like;
 use App\Models\Comment;
 use App\Models\Category;
@@ -19,6 +20,17 @@ class ItemController extends Controller
         $user = Auth::user();
 
         $products = Product::select('id', 'name', 'product_user_id','image','sold_at')->get();
+
+        if (Transaction::count() === 0) {
+            $transaction = new Transaction();
+            $transaction -> user_transaction_id = null;
+            $transaction -> product_transaction_id = null;
+            $transaction -> comment = null;
+            $transaction -> image = null;
+            (int)$transaction -> seller_comment_count = 0;
+            (int)$transaction -> transaction_comment_count = 0;
+            $transaction -> save();
+        }
 
         if ($tab === 'mylist') {
             if($user) {
@@ -119,9 +131,5 @@ class ItemController extends Controller
         }
         
         return view('index', compact('products','mylistLikeProducts'));
-    }
-
-    public function transaction() {
-        return view('transaction');
     }
 }
