@@ -16,7 +16,9 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_user_id')->nullable();
-            $table->unsignedBigInteger('purchaser_user_id')->nullable();         
+            $table->unsignedBigInteger('purchaser_user_id')->nullable();
+            $table->unsignedBigInteger('transaction_user_id')->nullable();
+            $table->unsignedBigInteger('seller_user_id')->nullable();         
             $table->string('name',255);
             $table->string('brand',255)->nullable();
             $table->integer('price');
@@ -29,6 +31,8 @@ class CreateProductsTable extends Migration
 
             $table->foreign('product_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('purchaser_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('transaction_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('seller_user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

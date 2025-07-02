@@ -15,10 +15,12 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_transaction_id');
-            $table->unsignedBigInteger('product_transaction_id');
+            $table->unsignedBigInteger('user_transaction_id')->nullable();
+            $table->unsignedBigInteger('product_transaction_id')->nullable();
             $table->string('comment',255)->nullable()->default('');
             $table->string('image')->nullable()->default('');
+            $table->string('seller_comment_count')->nullable()->default('');
+            $table->string('transaction_comment_count')->nullable()->default('');
             $table->timestamps();
 
             $table->foreign('user_transaction_id')->references('id')->on('users')->onDelete('cascade');
