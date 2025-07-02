@@ -20,6 +20,9 @@ class CreateProfilesTable extends Migration
             $table->string('postal',8)->nullable()->default('');
             $table->string('address')->nullable()->default('');
             $table->string('building')->nullable()->default('');
+            $table->string('evaluation')->nullable()->default('');
+            $table->string('evaluation_count')->nullable()->default('');
+            $table->string('before_evaluation_count')->nullable()->default('');
             $table->timestamps();
 
             $table->foreign('profile_user_id')->references('id')->on('users')->onDelete('cascade');

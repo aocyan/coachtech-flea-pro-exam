@@ -6,14 +6,16 @@
 
 @section('content')
 <div class="container">
-    <div class="left__box">
+    <div class="left__box">       
         <div class="other_transaction">
             <p class="other_transaction--text">その他の取引</p>
         </div>
         @foreach($products as $product)
+            @if(($new_count !== $before_count) || (!empty($product -> transaction_user_id)))
             <div class="other-transaction__link">
                 <a class="other-transaction__link--button" href="{{ route('transaction.index', $product->id) }}"">{{ $product -> name }}</a>
             </div>
+            @endif
         @endforeach
     </div>
     <div class="right__box">
@@ -35,7 +37,7 @@
             @endif
             @if($user -> id !== $product -> product_user_id)
             <div class="transaction-button">
-                <button type="button" class="transaction__link--button" id="completion">取引を完了する</button>
+                <button  class="transaction__link--button" type="button" id="completion">取引を完了する</button>
             </div>
             @endif
         </div>
@@ -118,6 +120,9 @@
     </div>
 </div>
 
+@if($user -> id !== $product -> product_user_id)
+<form action="{{ route('transaction.evaluation', ['item_id' => $item_id]) }}" method="post" >
+@csrf
 <div class="modal-content" id="message">
     <div class="modal-header">
         <h3 class="modal-title">取引が完了しました。</h5>
@@ -126,27 +131,60 @@
         <p class="modal__text--sentence">今回の取引相手はどうでしたか？</p>
     </div>
     <div class="evaluation__container">
-        <input class="category__check" type="checkbox" id="evaluation_1" value="1" />
+        <input class="category__check" type="radio" name="evaluation" id="evaluation_1" value="1" />
         <label class="category__button" for="evaluation_1" data-index="0"></label>
-        <input class="category__check" type="checkbox" id="evaluation_2" value="2" />
+        <input class="category__check" type="radio" name="evaluation" id="evaluation_2" value="2" />
         <label class="category__button" for="evaluation_2" data-index="1"></label>
-        <input class="category__check" type="checkbox" id="evaluation_3" value="3" />
+        <input class="category__check" type="radio" name="evaluation" id="evaluation_3" value="3" />
         <label class="category__button" for="evaluation_3" data-index="2"></label>
-        <input class="category__check" type="checkbox" id="evaluation_4" value="4" />
+        <input class="category__check" type="radio" name="evaluation" id="evaluation_4" value="4" />
         <label class="category__button" for="evaluation_4" data-index="3"></label>
-        <input class="category__check" type="checkbox" id="evaluation_5" value="5" />
+        <input class="category__check" type="radio" name="evaluation" id="evaluation_5" value="5" />
         <label class="category__button" for="evaluation_5" data-index="4"></label>
     </div>
     <div class="modal__link">
-        <a class="modal__link--button" href="{{ route('purchase.index', ['item_id'=> $product->id]) }}">送信する</a>
+        <button class="modal__link--button" type="submit">送信する</button>
     </div>
 </div>
+</form>
+@endif
 
+@if(($user -> id === $product -> product_user_id) && ($new_count === $before_count))
+    <form action="{{ route('transaction.seller', ['item_id' => $item_id]) }}" method="post" >
+    @csrf
+    <div class="modal-content__seller">
+        <div class="modal-header">
+            <h3 class="modal-title">取引が完了しました。</h5>
+        </div>
+        <div class="modal__text">
+            <p class="modal__text--sentence">今回の取引相手はどうでしたか？</p>
+        </div>
+        <div class="evaluation__container">
+            <input class="category__check" type="radio" name="evaluation" id="evaluation_1" value="1" />
+            <label class="category__button" for="evaluation_1" data-index="0"></label>
+            <input class="category__check" type="radio" name="evaluation" id="evaluation_2" value="2" />
+            <label class="category__button" for="evaluation_2" data-index="1"></label>
+            <input class="category__check" type="radio" name="evaluation" id="evaluation_3" value="3" />
+            <label class="category__button" for="evaluation_3" data-index="2"></label>
+            <input class="category__check" type="radio" name="evaluation" id="evaluation_4" value="4" />
+            <label class="category__button" for="evaluation_4" data-index="3"></label>
+            <input class="category__check" type="radio" name="evaluation" id="evaluation_5" value="5" />
+            <label class="category__button" for="evaluation_5" data-index="4"></label>
+        </div>
+        <div class="modal__link">
+            <button class="modal__link--button" type="submit">送信する</button>
+        </div>
+    </div>
+    </form>
+@endif
+
+@if($user -> id !== $product -> product_user_id)
 <script>
     document.getElementById("completion").addEventListener("click", function () {
         document.getElementById("message").style.display = "block";
     });
 </script>
+@endif
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {

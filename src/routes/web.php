@@ -50,3 +50,5 @@ Route::get('/thanks', [StripeController::class, 'thanks'])->name('thanks');
 Route::get('/transaction/{item_id}',[TransactionController::class, 'index'])->name('transaction.index');
 Route::post('/transaction/{item_id}/store', [TransactionController::class, 'store'])->name('transaction.store');
 Route::post('/transaction/{item_id}/edit', [TransactionController::class, 'edit'])->name('transaction.edit');
+Route::post('/transaction/{item_id}/evaluation', [TransactionController::class, 'evaluation'])->name('transaction.evaluation');
+Route::post('/transaction/{item_id}/seller', [TransactionController::class, 'seller'])->name('transaction.seller');

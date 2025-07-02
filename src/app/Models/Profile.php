@@ -15,6 +15,9 @@ class Profile extends Model
         'postal',
         'address',
         'building',
+        'evaluation',
+        'evaluation_count',
+        'before_evaluation_count',
     ];
 
     public function user()

@@ -25,6 +25,18 @@
     <input class="user__name" type="text" value="{{ $user->name }}" readonly />
     <a class="user__profile" href="{{ route('user.edit') }}">プロフィールを編集</a>
 </div>
+<div class="evaluation__container">
+        <input class="category__check" type="checkbox" id="evaluation_1" value="1" />
+        <label class="category__button" for="evaluation_1" data-index="0"></label>
+        <input class="category__check" type="checkbox" id="evaluation_2" value="2" />
+        <label class="category__button" for="evaluation_2" data-index="1"></label>
+        <input class="category__check" type="checkbox" id="evaluation_3" value="3" />
+        <label class="category__button" for="evaluation_3" data-index="2"></label>
+        <input class="category__check" type="checkbox" id="evaluation_4" value="4" />
+        <label class="category__button" for="evaluation_4" data-index="3"></label>
+        <input class="category__check" type="checkbox" id="evaluation_5" value="5" />
+        <label class="category__button" for="evaluation_5" data-index="4"></label>
+</div>
 <div class="main-nav">
     <div class="nav__recommend">
         <a class="recommend-link {{ request('tab') === 'sell' ? 'active' : '' }}" 
@@ -64,6 +76,7 @@
         @endforeach
     @elseif ($tab === 'transaction')
         @foreach ($products as $product)
+            @if(($new_count !== $before_count) || (!empty($product -> transaction_user_id)))
             <div class="product-item">
                 <a class="product-item__link" href="{{ route('transaction.index', $product->id) }}">
                         @if( empty($user -> id !== $product_user -> id) )
@@ -77,9 +90,22 @@
                     </div>
                 </a>
             </div>
+            @endif
         @endforeach
     @endif
 </div>
 
+<script>
+    const rating = @json($user_evaluation);
+    const labels = document.querySelectorAll('.category__button');
+
+    labels.forEach((label, index) => {
+        if (index < Math.round(rating)) {
+            label.classList.add('active');
+        } else {
+            label.classList.remove('active');
+        }
+    });
+</script>
 
 @endsection

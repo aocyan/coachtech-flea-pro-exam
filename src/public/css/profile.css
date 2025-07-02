@@ -105,6 +105,27 @@
     color: #FF5555;
 }
 
+.evaluation__container {
+    margin-left: 31%;
+    transform: translateY(-60%);
+}
+
+.category__check {
+    display: none;
+}
+
+.category__button::before {
+    content: "☆";
+    font-size: 4vw;
+    color: #D9D9D9;
+    transition: color 0.2s;
+}
+
+.category__button.active::before {
+    content: "★";
+    color: gold;
+}
+
 .main-nav {
     width: 100%;
     display: flex;

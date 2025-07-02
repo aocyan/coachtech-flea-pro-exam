@@ -35,6 +35,9 @@ class UserController extends Controller
             'postal' => '',
             'address' => '',
             'building' => '',
+            'evaluation' => '0',
+            'evaluation_count' => '0',
+            'before_evaluation_count' => '0',
         ]);
 
         session(['user_id' => $userId, 'user_name' => $user->name, 'profile' => $profile]);
@@ -142,10 +145,14 @@ class UserController extends Controller
             if($user -> id === $product -> product_user_id)
             {
                 $product_user = User::find($user -> id);
+                $product_user_profile = Profile::find($user -> id);
+                $new_count = $product_user_profile -> evaluation_count;
+                $before_count = $product_user_profile -> before_evaluation_count;
             }
         }
 
-        $profile = $user->profile;
+        $profile = $user -> profile;
+        $user_evaluation = $profile -> evaluation;
 
         $new_transaction = Transaction::orderBy('created_at', 'desc')->first();
             
@@ -186,6 +193,9 @@ class UserController extends Controller
             'transaction_count',
             'seller_count',
             'product_user',
+            'new_count',
+            'before_count',
+            'user_evaluation',
         ));
     }
 }

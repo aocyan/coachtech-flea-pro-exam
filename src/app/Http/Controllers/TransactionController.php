@@ -19,6 +19,17 @@ class TransactionController extends Controller
         $user_profile = Profile::find($user -> id);
 
         $product = Product::find($item_id);
+        $product_user_id = $product -> product_user_id;
+
+        $before_count = $user_profile -> before_evaluation_count;
+        $new_count = $user_profile -> evaluation_count;
+
+        if($user_id === $product_user_id && $before_count < $new_count)
+        {
+            $before_count++ ;
+            $user_profile -> before_evaluation_count = $before_count;
+            $user_profile -> save();
+        }
 
         if($user -> id !== $product -> product_user_id){
             $product -> transaction_user_id = $user -> id;
@@ -68,6 +79,8 @@ class TransactionController extends Controller
             'transaction_user_profile',
             'user_comments',
             'other_comments',
+            'new_count',
+            'before_count',
         ));
     }
 
@@ -93,7 +106,6 @@ class TransactionController extends Controller
             'image' => $path,
         ]);
         
-        // 該当するproduct_transaction_idを持つすべてのコメントをカウント
         $seller_comment_count = Transaction::where('product_transaction_id', $item_id)
             ->where('user_transaction_id', $product->product_user_id)
             ->count();
@@ -102,7 +114,6 @@ class TransactionController extends Controller
             ->where('user_transaction_id', '!=', $product->product_user_id)
             ->count();
         
-        // 今作ったコメントにそれぞれのcountをセット
         $comment->seller_comment_count = $seller_comment_count;
         $comment->transaction_comment_count = $transaction_comment_count;
         $comment->save();
@@ -160,4 +171,61 @@ class TransactionController extends Controller
 
         return redirect() -> route('transaction.index', ['item_id' => $item_id]); 
     }
+
+    public function evaluation(Request $request, $item_id)
+    {
+        $product = Product::find($item_id);
+        $product_user_id = $product -> product_user_id;
+    
+        $product_user_profile = Profile::find($product_user_id);
+
+        $evaluation = $request -> input('evaluation');
+
+        $now_evaluation_score = $product_user_profile -> evaluation;
+        $count = $product_user_profile -> evaluation_count;
+        $count++;
+
+        $now_evaluation_score += $evaluation;
+        $new_evaluation_average = round($now_evaluation_score / $count, 1);
+
+        $product_user_profile -> evaluation_count = $count;
+        $product_user_profile -> evaluation = $new_evaluation_average;
+
+        $product_user_profile -> save();
+
+        $product -> transaction_user_id = null;
+        $product -> save(); 
+
+        return redirect() -> route('product.index');       
+    }
+
+    public function seller(Request $request, $item_id)
+    {
+        $product = Product::find($item_id);
+        $transaction_user_id = $product -> transaction_user_id;
+    
+        $transaction_user_profile = Profile::find($transaction_user_id);
+
+        $evaluation = $request -> input('evaluation');
+
+        $now_evaluation_score = $transaction_user_profile -> evaluation;
+        $now_count = $transaction_user_profile -> evaluation_count;
+        $now_count++;
+
+        $before_count = $transaction_user_profile -> before_evaluation_count;
+        $before_count++;
+
+        $now_evaluation_score += $evaluation;
+        $new_evaluation_average = round($now_evaluation_score / $now_count, 1);
+
+        $transaction_user_profile -> evaluation_count = $now_count;
+        $transaction_user_profile -> before_evaluation_count = $before_count;
+        $transaction_user_profile -> evaluation = $new_evaluation_average;
+
+        $transaction_user_profile -> save();
+
+        return redirect() -> route('product.index');       
+    }
 }
+
+
