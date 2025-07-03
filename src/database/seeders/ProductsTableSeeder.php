@@ -72,7 +72,7 @@ class ProductsTableSeeder extends Seeder
             'description' => '高速で信頼性の高いハードディスク',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'product_user_id' => User::find(2)->id,
+            'product_user_id' => User::find(1)->id,
         ]);
 
         $categories = ['家電'];
@@ -97,7 +97,7 @@ class ProductsTableSeeder extends Seeder
             'description' => '新鮮な玉ねぎ3束のセット',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'product_user_id' => User::find(3)->id,
+            'product_user_id' => User::find(1)->id,
         ]);
 
         $categories = ['キッチン'];
@@ -122,7 +122,7 @@ class ProductsTableSeeder extends Seeder
             'description' => 'クラシックなデザインの革靴',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'product_user_id' => User::find(4)->id,
+            'product_user_id' => User::find(1)->id,
         ]);
 
         $categories = ['ファッション','メンズ'];
@@ -147,7 +147,7 @@ class ProductsTableSeeder extends Seeder
             'description' => '高性能なノートパソコン',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'product_user_id' => User::find(5)->id,
+            'product_user_id' => User::find(1)->id,
         ]);
 
         $categories = ['家電','ゲーム'];
@@ -172,7 +172,7 @@ class ProductsTableSeeder extends Seeder
             'description' => '高音質のレコーディング用マイク',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'product_user_id' => User::find(6)->id,
+            'product_user_id' => User::find(2)->id,
         ]);
 
         $categories = ['家電','おもちゃ'];
@@ -197,7 +197,7 @@ class ProductsTableSeeder extends Seeder
             'description' => 'おしゃれなショルダーバッグ',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'product_user_id' => User::find(7)->id,
+            'product_user_id' => User::find(2)->id,
         ]);
 
         $categories = ['ファッション','レディース'];
@@ -222,7 +222,7 @@ class ProductsTableSeeder extends Seeder
             'description' => '使いやすいタンブラー',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'product_user_id' => User::find(8)->id,
+            'product_user_id' => User::find(2)->id,
         ]);
 
         $categories = ['メンズ','スポーツ'];
@@ -247,7 +247,7 @@ class ProductsTableSeeder extends Seeder
             'description' => '手動のコーヒーミル',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'product_user_id' => User::find(9)->id,
+            'product_user_id' => User::find(2)->id,
         ]);
 
         $categories = ['インテリア'];
@@ -272,7 +272,7 @@ class ProductsTableSeeder extends Seeder
             'description' => '便利なメイクアップセット',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'product_user_id' => User::find(10)->id,
+            'product_user_id' => User::find(2)->id,
         ]);
 
         $categories = ['レディース','コスメ'];
