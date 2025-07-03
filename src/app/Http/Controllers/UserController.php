@@ -137,35 +137,32 @@ class UserController extends Controller
         $tab = $request->query('tab', 'default');
 
         $user = Auth()->user();
+        $product_user = User::find($user -> id);
+        $product_user_profile = Profile::find($user -> id);
 
-        $products = Product::select('id', 'product_user_id', 'transaction_user_id', 'name', 'image', 'sold_at')
-                    ->with('transactions')
-                    ->get();
-
-foreach ($products as $product) {
-    if ($user->id === $product->product_user_id) {
-        $product_user = User::find($user->id);
-        $product_user_profile = Profile::find($user->id);
-        $new_count = $product_user_profile->evaluation_count;
-        $before_count = $product_user_profile->before_evaluation_count;
-    }
-
-    // 最新の取引を取得
-    $latest_transaction = $product->transactions()->latest()->first();
-
-    // コメント数を設定
-    if ($latest_transaction) {
-        $product->transaction_comment_individual = $latest_transaction->transaction_comment_count;
-        $product->seller_comment_individual = $latest_transaction->seller_comment_count;
-    } else {
-        // 取引がない場合、コメント数は0
-        $product->transaction_comment_individual = 0;
-        $product->seller_comment_individual = 0;
-    }
-}
+        $new_count = $product_user_profile -> evaluation_count;
+        $before_count = $product_user_profile -> before_evaluation_count;
 
         $profile = $user -> profile;
         $user_evaluation = $profile -> evaluation;
+
+
+        $products = Product::select('id', 'product_user_id', 'transaction_user_id', 'name', 'image','sold_at')
+                        -> with('transactions')
+                        -> get();
+
+        foreach($products as $product)
+        {
+            $latest_transaction = $product -> transactions() 
+                                           -> latest()
+                                           -> first(); 
+
+            if( $latest_transaction )
+            {
+                $transaction_comment_individual = $latest_transaction -> transaction_comment_count;
+                $seller_comment_individual = $latest_transaction -> seller_comment_count;
+            } 
+        }
 
 
         $total_transactions = Transaction::all();
@@ -177,7 +174,6 @@ foreach ($products as $product) {
             $transaction_count += $total_transaction->transaction_comment_count;
             $seller_count += $total_transaction->seller_comment_count;
         }
-
 
         if ($tab === 'sell') 
         {

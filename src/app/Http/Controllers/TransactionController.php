@@ -108,12 +108,14 @@ class TransactionController extends Controller
         ]);
         
         $seller_comment_count = Transaction::where('product_transaction_id', $item_id)
-            ->where('user_transaction_id', $product->product_user_id)
-            ->count();
+            -> where('user_transaction_id', $product->product_user_id)
+            -> whereNotNull('comment')
+            -> count();
         
         $transaction_comment_count = Transaction::where('product_transaction_id', $item_id)
-            ->where('user_transaction_id', '!=', $product->product_user_id)
-            ->count();
+            -> where('user_transaction_id', '!=', $product->product_user_id)
+            -> whereNotNull('comment')
+            -> count();
         
         $comment->seller_comment_count = $seller_comment_count;
         $comment->transaction_comment_count = $transaction_comment_count;
