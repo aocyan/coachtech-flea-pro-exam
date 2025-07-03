@@ -80,9 +80,9 @@
             <div class="product-item">
                 <a class="product-item__link" href="{{ route('transaction.index', $product->id) }}">
                         @if( empty($user -> id !== $product_user -> id) )
-                        <span class="selling-products__count">{{ $seller_comment_individual }}</span>
+                        <span class="selling-products__count">{{ $seller_comment_individual ? $seller_comment_individual->seller_comment_count : '0' }}</span>
                         @elseif( empty($user -> id === $product_user -> id) )
-                        <span class="selling-products__count">{{ $transaction_comment_individual }}</span>
+                        <span class="selling-products__count">{{ $transaction_comment_individual ? $transaction_comment_individual->transaction_comment_count : '0' }}</span>
                         @endif
                     <img class="product__image" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />
                     <div class="product__text">

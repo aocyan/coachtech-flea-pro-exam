@@ -152,10 +152,14 @@ class UserController extends Controller
                 $before_count = $product_user_profile -> before_evaluation_count;
             }
 
-            foreach( $product -> transactions as $transaction)
+            $latest_transaction = $product -> transactions() 
+                                           -> latest()
+                                           -> first(); 
+
+            if( $latest_transaction )
             {
-                $transaction_comment_individual = $transaction ->transaction_comment_count;
-                $seller_comment_individual = $transaction ->seller_comment_count;
+                $transaction_comment_individual = $latest_transaction -> transaction_comment_count;
+                $seller_comment_individual = $latest_transaction -> seller_comment_count;
             }
         }
 
@@ -172,8 +176,6 @@ class UserController extends Controller
             $transaction_count += $total_transaction->transaction_comment_count;
             $seller_count += $total_transaction->seller_comment_count;
         }
-
-
 
 
         if ($tab === 'sell') 
