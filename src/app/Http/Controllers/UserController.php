@@ -138,30 +138,31 @@ class UserController extends Controller
 
         $user = Auth()->user();
 
-        $products = Product::select('id', 'product_user_id', 'transaction_user_id', 'name', 'image','sold_at')
-                        -> with('transactions')
-                        -> get();
+        $products = Product::select('id', 'product_user_id', 'transaction_user_id', 'name', 'image', 'sold_at')
+                    ->with('transactions')
+                    ->get();
 
-        foreach($products as $product)
-        {
-            if($user -> id === $product -> product_user_id)
-            {
-                $product_user = User::find($user -> id);
-                $product_user_profile = Profile::find($user -> id);
-                $new_count = $product_user_profile -> evaluation_count;
-                $before_count = $product_user_profile -> before_evaluation_count;
-            }
+foreach ($products as $product) {
+    if ($user->id === $product->product_user_id) {
+        $product_user = User::find($user->id);
+        $product_user_profile = Profile::find($user->id);
+        $new_count = $product_user_profile->evaluation_count;
+        $before_count = $product_user_profile->before_evaluation_count;
+    }
 
-            $latest_transaction = $product -> transactions() 
-                                           -> latest()
-                                           -> first(); 
+    // 最新の取引を取得
+    $latest_transaction = $product->transactions()->latest()->first();
 
-            if( $latest_transaction )
-            {
-                $transaction_comment_individual = $latest_transaction -> transaction_comment_count;
-                $seller_comment_individual = $latest_transaction -> seller_comment_count;
-            }
-        }
+    // コメント数を設定
+    if ($latest_transaction) {
+        $product->transaction_comment_individual = $latest_transaction->transaction_comment_count;
+        $product->seller_comment_individual = $latest_transaction->seller_comment_count;
+    } else {
+        // 取引がない場合、コメント数は0
+        $product->transaction_comment_individual = 0;
+        $product->seller_comment_individual = 0;
+    }
+}
 
         $profile = $user -> profile;
         $user_evaluation = $profile -> evaluation;
@@ -215,8 +216,6 @@ class UserController extends Controller
             'new_count',
             'before_count',
             'user_evaluation',
-            'transaction_comment_individual',
-            'seller_comment_individual',
         ));
     }
 }

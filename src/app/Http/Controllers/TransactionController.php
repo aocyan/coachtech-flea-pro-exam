@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TransactionRequest;
 use App\Models\Transaction;
 use App\Models\Profile;
 use App\Models\User;
@@ -84,7 +85,7 @@ class TransactionController extends Controller
         ));
     }
 
-    public function store(Request $request, $item_id)
+    public function store(TransactionRequest $request, $item_id)
     {
         $user = Auth::User();
         $user_id = $user -> id;

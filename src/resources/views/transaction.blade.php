@@ -116,6 +116,16 @@
                     <img class="send__image--item" src="{{ asset('storage/logo/send.jpg') }}" alt="送信画像" />
                 </button>
             </div>
+            <div class="form__error">
+                @error('comment')
+                    {{ $message }}
+                @enderror
+            </div>
+            <div class="form__error">
+                @error('image')
+                    {{ $message }}
+                @enderror
+            </div>
         </form>
     </div>
 </div>

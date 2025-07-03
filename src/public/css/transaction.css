@@ -277,3 +277,14 @@
     background-color: #FF5555;
     cursor: pointer;
 }
+
+.form__error {
+    margin-bottom: 3%;
+    margin-left: 3%;
+    width: 70%;
+    font-size: 2vw;
+    font-weight: bold;
+    color: #FF5555;
+    transform: translateY(-120%);
+}
+

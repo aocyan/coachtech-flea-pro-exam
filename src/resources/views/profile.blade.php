@@ -75,23 +75,27 @@
             </div>
         @endforeach
     @elseif ($tab === 'transaction')
-        @foreach ($products as $product)
-            @if(($new_count !== $before_count) || (!empty($product -> transaction_user_id)))
-            <div class="product-item">
-                <a class="product-item__link" href="{{ route('transaction.index', $product->id) }}">
-                        @if( empty($user -> id !== $product_user -> id) )
-                        <span class="selling-products__count">{{ $seller_comment_individual ? $seller_comment_individual->seller_comment_count : '0' }}</span>
-                        @elseif( empty($user -> id === $product_user -> id) )
-                        <span class="selling-products__count">{{ $transaction_comment_individual ? $transaction_comment_individual->transaction_comment_count : '0' }}</span>
-                        @endif
-                    <img class="product__image" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />
-                    <div class="product__text">
-                        <input class="name--text" type="text" name="name" value="{{ $product['name'] }}" readonly />
-                    </div>
-                </a>
-            </div>
-            @endif
-        @endforeach
+    @foreach ($products as $product)
+    @if(($new_count !== $before_count) || (!empty($product->transaction_user_id)))
+        <div class="product-item">
+            <a class="product-item__link" href="{{ route('transaction.index', $product->id) }}">
+                @if($user->id !== $product_user->id)
+                    <span class="selling-products__count">
+                        {{ $product->seller_comment_individual ?: '0' }}
+                    </span>
+                @elseif($user->id === $product_user->id)
+                    <span class="selling-products__count">
+                        {{ $product->transaction_comment_individual ?: '0' }}
+                    </span>
+                @endif
+                <img class="product__image" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />
+                <div class="product__text">
+                    <input class="name--text" type="text" name="name" value="{{ $product['name'] }}" readonly />
+                </div>
+            </a>
+        </div>
+    @endif
+@endforeach
     @endif
 </div>
 
