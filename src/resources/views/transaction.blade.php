@@ -10,10 +10,10 @@
         <div class="other_transaction">
             <p class="other_transaction--text">その他の取引</p>
         </div>
-        @foreach($products as $product)
+        @foreach($product_items as $product_item)
             @if(($new_count !== $before_count) || (!empty($product -> transaction_user_id)))
             <div class="other-transaction__link">
-                <a class="other-transaction__link--button" href="{{ route('transaction.index', $product->id) }}"">{{ $product -> name }}</a>
+                <a class="other-transaction__link--button" href="{{ route('transaction.index', ['item_id'=> $product_item->id]) }}"">{{ $product_item -> name }}</a>
             </div>
             @endif
         @endforeach

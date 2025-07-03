@@ -40,7 +40,7 @@ class TransactionController extends Controller
         $product_user = User::find($product -> product_user_id);
         $product_user_profile = Profile::find($product_user -> id);
 
-        $products = Product::where('transaction_user_id', $user_id)
+        $product_items = Product::where('transaction_user_id', $user_id)
                         -> orWhere('seller_user_id', $user_id)
                         -> get();
 
@@ -72,7 +72,7 @@ class TransactionController extends Controller
             'user',
             'user_profile',
             'product', 
-            'products',
+            'product_items',
             'product_user',
             'product_user_profile',
             'transaction_user',
