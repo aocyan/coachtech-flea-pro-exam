@@ -138,7 +138,9 @@ class UserController extends Controller
 
         $user = Auth()->user();
 
-        $products = Product::select('id', 'product_user_id', 'transaction_user_id', 'name', 'image','sold_at')->get();
+        $products = Product::select('id', 'product_user_id', 'transaction_user_id', 'name', 'image','sold_at')
+                        -> with('transactions')
+                        -> get();
 
         foreach($products as $product)
         {
@@ -149,15 +151,30 @@ class UserController extends Controller
                 $new_count = $product_user_profile -> evaluation_count;
                 $before_count = $product_user_profile -> before_evaluation_count;
             }
+
+            foreach( $product -> transactions as $transaction)
+            {
+                $transaction_comment_individual = $transaction ->transaction_comment_count;
+                $seller_comment_individual = $transaction ->seller_comment_count;
+            }
         }
 
         $profile = $user -> profile;
         $user_evaluation = $profile -> evaluation;
 
-        $new_transaction = Transaction::orderBy('created_at', 'desc')->first();
-            
-        $transaction_count = $new_transaction -> transaction_comment_count;
-        $seller_count = $new_transaction -> seller_comment_count;
+
+        $total_transactions = Transaction::all();
+
+        $transaction_count = 0;
+        $seller_count = 0;     
+        foreach($total_transactions as $total_transaction)
+        {
+            $transaction_count += $total_transaction->transaction_comment_count;
+            $seller_count += $total_transaction->seller_comment_count;
+        }
+
+
+
 
         if ($tab === 'sell') 
         {
@@ -196,6 +213,8 @@ class UserController extends Controller
             'new_count',
             'before_count',
             'user_evaluation',
+            'transaction_comment_individual',
+            'seller_comment_individual',
         ));
     }
 }

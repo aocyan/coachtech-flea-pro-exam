@@ -149,7 +149,7 @@
 </form>
 @endif
 
-@if(($user -> id === $product -> product_user_id) && ($new_count === $before_count))
+@if(($user -> id === $product -> product_user_id) && ($new_count === $before_count) && ($new_count != 0))
     <form action="{{ route('transaction.seller', ['item_id' => $item_id]) }}" method="post" >
     @csrf
     <div class="modal-content__seller">

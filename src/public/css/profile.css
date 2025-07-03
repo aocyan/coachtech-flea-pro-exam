@@ -135,12 +135,12 @@
 
 .nav__recommend {
     margin-left: 10%;
-    transform: translateY(-15%);
+    transform: translateY(-32%);
 }
 
 .nav__mylist {
     margin-left: 5%;
-    transform: translateY(-15%);
+    transform: translateY(-32%);
 }
 
 .recommend-link {
@@ -242,6 +242,7 @@ a.active {
     width: 14%;
     height: 11%;
     line-height: 140%;
+    font-size: 1.5vw;
     border-radius: 50%;
     background-color: #FF5555;
     color: #fff;

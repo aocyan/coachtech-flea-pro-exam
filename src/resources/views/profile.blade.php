@@ -50,9 +50,9 @@
         <a class="transaction-link {{ request('tab') === 'transaction' ? 'active' : '' }}" 
             href="{{ route('mypage.check', ['tab' => 'transaction']) }}">取引中の商品
             @if(empty($user -> id !== $product_user -> id))
-                <span class="selling-products">{{ $transaction_count }}</span>
-            @else
                 <span class="selling-products">{{ $seller_count }}</span>
+            @else
+                <span class="selling-products">{{ $transaction_count }}</span>
             @endif
         </a>
     </div>
@@ -80,9 +80,9 @@
             <div class="product-item">
                 <a class="product-item__link" href="{{ route('transaction.index', $product->id) }}">
                         @if( empty($user -> id !== $product_user -> id) )
-                        <span class="selling-products__count">{{ $transaction_count }}</span>
+                        <span class="selling-products__count">{{ $seller_comment_individual }}</span>
                         @elseif( empty($user -> id === $product_user -> id) )
-                        <span class="selling-products__count">{{ $seller_count }}</span>
+                        <span class="selling-products__count">{{ $transaction_comment_individual }}</span>
                         @endif
                     <img class="product__image" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />
                     <div class="product__text">
