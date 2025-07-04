@@ -49,11 +49,7 @@
     <div class="nav__transaction">
         <a class="transaction-link {{ request('tab') === 'transaction' ? 'active' : '' }}" 
             href="{{ route('mypage.check', ['tab' => 'transaction']) }}">取引中の商品
-            @if(empty($user -> id !== $product_user -> id))
-                <span class="selling-products">{{ $seller_count }}</span>
-            @else
-                <span class="selling-products">{{ $transaction_count }}</span>
-            @endif
+                <span class="selling-products">{{ $total_count }}</span>
         </a>
     </div>
 </div>
@@ -79,13 +75,13 @@
     @if(($new_count !== $before_count) || (!empty($product->transaction_user_id)))
         <div class="product-item">
             <a class="product-item__link" href="{{ route('transaction.index', $product->id) }}">
-                @if($user->id !== $product_user->id)
+                @if($user->id !== $product-> user -> id)
                     <span class="selling-products__count">
-                        {{ $product->seller_comment_individual ?: '0' }}
+                        {{ $product_comment_counts[$product->id]['seller_comment_count'] ?? 0 }}
                     </span>
-                @elseif($user->id === $product_user->id)
+                @elseif($user->id === $product -> user -> id)
                     <span class="selling-products__count">
-                        {{ $product->transaction_comment_individual ?: '0' }}
+                        {{ $product_comment_counts[$product->id]['transaction_comment_count'] ?? 0 }}
                     </span>
                 @endif
                 <img class="product__image" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />
@@ -95,7 +91,7 @@
             </a>
         </div>
     @endif
-@endforeach
+    @endforeach
     @endif
 </div>
 

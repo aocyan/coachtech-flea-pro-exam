@@ -137,20 +137,17 @@ class UserController extends Controller
         $tab = $request->query('tab', 'default');
 
         $user = Auth()->user();
-        $product_user = User::find($user -> id);
-        $product_user_profile = Profile::find($user -> id);
-
-        $new_count = $product_user_profile -> evaluation_count;
-        $before_count = $product_user_profile -> before_evaluation_count;
-
         $profile = $user -> profile;
-        $user_evaluation = $profile -> evaluation;
 
+        $user_evaluation = $profile -> evaluation;
+        $new_count = $profile -> evaluation_count;
+        $before_count = $profile -> before_evaluation_count;
 
         $products = Product::select('id', 'product_user_id', 'transaction_user_id', 'name', 'image','sold_at')
                         -> with('transactions')
                         -> get();
 
+        $product_comment_counts = [];
         foreach($products as $product)
         {
             $latest_transaction = $product -> transactions() 
@@ -159,21 +156,45 @@ class UserController extends Controller
 
             if( $latest_transaction )
             {
-                $transaction_comment_individual = $latest_transaction -> transaction_comment_count;
-                $seller_comment_individual = $latest_transaction -> seller_comment_count;
-            } 
+                $product_comment_counts[$product->id] = [
+                    'transaction_comment_count' => $latest_transaction->transaction_comment_count,
+                    'seller_comment_count' => $latest_transaction->seller_comment_count,
+                ];
+            } else {
+                $product_comment_counts[$product->id] = [
+                    'transaction_comment_count' => 0,
+                    'seller_comment_count' => 0,
+                ];
+            }
         }
 
-
-        $total_transactions = Transaction::all();
-
+        $total_transactions = Product::with([
+            'transactions' => function ($query) {
+                $query->latest()->limit(1);
+            }
+        ]) -> get();
+        
         $transaction_count = 0;
-        $seller_count = 0;     
-        foreach($total_transactions as $total_transaction)
-        {
-            $transaction_count += $total_transaction->transaction_comment_count;
-            $seller_count += $total_transaction->seller_comment_count;
+        $seller_count = 0;
+        
+        foreach ($total_transactions as $product) {
+            $latest_transaction = $product->transactions -> first();
+        
+            if ($latest_transaction) {
+                $seller = $product -> product_user_id === $user -> id;
+                $transaction = $product->transaction_user_id === $user->id;
+        
+                if (!$transaction) {
+                    $transaction_count += $latest_transaction -> transaction_comment_count ?? 0;
+                }
+        
+                if (!$seller) {
+                    $seller_count += $latest_transaction -> seller_comment_count ?? 0;
+                }
+            }
         }
+        
+        $total_count = $transaction_count + $seller_count;
 
         if ($tab === 'sell') 
         {
@@ -208,10 +229,11 @@ class UserController extends Controller
             'tab', 
             'transaction_count',
             'seller_count',
-            'product_user',
+            'total_count',
             'new_count',
             'before_count',
             'user_evaluation',
+            'product_comment_counts'
         ));
     }
 }
