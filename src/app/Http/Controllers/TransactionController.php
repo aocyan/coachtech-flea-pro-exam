@@ -40,8 +40,16 @@ class TransactionController extends Controller
         }
         
         $product_items = Product::where('transaction_user_id', $user_id)
-                        -> orWhere('seller_user_id', $user_id)
-                        -> get();
+                            -> orWhere(function ($query) {
+                                $query -> whereColumn('product_user_id', '!=', 'transaction_user_id');
+                            })
+                            -> with(['transactions' => function($query) {
+                                $query->orderBy('created_at', 'desc');
+                            }])
+                            -> orderByRaw('
+                                (SELECT MAX(created_at) FROM transactions WHERE transactions.product_transaction_id = products.id) DESC
+                            ')
+                            -> get();
 
         $transaction_user_id = Product::where('transaction_user_id', $product->transaction_user_id)
                                     -> first()
@@ -210,7 +218,7 @@ class TransactionController extends Controller
     public function evaluation(Request $request, $item_id)
     {
         $user = Auth::User();
-        
+
         $product = Product::find($item_id);
         $product_user_id = $product -> product_user_id;
     
