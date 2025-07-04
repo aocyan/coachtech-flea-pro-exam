@@ -128,33 +128,33 @@ class TransactionController extends Controller
         if ($user->id === $product -> product_user_id) 
         {
             $seller_comment = Transaction::where('product_transaction_id', $item_id)
-                                 -> where('user_transaction_id', $product->product_user_id)
+                                 -> where('user_transaction_id', $product -> product_user_id)
                                  -> whereNotNull('comment')
                                  -> first();
 
             if ($seller_comment) 
             {
-                $seller_comment->seller_comment_count = (int) $seller_comment->seller_comment_count + 1;
-                $seller_comment->save();
+                $seller_comment -> seller_comment_count = (int) $seller_comment -> seller_comment_count + 1;
+                $seller_comment -> save();
             }
-            $seller_comment_count = $seller_comment ? $seller_comment->seller_comment_count : 0;
-        } elseif ($user->id !== $product->product_user_id) {
+            $seller_comment_count = $seller_comment ? $seller_comment -> seller_comment_count : 0;
+        } elseif ($user -> id !== $product -> product_user_id) {
                 $transaction_comment = Transaction::where('product_transaction_id', $item_id)
-                                        -> where('user_transaction_id', '!=', $product->product_user_id)
+                                        -> where('user_transaction_id', '!=', $product -> product_user_id)
                                         -> whereNotNull('comment')
                                         -> first();
 
             if ($transaction_comment) 
             {
-                $transaction_comment->transaction_comment_count = (int) $transaction_comment->transaction_comment_count + 1;
-                $transaction_comment->save();
+                $transaction_comment -> transaction_comment_count = (int) $transaction_comment -> transaction_comment_count + 1;
+                $transaction_comment -> save();
             }
-            $transaction_comment_count = $transaction_comment ? $transaction_comment->transaction_comment_count : 0;
+            $transaction_comment_count = $transaction_comment ? $transaction_comment -> transaction_comment_count : 0;
         }
 
-        $comment->seller_comment_count = $seller_comment_count;
-        $comment->transaction_comment_count = $transaction_comment_count;
-        $comment->save();
+        $comment -> seller_comment_count = $seller_comment_count;
+        $comment -> transaction_comment_count = $transaction_comment_count;
+        $comment -> save();
 
         return redirect() -> route('transaction.index', ['item_id' => $item_id]);
     }
@@ -239,7 +239,7 @@ class TransactionController extends Controller
         $product_user_profile -> save();
 
         $product -> update([
-            'seller_user_id' => $user->id,
+            'seller_user_id' => $user -> id,
         ]);
 
         $product -> save(); 

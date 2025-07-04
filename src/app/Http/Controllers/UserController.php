@@ -134,9 +134,9 @@ class UserController extends Controller
 
     public function mypage(Request $request)
     {
-        $tab = $request->query('tab', 'default');
+        $tab = $request -> query('tab', 'default');
 
-        $user = Auth()->user();
+        $user = Auth() -> user();
         $profile = $user -> profile;
 
         $user_evaluation = $profile -> evaluation;
@@ -156,12 +156,12 @@ class UserController extends Controller
                 
             if( $latest_transaction )
             {
-                $product_comment_counts[$product->id] = [
-                    'transaction_comment_count' => $latest_transaction->transaction_comment_count,
-                    'seller_comment_count' => $latest_transaction->seller_comment_count,
+                $product_comment_counts[$product -> id] = [
+                    'transaction_comment_count' => $latest_transaction -> transaction_comment_count,
+                    'seller_comment_count' => $latest_transaction -> seller_comment_count,
                 ];
             } else {
-                $product_comment_counts[$product->id] = [
+                $product_comment_counts[$product -> id] = [
                     'transaction_comment_count' => 0,
                     'seller_comment_count' => 0,
                 ];
@@ -177,13 +177,13 @@ class UserController extends Controller
                                            -> first();
      
             if ($latest_transaction) {
-                if ($product->product_user_id === $user->id) 
+                if ($product -> product_user_id === $user -> id) 
                 {
-                    $total_transaction_count += $latest_transaction->transaction_comment_count;
+                    $total_transaction_count += $latest_transaction -> transaction_comment_count;
                 }
-                if ($product->transaction_user_id === $user->id) 
+                if ($product -> transaction_user_id === $user -> id) 
                 {
-                    $total_seller_count += $latest_transaction->seller_comment_count;
+                    $total_seller_count += $latest_transaction -> seller_comment_count;
                 }
             }
         }
