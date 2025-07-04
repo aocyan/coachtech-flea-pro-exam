@@ -72,25 +72,25 @@
         @endforeach
     @elseif ($tab === 'transaction')
     @foreach ($products as $product)
-    @if(($new_count !== $before_count) || (!empty($product->transaction_user_id)))
-        <div class="product-item">
-            <a class="product-item__link" href="{{ route('transaction.index', $product->id) }}">
-                @if($user->id !== $product-> user -> id)
-                    <span class="selling-products__count">
-                        {{ $product_comment_counts[$product->id]['seller_comment_count'] ?? 0 }}
-                    </span>
-                @elseif($user->id === $product -> user -> id)
-                    <span class="selling-products__count">
-                        {{ $product_comment_counts[$product->id]['transaction_comment_count'] ?? 0 }}
-                    </span>
-                @endif
-                <img class="product__image" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />
-                <div class="product__text">
-                    <input class="name--text" type="text" name="name" value="{{ $product['name'] }}" readonly />
-                </div>
-            </a>
-        </div>
-    @endif
+        @if(($new_count !== $before_count) || (!empty($product->transaction_user_id)))
+            <div class="product-item">
+                <a class="product-item__link" href="{{ route('transaction.index', $product->id) }}">
+                    @if($user->id !== $product->user->id && ($product_comment_counts[$product->id]['seller_comment_count'] ?? 0) > 0)
+                        <span class="selling-products__count">
+                            {{ $product_comment_counts[$product->id]['seller_comment_count'] ?? 0 }}
+                        </span>
+                    @elseif($user->id === $product -> user -> id && ($product_comment_counts[$product->id]['transaction_comment_count'] ?? 0) > 0) 
+                        <span class="selling-products__count">
+                            {{ $product_comment_counts[$product->id]['transaction_comment_count'] ?? 0 }}
+                        </span>
+                    @endif
+                    <img class="product__image" src="{{ asset('storage/products/' . basename($product->image)) }}" alt="{{ $product->name }}" />
+                    <div class="product__text">
+                        <input class="name--text" type="text" name="name" value="{{ $product['name'] }}" readonly />
+                    </div>
+                </a>
+            </div>
+        @endif
     @endforeach
     @endif
 </div>
