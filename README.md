@@ -105,5 +105,5 @@
 
 
 <h2>〇　URL</h2>
-* 開発環境：　http://localhost/
-* phpMyAdmin：　http://localhost:8080/
+<p>* 開発環境：　<a href="http://localhost/">http://localhost/</a></p>
+<p>* phpMyAdmin：　<a href="http://localhost:8080/">http://localhost:8080/</a></p>
