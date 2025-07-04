@@ -58,16 +58,18 @@
 <h3>13.ダミーデータを挿入</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;ubuntu内PHPコンテナ上で<br>
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;php artisan db:seed　を実行し、ダミーデータを挿入する。<br>
-   &nbsp;&nbsp;&nbsp;&nbsp;※１.ダミーデータのユーザについては<br>
-   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;ユーザ1．出品した商品：C001からC005　アドレス：test1@example.com　パスワード：1234abcd<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;※ダミーデータのユーザについては<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;ユーザ1. 出品した商品：C001からC005　アドレス：test1@example.com　パスワード：1234abcd<br>
    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;ユーザ2. 出品した商品：C006からC0010 アドレス：test2@example.com　パスワード：1234abcd<br>
-   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;ユーザ2. 出品した商品：なし 　　　　　アドレス：test3@example.com　パスワード：1234abcd<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;ユーザ3. 出品した商品：なし 　　　　　アドレス：test3@example.com　パスワード：1234abcd<br>
    &nbsp;&nbsp;&nbsp;&nbsp;で設定してあります。</p>
 <h3>14.その他</h3>
 <h4>①本アプリについて</h4>
 <p>本アプリは以前の模擬案件作成時のアプリを改修したものとなります。</p>
+<p>取引画面へは商品一覧画面から商品をクリックし、商品詳細画面から「取引する」ボタンを押下で取引画面に遷移します。</p>
 <h4>②stripe機能について</h4>
-<p>stripe機能は使用しませんが、必要ならば以下の手順で設定してください。</p>
+<p>本アプリは以前開発した模擬案件のフリマアプリを改修して開発しておりますので、stripe機能を使用している部分があります。</p>
+<p>今回の試験ではstripe機能を使用するところに遷移しませんが、必要ならば以下の手順で設定してください。</p>
 <p>Stripe導入手順<br>  
 &nbsp;&nbsp;&nbsp;&nbsp;①　Stripe公式サイト( https://stripe.com/jp )にアクセスしてアカウントを作成する<br>  
 &nbsp;&nbsp;&nbsp;&nbsp;②　公式サイトの左上にある「≡ New business」アイコンをクリックして、メニュー下にある「開発者」をクリックする。<br>  
@@ -89,8 +91,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;⑦　「製品の設定」にある「決済」をクリックし、ナビゲーションにある「決済手段」をクリックする<br>  
 &nbsp;&nbsp;&nbsp;&nbsp;⑧　「店舗支払い」の項目にある「コンビニ決済」を「有効」に設定する。</p>
 <h4>③未実装について</h4>
-<p>1.メール機能は実装しておりません。</p>
-<p>2.コメント新着機能は実装できておりません。</p>
+<p>メール機能は実装しておりません。</p>
    
 <h2>〇　使用技術(実行環境)</h2>
 <p>* PHP：7.4.9</p>
