@@ -153,7 +153,7 @@ class UserController extends Controller
             $latest_transaction = $product -> transactions() 
                                            -> latest()
                                            -> first(); 
-
+                
             if( $latest_transaction )
             {
                 $product_comment_counts[$product->id] = [
@@ -165,36 +165,30 @@ class UserController extends Controller
                     'transaction_comment_count' => 0,
                     'seller_comment_count' => 0,
                 ];
-            }
+            }                
         }
 
-        $total_transactions = Product::with([
-            'transactions' => function ($query) {
-                $query->latest()->limit(1);
-            }
-        ]) -> get();
-        
-        $transaction_count = 0;
-        $seller_count = 0;
-        
-        foreach ($total_transactions as $product) {
-            $latest_transaction = $product->transactions -> first();
-        
+        $total_transaction_count = 0;
+        $total_seller_count = 0;
+        foreach ($products as $product) 
+        {
+            $latest_transaction = $product -> transactions() 
+                                           -> latest() 
+                                           -> first();
+     
             if ($latest_transaction) {
-                $seller = $product -> product_user_id === $user -> id;
-                $transaction = $product->transaction_user_id === $user->id;
-        
-                if (!$transaction) {
-                    $transaction_count += $latest_transaction -> transaction_comment_count ?? 0;
+                if ($product->product_user_id === $user->id) 
+                {
+                    $total_transaction_count += $latest_transaction->transaction_comment_count;
                 }
-        
-                if (!$seller) {
-                    $seller_count += $latest_transaction -> seller_comment_count ?? 0;
+                if ($product->transaction_user_id === $user->id) 
+                {
+                    $total_seller_count += $latest_transaction->seller_comment_count;
                 }
             }
         }
         
-        $total_count = $transaction_count + $seller_count;
+        $total_count = $total_transaction_count + $total_seller_count;
 
         if ($tab === 'sell') 
         {
@@ -227,10 +221,8 @@ class UserController extends Controller
             'user', 
             'profile', 
             'tab', 
-            'transaction_count',
-            'seller_count',
-            'total_count',
             'new_count',
+            'total_count',
             'before_count',
             'user_evaluation',
             'product_comment_counts'
