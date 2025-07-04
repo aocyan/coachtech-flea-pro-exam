@@ -109,6 +109,9 @@
         <form action="{{ route('transaction.store', ['item_id' => $item_id]) }}" method="post" enctype="multipart/form-data">
         @csrf
             <div class="transaction-message__space">
+                <div class="index__link">
+                    <a class="index__link--button" href="{{ route('product.index')}}">商品一覧に戻る</a>
+                </div>
                 <input class="transaction-message__space--text" type="text" name="comment" placeholder="取引メッセージを記入してください">
                 <label class="transaction__image--button" for="image-upload">画像を追加</label>
                 <input class="transaction__image--item" type="file" id="image-upload" name="image" accept="image/*" />
@@ -159,7 +162,7 @@
 </form>
 @endif
 
-@if(($user -> id === $product -> product_user_id) && ($new_count === $before_count) && ($new_count != 0))
+@if(($user -> id == $product -> product_user_id) && ($new_count == $before_count) && ($new_count != 0))
     <form action="{{ route('transaction.seller', ['item_id' => $item_id]) }}" method="post" >
     @csrf
     <div class="modal-content__seller">

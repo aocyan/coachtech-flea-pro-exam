@@ -288,3 +288,13 @@
     transform: translateY(-120%);
 }
 
+.index__link {
+    margin-bottom: 5%;
+    width: 90%;
+    text-align: right;
+}
+
+.index__link--button {
+    font-size: 2vw;
+    cursor: pointer;
+}

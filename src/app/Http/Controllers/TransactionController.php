@@ -211,7 +211,6 @@ class TransactionController extends Controller
 
         $product_user_profile -> save();
 
-        $product -> transaction_user_id = null;
         $product -> save(); 
 
         return redirect() -> route('product.index');       
