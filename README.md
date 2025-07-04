@@ -58,7 +58,7 @@
 <h3>13.ダミーデータを挿入</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;ubuntu内PHPコンテナ上で<br>
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;php artisan db:seed　を実行し、ダミーデータを挿入する。<br>
-   &nbsp;&nbsp;&nbsp;&nbsp;※１.ダミーデータのユーザについては<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;※ダミーデータのユーザについては<br>
    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;ユーザ1．出品した商品：C001からC005　アドレス：test1@example.com　パスワード：1234abcd<br>
    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;ユーザ2. 出品した商品：C006からC0010 アドレス：test2@example.com　パスワード：1234abcd<br>
    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;ユーザ2. 出品した商品：なし 　　　　　アドレス：test3@example.com　パスワード：1234abcd<br>
