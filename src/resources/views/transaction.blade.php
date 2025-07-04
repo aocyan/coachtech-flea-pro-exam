@@ -112,7 +112,8 @@
                 <div class="index__link">
                     <a class="index__link--button" href="{{ route('product.index')}}">商品一覧に戻る</a>
                 </div>
-                <input class="transaction-message__space--text" type="text" name="comment" placeholder="取引メッセージを記入してください">
+                <input class="transaction-message__space--text" id="comment_message" 
+                                            type="text" name="comment" placeholder="取引メッセージを記入してください" />
                 <label class="transaction__image--button" for="image-upload">画像を追加</label>
                 <input class="transaction__image--item" type="file" id="image-upload" name="image" accept="image/*" />
                 <button class="transaction-send__button" type="submit">
@@ -223,6 +224,21 @@
                 });
             }
         });
+    });
+</script>
+
+<script>
+    const chatMessageInput = document.getElementById('comment_message');
+
+    window.onload = function() {
+        const savedMessage = sessionStorage.getItem('comment');
+        if (savedMessage) {
+            chatMessageInput.value = savedMessage;
+        }
+    };
+
+    chatMessageInput.addEventListener('input', function() {
+        sessionStorage.setItem('comment', chatMessageInput.value);
     });
 </script>
 
