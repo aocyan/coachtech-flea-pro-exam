@@ -163,7 +163,7 @@
 </form>
 @endif
 
-@if(($user -> id == $product -> product_user_id) && ($new_count == $before_count) && ($new_count != 0))
+@if(($user -> id == $product -> product_user_id) && ($new_count == $before_count) && ($new_count != 0) && (($product -> seller_user_id) !== null))
     <form action="{{ route('transaction.seller', ['item_id' => $item_id]) }}" method="post" >
     @csrf
     <div class="modal-content__seller">
@@ -239,6 +239,12 @@
 
     chatMessageInput.addEventListener('input', function() {
         sessionStorage.setItem('comment', chatMessageInput.value);
+    });
+
+    const form = document.querySelector('form[action="{{ route('transaction.store', ['item_id' => $item_id]) }}"][method="post"]');
+
+    form.addEventListener('submit', function() {
+        sessionStorage.removeItem('comment');
     });
 </script>
 

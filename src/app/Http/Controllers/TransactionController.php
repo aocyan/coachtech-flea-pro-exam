@@ -73,13 +73,6 @@ class TransactionController extends Controller
                 $search_comment -> save();
             }
         }
-            
-        if($user -> id === $product_user -> id)
-        {
-            $product->update([
-                'seller_user_id' => $user->id,
-            ]);
-        }
  
         return view('transaction', compact(
             'item_id',
@@ -216,6 +209,8 @@ class TransactionController extends Controller
 
     public function evaluation(Request $request, $item_id)
     {
+        $user = Auth::User();
+        
         $product = Product::find($item_id);
         $product_user_id = $product -> product_user_id;
     
@@ -234,6 +229,10 @@ class TransactionController extends Controller
         $product_user_profile -> evaluation = $new_evaluation_average;
 
         $product_user_profile -> save();
+
+        $product -> update([
+            'seller_user_id' => $user->id,
+        ]);
 
         $product -> save(); 
 
@@ -264,6 +263,10 @@ class TransactionController extends Controller
         $transaction_user_profile -> evaluation = $new_evaluation_average;
 
         $transaction_user_profile -> save();
+
+        $product -> update([
+            'seller_user_id' => null,
+        ]);
 
         return redirect() -> route('product.index');       
     }
