@@ -59,20 +59,18 @@ class TransactionController extends Controller
                         -> with(['user.profile'])
                         -> get();
 
-        $latest_other_comment = Transaction::where('user_transaction_id', '!=', $user->id)
-                                    -> where('product_transaction_id', $product->id)
-                                    -> with(['user.profile'])
-                                    -> latest()
-                                    -> first();
+        $search_comment = Transaction::where('product_transaction_id', $product -> id)
+                            -> orderBy('created_at', 'desc')
+                            -> first();
 
-        if($latest_other_comment){
+        if($search_comment){
             if($user_id !== $product_user_id)
             {
-                $latest_other_comment -> seller_comment_count = 0;
-                $latest_other_comment -> save();
+                $search_comment -> seller_comment_count = 0;
+                $search_comment -> save();
             } elseif ($user_id === $product_user_id){
-                $latest_other_comment -> transaction_comment_count = 0;
-                $latest_other_comment -> save();
+                $search_comment -> transaction_comment_count = 0;
+                $search_comment -> save();
             }
         }
             
@@ -115,26 +113,36 @@ class TransactionController extends Controller
             $path = $file -> storeAs('transactions', $fileName, 'public');
         }
 
+        $seller_comment_count = 0;
+        $transaction_comment_count = 0;
         $comment = Transaction::create([     
             'user_transaction_id' => $user_id,
             'product_transaction_id' => $item_id,       
-            'comment' => $request->comment,
+            'comment' => $request -> comment,
+            'seller_comment_count' => $seller_comment_count,
+            'transaction_comment_count' => $transaction_comment_count,
             'image' => $path,
         ]);
         
-        $seller_comment_count = Transaction::where('product_transaction_id', $item_id)
-            -> where('user_transaction_id', $product->product_user_id)
-            -> whereNotNull('comment')
-            -> count();
-        
-        $transaction_comment_count = Transaction::where('product_transaction_id', $item_id)
-            -> where('user_transaction_id', '!=', $product->product_user_id)
-            -> whereNotNull('comment')
-            -> count();
-        
-        $comment->seller_comment_count = $seller_comment_count;
-        $comment->transaction_comment_count = $transaction_comment_count;
-        $comment->save();
+        if($user -> id === $product -> product_user_id){
+            $seller_comment_count = Transaction::where('product_transaction_id', $item_id)
+                                    -> where('user_transaction_id', $product -> product_user_id)
+                                    -> whereNotNull('comment')
+                                    -> first();
+            $seller_comment_count->seller_comment_count = (int) $seller_comment_count->seller_comment_count + 1;
+            $seller_comment_count -> save();
+        } elseif($user -> id !== $product -> product_user_id){      
+            $transaction_comment_count = Transaction::where('product_transaction_id', $item_id)
+                                        -> where('user_transaction_id', '!=', $product -> product_user_id)
+                                        -> whereNotNull('comment')
+                                        -> first();
+            $transaction_comment_count->transaction_comment_count = (int) $transaction_comment_count->transaction_comment_count + 1;
+            $transaction_comment_count -> save();
+        }
+
+        $comment -> seller_comment_count = $seller_comment_count;
+        $comment -> transaction_comment_count = $transaction_comment_count;
+        $comment -> save();
 
         return redirect() -> route('transaction.index', ['item_id' => $item_id]);
     }
