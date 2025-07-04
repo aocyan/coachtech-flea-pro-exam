@@ -16,12 +16,13 @@ class TransactionController extends Controller
     {
         $user = Auth::user();
         $user_id = $user -> id;
-
         $user_profile = Profile::find($user -> id);
-
+        
         $product = Product::find($item_id);
+        $product_user = User::find($product -> product_user_id);
         $product_user_id = $product -> product_user_id;
-
+        $product_user_profile = Profile::find($product_user -> id);
+       
         $before_count = $user_profile -> before_evaluation_count;
         $new_count = $user_profile -> evaluation_count;
 
@@ -38,9 +39,6 @@ class TransactionController extends Controller
             $product -> save();
         }
         
-        $product_user = User::find($product -> product_user_id);
-        $product_user_profile = Profile::find($product_user -> id);
-
         $product_items = Product::where('transaction_user_id', $user_id)
                         -> orWhere('seller_user_id', $user_id)
                         -> get();
@@ -48,7 +46,7 @@ class TransactionController extends Controller
         $transaction_user_id = Product::where('transaction_user_id', $product->transaction_user_id)
                                     -> first()
                                     -> transaction_user_id;
-    
+
         $transaction_user = User::find($transaction_user_id);
         $transaction_user_profile = Profile::find($transaction_user_id);
 
@@ -60,6 +58,23 @@ class TransactionController extends Controller
                         -> where('product_transaction_id', $product -> id)
                         -> with(['user.profile'])
                         -> get();
+
+        $latest_other_comment = Transaction::where('user_transaction_id', '!=', $user->id)
+                                    -> where('product_transaction_id', $product->id)
+                                    -> with(['user.profile'])
+                                    -> latest()
+                                    -> first();
+
+        if($latest_other_comment){
+            if($user_id !== $product_user_id)
+            {
+                $latest_other_comment -> seller_comment_count = 0;
+                $latest_other_comment -> save();
+            } elseif ($user_id === $product_user_id){
+                $latest_other_comment -> transaction_comment_count = 0;
+                $latest_other_comment -> save();
+            }
+        }
             
         if($user -> id === $product_user -> id)
         {
