@@ -99,8 +99,8 @@
 <p>* ubuntu：24.04.1 LTS</p>
 
 <h2>〇　ER図</h2>
-![CoachTechFlea](https://github.com/user-attachments/assets/944b0a35-574a-4087-a8fc-b13f7ee985c0)
 
+![coachtech-flea-pro-exam](https://github.com/user-attachments/assets/9b65dc0b-4469-4ff4-85c3-448115f0e0d1)
 
 
 <h2>〇　URL</h2>
