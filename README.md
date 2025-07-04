@@ -59,9 +59,9 @@
 <p>&nbsp;&nbsp;&nbsp;&nbsp;ubuntu内PHPコンテナ上で<br>
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;php artisan db:seed　を実行し、ダミーデータを挿入する。<br>
    &nbsp;&nbsp;&nbsp;&nbsp;※ダミーデータのユーザについては<br>
-   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;ユーザ1．出品した商品：C001からC005　アドレス：test1@example.com　パスワード：1234abcd<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;ユーザ1. 出品した商品：C001からC005　アドレス：test1@example.com　パスワード：1234abcd<br>
    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;ユーザ2. 出品した商品：C006からC0010 アドレス：test2@example.com　パスワード：1234abcd<br>
-   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;ユーザ2. 出品した商品：なし 　　　　　アドレス：test3@example.com　パスワード：1234abcd<br>
+   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;ユーザ3. 出品した商品：なし 　　　　　アドレス：test3@example.com　パスワード：1234abcd<br>
    &nbsp;&nbsp;&nbsp;&nbsp;で設定してあります。</p>
 <h3>14.その他</h3>
 <h4>①本アプリについて</h4>
