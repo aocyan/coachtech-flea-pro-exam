@@ -183,15 +183,20 @@ class TransactionController extends Controller
             $comment = Transaction::find($comment_id);
 
             if($comment)
-            {
+            {            
                 $comment -> comment = null;
+                $comment -> save();
 
-                if($user -> id === $product -> product_user_id){
-                    $comment -> seller_comment_count =  ((int)$comment -> seller_comment_count) -1;
-                    $comment -> save();
-                } else {
-                    $comment -> transaction_comment_count =  ((int)$comment -> transaction_comment_count) -1;
-                    $comment -> save();
+                $search_comment = Transaction::where('product_transaction_id', $product -> id)
+                                    -> orderBy('created_at', 'desc')
+                                    -> first();
+
+                if ($user->id === $product->product_user_id) {
+                    $search_comment -> seller_comment_count = max(0, (int)$search_comment -> seller_comment_count - 1);
+                    $search_comment -> save();
+                } elseif ($user->id !== $product->product_user_id) {
+                    $search_comment -> transaction_comment_count = max(0, (int)$search_comment -> transaction_comment_count - 1);
+                    $search_comment -> save();
                 }
             }
         } elseif($request -> has('del_img')) {
