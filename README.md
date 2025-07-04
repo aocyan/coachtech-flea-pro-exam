@@ -100,7 +100,8 @@
 
 <h2>〇　ER図</h2>
 
-![coachtech-flea-pro-exam](https://github.com/user-attachments/assets/9b65dc0b-4469-4ff4-85c3-448115f0e0d1)
+![coachtech-flea-pro-exam](https://github.com/user-attachments/assets/99ad75c4-5e81-464c-a24c-aa2ceb0aa912)
+
 
 
 <h2>〇　URL</h2>
