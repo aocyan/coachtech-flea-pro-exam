@@ -113,9 +113,6 @@
         <form action="{{ route('transaction.store', ['item_id' => $item_id]) }}" method="post" enctype="multipart/form-data">
         @csrf
             <div class="transaction-message__space">
-                <div class="index__link">
-                    <a class="index__link--button" href="{{ route('product.index')}}">商品一覧に戻る</a>
-                </div>
                 <input class="transaction-message__space--text" id="comment_message" 
                                             type="text" name="comment" placeholder="取引メッセージを記入してください" />
                 <label class="transaction__image--button" for="image-upload">画像を追加</label>
