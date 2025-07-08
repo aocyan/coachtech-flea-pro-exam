@@ -70,7 +70,7 @@
                         <textarea class="person__comment--text" type="text" readonly>{{ $other_comment -> comment }}</textarea>
                     </div>
                     @endif
-                    @if($other_comment -> image))
+                    @if($other_comment -> image)
                         <div class="person__comment">
                             <img class="comment__img--item" src="{{ asset('storage/transactions/' . basename($other_comment -> image))  }}" alt="コメント画像" />
                         </div>
