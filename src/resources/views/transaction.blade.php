@@ -35,9 +35,13 @@
                 <h2>「{{ $transaction_user -> name }}」さんとの取引画面</h2>
             </div>
             @endif
-            @if($user -> id !== $product -> product_user_id)
+            @if($user -> id !== $product -> product_user_id && $product -> purchaser_user_id == null)
             <div class="transaction-button">
-                <button  class="transaction__link--button" type="button" id="completion">取引を完了する</button>
+                <button class="transaction__link--button" type="button" id="completion">取引を完了する</button>
+            </div>
+            @elseif($user -> id !== $product -> product_user_id && $product -> purchaser_user_id != null)
+            <div class="transaction-button">
+                <p class="end-transaction__link--button">取引済み</p>
             </div>
             @endif
         </div>
@@ -163,7 +167,7 @@
 </form>
 @endif
 
-@if(($user->id == $product->product_user_id) && ($new_count == $before_count) && ($new_count != 0) && ($product->seller_user_id != null))
+@if(($user->id == $product->product_user_id) && ($product->purchaser_user_id != null))
     <form action="{{ route('transaction.seller', ['item_id' => $item_id]) }}" method="post" >
     @csrf
     <div class="modal-content__seller">

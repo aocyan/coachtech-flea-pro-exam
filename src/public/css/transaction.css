@@ -77,6 +77,17 @@
     cursor: pointer;
 }
 
+.end-transaction__link--button {
+    padding: 8% 13%;
+    border-radius: 20px;
+    text-align: center;
+    background-color: #868686;
+    color: #fff;
+    font-size: 1.2vw;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .product-detail {
     display: flex;
     border-bottom: 1px solid #000;

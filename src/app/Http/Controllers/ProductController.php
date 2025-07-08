@@ -109,20 +109,6 @@ class ProductController extends Controller
             return back()->withErrors(['address' => '配送先が入力されていません']);
         }
 
-        $product->update([
-            'purchaser_user_id' => Auth::id(),
-            'sold_at' => now(),
-        ]);
-
-        $paymentMethod = $request->input('pay');
-
-        session(['product' => $product]);
-
-        if($paymentMethod === 'カード支払い'){
-            return redirect()->route('checkout');
-        }
-        elseif($paymentMethod === 'コンビニ払い'){
-             return redirect()->route('payment');
-        }
+        return redirect() -> route('transaction.index', ['item_id' => $item_id]); 
     }
 }   

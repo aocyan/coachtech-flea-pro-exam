@@ -228,18 +228,18 @@ class TransactionController extends Controller
 
         $now_evaluation_score = $product_user_profile -> evaluation;
         $count = $product_user_profile -> evaluation_count;
-        $count++;
 
-        $now_evaluation_score += $evaluation;
-        $new_evaluation_average = round($now_evaluation_score / $count, 1);
+        $new_average = round((($now_evaluation_score * $count) + $evaluation) / ($count + 1), 1);
 
-        $product_user_profile -> evaluation_count = $count;
-        $product_user_profile -> evaluation = $new_evaluation_average;
+        $product_user_profile -> evaluation_count = $count+1;
+        $product_user_profile -> evaluation = $new_average;
 
         $product_user_profile -> save();
 
         $product -> update([
             'seller_user_id' => $user -> id,
+            'purchaser_user_id' => $user -> id,
+            'sold_at' => now(),
         ]);
 
         $product -> save(); 
@@ -249,6 +249,7 @@ class TransactionController extends Controller
 
     public function seller(Request $request, $item_id)
     {
+        $user = Auth::User();
         $product = Product::find($item_id);
         $transaction_user_id = $product -> transaction_user_id;
     
@@ -273,6 +274,7 @@ class TransactionController extends Controller
         $transaction_user_profile -> save();
 
         $product -> update([
+            'transaction_user_id' => null,
             'seller_user_id' => null,
         ]);
 

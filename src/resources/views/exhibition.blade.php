@@ -76,15 +76,15 @@
             </table>
             @if (Auth::check() && !$product->sold_at && ($product->product_user_id !== Auth()->user()->id))
                 <div class="purchase__link">
-                    <a class="purchase__link--button" href="{{ route('transaction.index', ['item_id'=> $product->id]) }}">取引する</a>
+                    <a class="purchase__link--button" href="{{ route('purchase.index', ['item_id'=> $product->id]) }}">購入手続きへ</a>
                 </div> 
             @elseif ($product->sold_at || (Auth::check() && $product->product_user_id === Auth()->user()->id))
                 <div class="no-purchase__link">
-                     <p class="no-purchase__link--button">取引する</p>
+                     <p class="no-purchase__link--button">購入手続きへ</p>
                 </div>
             @elseif(!Auth::check())
                 <div class="no-purchase__link">
-                     <a class="purchase__link--button" href="{{ route('login') }}">取引する</a>
+                     <a class="purchase__link--button" href="{{ route('login') }}">購入手続きへ</a>
                 </div>
             @endif
             <div class="product__explain">
