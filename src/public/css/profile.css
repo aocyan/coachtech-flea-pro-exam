@@ -237,15 +237,13 @@ a.active {
 }
 
 .selling-products__count {
-    margin-left: 5%;
-    display: inline-block;
-    width: 14%;
-    height: 11%;
-    line-height: 140%;
+    padding: 1% 4.5%;
     font-size: 1.5vw;
     border-radius: 50%;
     background-color: #FF5555;
     color: #fff;
     text-align: center;
-    transform: translateY(140%);
+    position: relative;
+    bottom: 85%;
+    left: 3%;
 }
