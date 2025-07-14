@@ -4,6 +4,7 @@
 
 .left__box {
     width: 15%;
+    padding-bottom: 70%;
     background-color: #868686; 
 }
 
@@ -116,8 +117,9 @@
 
 .transaction-my-comment {
     width: 50%;
+    margin: 10% 0 15% 50%;
     margin-left: 50%;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .comment__container {
@@ -159,7 +161,9 @@
 }
 
 .transaction-message__space {
-    margin: 71% 0 30px 0;
+    width: 85%;
+    position: fixed;
+    top: 90%;
 }
 
 .transaction-message__space--text {
