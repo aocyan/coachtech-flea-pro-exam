@@ -294,6 +294,9 @@
 }
 
 .form__error {
+    position: fixed;
+    top: 90%;
+    left: 15%;
     margin-bottom: 3%;
     margin-left: 3%;
     width: 70%;
